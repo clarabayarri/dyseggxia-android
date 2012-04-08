@@ -12,6 +12,7 @@ import dyseggxia.databaseTableDefinitions.InsertionProblemTable;
 import dyseggxia.databaseTableDefinitions.LevelTable;
 import dyseggxia.databaseTableDefinitions.OmissionAnswersTable;
 import dyseggxia.databaseTableDefinitions.OmissionProblemTable;
+import dyseggxia.databaseTableDefinitions.SentenceSeparationProblemTable;
 import dyseggxia.databaseTableDefinitions.SubstitutionAnswersTable;
 import dyseggxia.databaseTableDefinitions.SubstitutionProblemTable;
 import dyseggxia.databaseTableDefinitions.UserLevelsDataTable;
@@ -25,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		new OmissionProblemTable(), new OmissionAnswersTable(), 
 		new SubstitutionProblemTable(), new SubstitutionAnswersTable(),
 		new DerivationProblemTable(), new DerivationAnswersTable(),
-		new UserLevelsDataTable()};
+		new SentenceSeparationProblemTable(), new UserLevelsDataTable()};
 	
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

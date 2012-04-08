@@ -18,7 +18,7 @@ public class ProblemController {
 	private ProblemProviderI provider;
 	private static final String[] problemClassNames = {"insertion", "omission", "substitution","derivation","sentence separation"};
 	private static final Class<?>[] problemTypes = {InsertionProblem.class, OmissionProblem.class, 
-		SubstitutionProblem.class, DerivationProblem.class, SentenceSeparationProblem.class};
+		SubstitutionProblem.class, DerivationProblem.class, SentenceSeparationProblem.class };
 	
 	public ProblemController(ProblemProviderI provider) {
 		this.provider = provider;

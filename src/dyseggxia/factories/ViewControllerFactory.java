@@ -5,11 +5,13 @@ import dyseggxia.domainModel.DerivationProblem;
 import dyseggxia.domainModel.InsertionProblem;
 import dyseggxia.domainModel.OmissionProblem;
 import dyseggxia.domainModel.Problem;
+import dyseggxia.domainModel.SentenceSeparationProblem;
 import dyseggxia.domainModel.SubstitutionProblem;
 import dyseggxia.viewControllers.CubeController;
 import dyseggxia.viewControllers.DerivationCubeController;
 import dyseggxia.viewControllers.InsertionCubeController;
 import dyseggxia.viewControllers.OmissionCubeController;
+import dyseggxia.viewControllers.SentenceSeparationCubeController;
 import dyseggxia.viewControllers.SubstitutionCubeController;
 
 public class ViewControllerFactory {
@@ -26,6 +28,9 @@ public class ViewControllerFactory {
 		}
 		if(problem.getClass().equals(DerivationProblem.class)) {
 			return new DerivationCubeController(context, (DerivationProblem)problem);
+		}
+		if(problem.getClass().equals(SentenceSeparationProblem.class)) {
+			return new SentenceSeparationCubeController(context, (SentenceSeparationProblem)problem);
 		}
 		return null;
 	}
