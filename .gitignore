@@ -1,0 +1,28 @@
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# image resources
+res/drawable/
+res/drawable-hdpi/
+res/drawable-mdpi/
+res/drawable-ldpi/
+
+# assets
+assets/
+
+# robolectric files
+tmp/
