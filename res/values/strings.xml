@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, MainActivity!</string>
+    <string name="app_name">Dyseggxia</string>
+    <string name="level_select">Select a level</string>
+    <string name="level_1">Level 1</string>
+    <string name="description">description</string>
+
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DiseggxiaStyle" parent="android:Theme.Light.NoTitleBar.Fullscreen">
+        <item name="android:textAppearance">@style/DyseggxiaTextAppearance</item>
+        
+    </style>
+    
+    <style name="DyseggxiaTextAppearance" parent="@android:style/TextAppearance">
+		<item name="android:textColor">@color/dark_grey</item>
+		<item name="android:textSize">8pt</item>
+	</style>
+	<style name="DyseggxiaTitleAppearance" parent="@android:style/TextAppearance">
+	    <item name="android:textSize">20pt</item>
+	</style>
+	<style name="DyseggxiaSubtitleAppearance" parent="@android:style/TextAppearance">
+	    <item name="android:textSize">14pt</item>    
+	</style>
+	<style name="DyseggxiaProblemLetterAppearance" parent="@android:style/TextAppearance">
+	    <item name="android:textSize">18pt</item>
+	</style>
+	
+	<style name="DyseggxiaLevelButton" parent="@android:style/Widget.Button">
+	    <item name="android:padding">10dp</item>
+	</style>
+</resources>
