@@ -4,6 +4,7 @@ import android.content.Context;
 import dyseggxia.domainModel.DerivationProblem;
 import dyseggxia.domainModel.InsertionProblem;
 import dyseggxia.domainModel.OmissionProblem;
+import dyseggxia.domainModel.SentenceSeparationProblem;
 import dyseggxia.domainModel.SubstitutionProblem;
 import dyseggxia.providers.AbstractAnswerProvider;
 import dyseggxia.providers.AbstractProblemProvider;
@@ -20,6 +21,7 @@ import dyseggxia.providers.OmissionAnswerProvider;
 import dyseggxia.providers.OmissionProblemProvider;
 import dyseggxia.providers.ProblemProvider;
 import dyseggxia.providers.ProblemProviderI;
+import dyseggxia.providers.SentenceSeparationProblemProvider;
 import dyseggxia.providers.SubstitutionAnswerProvider;
 import dyseggxia.providers.SubstitutionProblemProvider;
 
@@ -38,6 +40,7 @@ public class ProviderFactory {
 	private OmissionProblemProvider omissionProblemProvider;
 	private SubstitutionProblemProvider substitutionProblemProvider;
 	private DerivationProblemProvider derivationProblemProvider;
+	private SentenceSeparationProblemProvider sentenceSeparationProblemProvider;
 	
 	private InsertionAnswerProvider insertionAnswerProvider;
 	private OmissionAnswerProvider omissionAnswerProvider;
@@ -81,6 +84,13 @@ public class ProviderFactory {
 			derivationProblemProvider = new DerivationProblemProvider(getDatabaseHelper(), getAnswerProvider());
 		}
 		return derivationProblemProvider;
+	}
+	
+	private SentenceSeparationProblemProvider getSentenceSeparationProblemProvider() {
+		if(sentenceSeparationProblemProvider == null) {
+			sentenceSeparationProblemProvider = new SentenceSeparationProblemProvider(getDatabaseHelper());
+		}
+		return sentenceSeparationProblemProvider;
 	}
 	
 	private InsertionAnswerProvider getInsertionAnswerProvider() {
@@ -137,6 +147,9 @@ public class ProviderFactory {
 		}
 		if(type.equals(DerivationProblem.class)) {
 			return getDerivationProblemProvider();
+		}
+		if(type.equals(SentenceSeparationProblem.class)) {
+			return getSentenceSeparationProblemProvider();
 		}
 		return null;
 	}

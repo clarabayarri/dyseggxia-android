@@ -2,7 +2,7 @@ package dyseggxia.domainModel;
 
 import java.util.List;
 
-public class InsertionProblem extends Problem {
+public class InsertionProblem extends WordProblem {
 
 	private static String typeName = "insertion";
 	

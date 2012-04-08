@@ -9,14 +9,16 @@ import dyseggxia.domainModel.InsertionProblem;
 import dyseggxia.domainModel.Level;
 import dyseggxia.domainModel.OmissionProblem;
 import dyseggxia.domainModel.Problem;
+import dyseggxia.domainModel.SentenceSeparationProblem;
 import dyseggxia.domainModel.SubstitutionProblem;
 import dyseggxia.providers.ProblemProviderI;
 
 public class ProblemController {
 
 	private ProblemProviderI provider;
-	private static final String[] problemClassNames = {"insertion", "omission", "substitution","derivation"};
-	private static final Class<?>[] problemTypes = {InsertionProblem.class, OmissionProblem.class, SubstitutionProblem.class, DerivationProblem.class};
+	private static final String[] problemClassNames = {"insertion", "omission", "substitution","derivation","sentence separation"};
+	private static final Class<?>[] problemTypes = {InsertionProblem.class, OmissionProblem.class, 
+		SubstitutionProblem.class, DerivationProblem.class, SentenceSeparationProblem.class};
 	
 	public ProblemController(ProblemProviderI provider) {
 		this.provider = provider;

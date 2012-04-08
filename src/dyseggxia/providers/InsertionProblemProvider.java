@@ -15,6 +15,7 @@ public class InsertionProblemProvider extends AbstractProblemProvider {
 		this.answerProvider = answerProvider;
 	}
 	
+	@Override
 	public int findNumProblemsForLevel(int levelNumber) {
 		SQLiteDatabase database = helper.getWritableDatabase();
 		String consulta = "SELECT Count(*) FROM " + InsertionProblemTable.TABLE_NAME + " WHERE " + InsertionProblemTable.COLUMN_LEVEL_NUMBER + " = " + levelNumber;
@@ -25,6 +26,7 @@ public class InsertionProblemProvider extends AbstractProblemProvider {
 		return numRows;
 	}
 	
+	@Override
 	public Problem findProblem(int levelNumber, int problemId) throws Exception {
 		SQLiteDatabase database = helper.getWritableDatabase();
 		Cursor cursor = database.query(InsertionProblemTable.TABLE_NAME, InsertionProblemTable.ALL_COLUMNS, 
@@ -38,6 +40,7 @@ public class InsertionProblemProvider extends AbstractProblemProvider {
 		return mapProblem(cursor);
 	}
 	
+	@Override
 	protected Problem mapProblem(Cursor cursor) {
 		int problemNumber = cursor.getInt(0);
 		String problemWord = cursor.getString(1);

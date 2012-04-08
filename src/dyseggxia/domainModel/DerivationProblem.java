@@ -3,7 +3,7 @@ package dyseggxia.domainModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DerivationProblem extends Problem {
+public class DerivationProblem extends WordProblem {
 
 	private static String typeName = "derivation";
 	

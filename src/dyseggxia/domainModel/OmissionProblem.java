@@ -3,7 +3,7 @@ package dyseggxia.domainModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OmissionProblem extends Problem {
+public class OmissionProblem extends WordProblem {
 
 	private static String typeName = "omission";
 	private Character insertedLetter;
