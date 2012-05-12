@@ -34,7 +34,8 @@ public class DerivationCubeController extends CubeController {
 
 	@Override
 	protected void itemSelected(MotionEvent event) {
-		wordLayout.checkForDropEvent(event);
+		//wordLayout.checkForDropEvent(event);
+		viewDroppedOnIndex(0);
 	}
 	
 	@Override
