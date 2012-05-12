@@ -1,21 +1,26 @@
 package dyseggxia.views;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.widget.Button;
-import dyseggxia.activities.R;
 import dyseggxia.domainModel.Level;
 
 public class LevelView extends Button {
 
 	private Level level;
-	public LevelView(Level level, Context context) {
+	
+	public LevelView(Context context) {
 		super(context);
-		this.level = level;
-		loadInfo();
 	}
-	private void loadInfo() {
-		this.setBackgroundResource(R.drawable.boxorange);
+	
+	public LevelView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+	}
+	
+	public void setLevel(Level level) {
+		this.level = level;
 		this.setText(String.valueOf(level.getDescription()));
+		this.setHeight(this.getWidth());
 	}
 	
 	public Level getLevel() {

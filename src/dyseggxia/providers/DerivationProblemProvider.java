@@ -45,10 +45,11 @@ public class DerivationProblemProvider extends AbstractProblemProvider {
 		int problemNumber = cursor.getInt(0);
 		String problemWord = cursor.getString(1);
 		int insertionIndex = cursor.getInt(2);
+		int endIndex = problemWord.length()-1;
 		int levelNumber = cursor.getInt(3);
 		cursor.close();
 
-		DerivationProblem problem = new DerivationProblem(levelNumber,problemNumber,problemWord,insertionIndex);
+		DerivationProblem problem = new DerivationProblem(levelNumber, problemNumber, problemWord, insertionIndex, endIndex);
 		findAnswers(problem);
 
 		return problem;

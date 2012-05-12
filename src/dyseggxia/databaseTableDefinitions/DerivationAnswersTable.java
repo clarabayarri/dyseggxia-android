@@ -1,9 +1,13 @@
 package dyseggxia.databaseTableDefinitions;
 
+import java.util.List;
+
+import dyseggxia.utilities.AssetsReader;
+import dyseggxia.utilities.WordProblemDataTuple;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
-public class DerivationAnswersTable extends DatabaseTable {
+public class DerivationAnswersTable extends WordProblemDatabaseTable {
 
 public static final String TABLE_NAME = "derivation_answers";
 	
@@ -23,15 +27,14 @@ public static final String TABLE_NAME = "derivation_answers";
 					DerivationProblemTable.COLUMN_NUMBER + "));";
 	
 	@Override
-	public void populateTable(SQLiteDatabase database) {
-		insertAnswer(database,1,1,"cer");
-		insertAnswer(database,1,1,"ci—n");
-		insertAnswer(database,1,2,"ero");
-		insertAnswer(database,1,2,"tido");
-		insertAnswer(database,2,1,"ing");
-		insertAnswer(database,2,1,"cito");
-		insertAnswer(database,2,2,"ero");
-		insertAnswer(database,2,2,"ing");
+	protected void loadLevelData(AssetsReader reader, SQLiteDatabase database, int level) {
+		List<WordProblemDataTuple> data = reader.readWordProblems("derivation", level);
+		for(int i = 0; i < data.size(); ++i) {
+			WordProblemDataTuple word = data.get(i);
+			for(String answer : word.answers) {
+				insertAnswer(database,level,i,answer);
+			}
+		}
 	}
 	
 	private void insertAnswer(SQLiteDatabase database, int levelNumber, int problemIndex, String answer) {

@@ -1,6 +1,8 @@
 package dyseggxia.databaseTableDefinitions;
 
+import dyseggxia.activities.R;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 public class LevelTable extends DatabaseTable {
@@ -30,10 +32,10 @@ public class LevelTable extends DatabaseTable {
 	}
 	
 	@Override
-	public void populateTable(SQLiteDatabase database) {
-		insertLevel(database,1,"Easy");
-		insertLevel(database,2,"Medium");
-		insertLevel(database,3,"Hard");
+	public void populateTable(Context context, SQLiteDatabase database) {
+		insertLevel(database,1,context.getResources().getString(R.string.easy));
+		insertLevel(database,2,context.getResources().getString(R.string.medium));
+		insertLevel(database,3,context.getResources().getString(R.string.hard));
 	}
 	
 	private void insertLevel(SQLiteDatabase database, int number, String description) {

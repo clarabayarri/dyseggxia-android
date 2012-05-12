@@ -1,5 +1,6 @@
 package dyseggxia.databaseTableDefinitions;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 public class UserProblemsDataTable extends DatabaseTable {
@@ -32,7 +33,7 @@ public class UserProblemsDataTable extends DatabaseTable {
 	}
 	
 	@Override
-	public void populateTable(SQLiteDatabase database) {
+	public void populateTable(Context context, SQLiteDatabase database) {
 		// TODO Auto-generated method stub
 
 	}

@@ -10,36 +10,34 @@ import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
 import dyseggxia.viewControllers.CubeController;
 
-public class CubeLayoutView {
+public abstract class CubeLayoutView {
 
-	private CubeController controller;
-	private LinearLayout layout;
-	private List<String> letters;
+	protected CubeController controller;
+	protected LinearLayout layout;
+	protected List<String> letters;
+	
 	private boolean draggable;
-	private int position;
 	
-	private int maxWidth;
-	private int maxHeight;
+	protected int maxWidth;
+	protected int maxHeight;
+	protected int letterResourceDrawable;
 	
-	private boolean vertical = false;
-	
-	public CubeLayoutView(CubeController controller, List<String> letters, int position, boolean draggable) {
+	public CubeLayoutView(CubeController controller, boolean draggable) {
 		this.controller = controller;
-		this.letters = letters;
 		this.draggable = draggable;
-		this.position = position;
+	}
+	
+	public int getLetterResourceDrawable() {
+		return letterResourceDrawable;
 	}
 	
 	public void fillLayout(LinearLayout layout) {
 		this.layout = layout;
-		if(layout.getOrientation() == LinearLayout.VERTICAL) {
-			layout.getLayoutParams().height = LayoutParams.FILL_PARENT;
-			vertical = true;
-		}
+		layout.removeAllViews();
 		initialize();
 	}
 	
-	private void initialize() {
+	protected void initialize() {
 		calculateSizes();
 		for(int i = 0; i < letters.size(); ++i) {
 			CubeLetterView newView = new CubeLetterView(this,i,letters.get(i),draggable);
@@ -47,38 +45,24 @@ public class CubeLayoutView {
 			newView.setLayoutParams(newParams);
 			layout.addView(newView);
 			newView.setWidth(maxWidth);
+			newView.setHeight(maxHeight);
 		}
-		if(position == 1) initializeBox();
 	}
 	
-	private void calculateSizes() {
-		if(!vertical) {
-			maxWidth = Math.max(layout.getWidth()/letters.size(),(int)controller.getContext().getResources().getDimension(R.dimen.cube_height));
-			maxHeight = maxWidth;
-			if(position == 0) maxHeight *= 1.3;
+	protected void calculateSizes() {
+		if(layout.getOrientation() == LinearLayout.VERTICAL) {
+			maxHeight = Math.max(layout.getWidth()/letters.size(), (int)controller.getContext().getResources().getDimension(R.dimen.cube_height));
+			System.out.println("MaxHeight: " + maxHeight);
+			maxWidth = maxHeight*3;
 		}
 		else {
-			maxHeight = Math.max(layout.getHeight()/letters.size(), (int)controller.getContext().getResources().getDimension(R.dimen.cube_height));
-			maxWidth = maxHeight;
+			maxWidth = Math.max(layout.getWidth()/letters.size(),(int)controller.getContext().getResources().getDimension(R.dimen.cube_height));
+			maxHeight = maxWidth;
 		}
-	}
-	
-	private void initializeBox() {
-		int padding = (int)controller.getContext().getResources().getDimension(R.dimen.margin_cubes_box);
-		int maxHeight = layout.getChildAt(0).getLayoutParams().height + 2*padding;
-		int maxWidth = layout.getChildAt(0).getLayoutParams().width * letters.size() + 2*padding;
-		//layout.setBackgroundResource(R.drawable.cubosbox);
-		layout.getLayoutParams().height = maxHeight;
-		layout.getLayoutParams().width = maxWidth;
-		layout.setPadding(padding, padding, padding, padding);
 	}
 
 	public CubesActivity getContext() {
 		return controller.getContext();
-	}
-	
-	public int getPosition() {
-		return position;
 	}
 
 	public void setLetterInIndex(int index, String letter) {
@@ -88,17 +72,6 @@ public class CubeLayoutView {
 				view.setLetterAndShow(letter);
 				return;
 			}
-		}
-	}
-	
-	public void appendTermination(String termination) {
-		char[] contents = termination.toCharArray();
-		for(int i = 0; i < contents.length; ++i) {
-			CubeLetterView newView = new CubeLetterView(this,i,String.valueOf(contents[i]),false);
-			LayoutParams newParams = new LayoutParams(maxWidth, maxHeight, 1);
-			newView.setLayoutParams(newParams);
-			layout.addView(newView);
-			newView.setWidth(maxWidth);
 		}
 	}
 
@@ -137,4 +110,12 @@ public class CubeLayoutView {
 	public void hide() {
 		layout.setVisibility(View.GONE);
 	}
+
+	public void makeAllVisible() {
+		for(int i = 0; i < layout.getChildCount(); ++i) {
+			View view = layout.getChildAt(i);
+			view.setVisibility(View.VISIBLE);
+		}
+	}
+	
 }

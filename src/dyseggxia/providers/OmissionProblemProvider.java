@@ -44,10 +44,11 @@ public class OmissionProblemProvider extends AbstractProblemProvider{
 		int problemNumber = cursor.getInt(0);
 		String problemWord = cursor.getString(1);
 		int omissionIndex = cursor.getInt(2);
-		int levelNumber = cursor.getInt(3);
+		int endIndex = cursor.getInt(3);
+		int levelNumber = cursor.getInt(4);
 		cursor.close();
 		
-		OmissionProblem problem = new OmissionProblem(levelNumber,problemNumber,problemWord, omissionIndex);
+		OmissionProblem problem = new OmissionProblem(levelNumber,problemNumber,problemWord, omissionIndex, endIndex);
 		findInsertedLetter(problem);
 		
 		return problem;
@@ -56,7 +57,7 @@ public class OmissionProblemProvider extends AbstractProblemProvider{
 	private void findInsertedLetter(OmissionProblem problem) {
 		List<String> answers = answerProvider.getAnswersForProblem(problem);
 		int index = getRandomIndex(answers.size());
-		problem.setInsertedLetter(answers.get(index).charAt(0));
+		problem.setInsertedLetter(answers.get(index));
 	}
 
 	private int getRandomIndex(int size) {

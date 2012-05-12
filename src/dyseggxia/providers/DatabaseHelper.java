@@ -15,6 +15,7 @@ import dyseggxia.databaseTableDefinitions.OmissionProblemTable;
 import dyseggxia.databaseTableDefinitions.SentenceSeparationProblemTable;
 import dyseggxia.databaseTableDefinitions.SubstitutionAnswersTable;
 import dyseggxia.databaseTableDefinitions.SubstitutionProblemTable;
+import dyseggxia.databaseTableDefinitions.TrackingData;
 import dyseggxia.databaseTableDefinitions.UserLevelsDataTable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -26,17 +27,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		new OmissionProblemTable(), new OmissionAnswersTable(), 
 		new SubstitutionProblemTable(), new SubstitutionAnswersTable(),
 		new DerivationProblemTable(), new DerivationAnswersTable(),
-		new SentenceSeparationProblemTable(), new UserLevelsDataTable()};
+		new SentenceSeparationProblemTable(), new UserLevelsDataTable(),
+		new TrackingData()};
+	
+	private Context context;
 	
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		this.context = context;
 	}
 	
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		for(DatabaseTable table : tables) {
 			database.execSQL(table.getCreateTableSentence());
-			table.populateTable(database);
+			table.populateTable(context, database);
 		}
 		
 	}

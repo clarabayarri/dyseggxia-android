@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import dyseggxia.domainControllers.LevelController;
 import dyseggxia.domainControllers.ProblemController;
@@ -21,8 +20,6 @@ public class LevelActivity extends Activity implements OnClickListener {
 	private LevelController levelController;
 	private ProblemController problemController;
 	private Level level;
-	
-	private LinearLayout problemsLayout;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,25 +39,22 @@ public class LevelActivity extends Activity implements OnClickListener {
 	}
 
 	private void loadInfo() {
-		TextView levelTitle = (TextView)findViewById(R.id.levelTitle);
-		levelTitle.setText("Level " + level.getNumber());
-		TextView levelDescription = (TextView)findViewById(R.id.levelDescription);
+		TextView levelDescription = (TextView)findViewById(R.id.levelTitle);
 		levelDescription.setText(level.getDescription());
 	}
 
 	private void loadProblems() {
-		problemsLayout = (LinearLayout)findViewById(R.id.problemsLayout);
 		fillLayout();
 	}
 	
 	private void fillLayout() {
-		problemsLayout.removeAllViews();
 		List<Problem> problems = problemController.getThreeRandomProblemsForLevel(level);
-		for(Problem problem : problems) {
-			ProblemView problemView = new ProblemView(problem, this);
-			problemView.setOnClickListener(this);
-			problemsLayout.addView(problemView);
-		}
+		ProblemView problemView1 = (ProblemView)findViewById(R.id.ProblemView1);
+		problemView1.setProblem(problems.get(0));
+		ProblemView problemView2 = (ProblemView)findViewById(R.id.ProblemView2);
+		problemView2.setProblem(problems.get(1));
+		ProblemView problemView3 = (ProblemView)findViewById(R.id.ProblemView3);
+		problemView3.setProblem(problems.get(2));
 	}
 
 	@Override

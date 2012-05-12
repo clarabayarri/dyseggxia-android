@@ -5,12 +5,13 @@ import android.widget.LinearLayout;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
 import dyseggxia.domainModel.DerivationProblem;
-import dyseggxia.views.CubeLayoutView;
+import dyseggxia.views.CubeAnswersLayoutView;
+import dyseggxia.views.CubeWordLayoutView;
 
 public class DerivationCubeController extends CubeController {
 
 	private DerivationProblem problem;
-	private CubeLayoutView answerLayout;
+	private CubeAnswersLayoutView answerLayout;
 	
 	public DerivationCubeController(CubesActivity context, DerivationProblem problem) {
 		this.context = context;
@@ -23,9 +24,10 @@ public class DerivationCubeController extends CubeController {
 	}
 	
 	private void loadViews() {
-		wordLayout = new CubeLayoutView(this,problem.getWord(),0,false);
+		wordLayout = new CubeWordLayoutView(this,problem.getWord(),false);
 		wordLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeWordVerticalLayout));
-		answerLayout = new CubeLayoutView(this,problem.getAnswers(),1,true);
+		wordLayout.addInvisibleSpace(problem.getWord().length());
+		answerLayout = new CubeAnswersLayoutView(this,problem.getAnswers(),true);
 		answerLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeAnswerVerticalLayout));
 		movingLayout = (LinearLayout)context.findViewById(R.id.movingVerticalLayout);
 	}
@@ -39,8 +41,13 @@ public class DerivationCubeController extends CubeController {
 	public void viewDroppedOnIndex(int index) {
 		if(invisibleImage != null) {
 			movingLayout.removeAllViews();
-			if(problem.isCorrectAnswer(index,invisibleImage.getIndex())) {
+			String wrongWord = problem.getWord();
+			String givenAnswer = wrongWord + invisibleImage.getText().toString();
+			if(problem.isCorrectAnswer(givenAnswer)) {
 				hideAnswersAndShowCompleteWord();
+			}
+			else {
+				fail(problem.getAnswers().get(invisibleImage.getIndex()));
 			}
 		}
 	}

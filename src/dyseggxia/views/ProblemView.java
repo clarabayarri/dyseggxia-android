@@ -1,22 +1,24 @@
 package dyseggxia.views;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.widget.Button;
-import dyseggxia.activities.R;
 import dyseggxia.domainModel.Problem;
 
 public class ProblemView extends Button{
 
 	private Problem problem;
 	
-	public ProblemView(Problem problem, Context context) {
+	public ProblemView(Context context) {
 		super(context);
-		this.problem = problem;
-		loadInfo();
 	}
-
-	private void loadInfo() {
-		this.setBackgroundResource(R.drawable.boxorange);
+	
+	public ProblemView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+	}
+	
+	public void setProblem(Problem problem) {
+		this.problem = problem;
 		this.setText(problem.getTypeName());
 	}
 	

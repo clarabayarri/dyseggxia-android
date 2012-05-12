@@ -1,9 +1,13 @@
 package dyseggxia.databaseTableDefinitions;
 
+import java.util.List;
+
+import dyseggxia.utilities.AssetsReader;
+import dyseggxia.utilities.WordProblemDataTuple;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
-public class OmissionAnswersTable extends DatabaseTable {
+public class OmissionAnswersTable extends WordProblemDatabaseTable {
 
 	public static final String TABLE_NAME = "omission_answers";
 	
@@ -35,15 +39,14 @@ public class OmissionAnswersTable extends DatabaseTable {
 	}
 
 	@Override
-	public void populateTable(SQLiteDatabase database) {
-		insertAnswer(database,1,1,"a");
-		insertAnswer(database,1,1,"o");
-		insertAnswer(database,2,1,"i");
-		insertAnswer(database,2,1,"i");
-		insertAnswer(database,1,2,"p");
-		insertAnswer(database,1,2,"d");
-		insertAnswer(database,2,2,"q");
-		insertAnswer(database,2,2,"p");
+	protected void loadLevelData(AssetsReader reader, SQLiteDatabase database, int level) {
+		List<WordProblemDataTuple> data = reader.readWordProblems("omission", level);
+		for(int i = 0; i < data.size(); ++i) {
+			WordProblemDataTuple word = data.get(i);
+			for(String answer : word.answers) {
+				insertAnswer(database,level,i,answer);
+			}
+		}
 	}
 	
 	private void insertAnswer(SQLiteDatabase database, int levelNumber, int problemIndex, String answer) {

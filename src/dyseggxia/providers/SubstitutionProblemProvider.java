@@ -43,10 +43,11 @@ public class SubstitutionProblemProvider extends AbstractProblemProvider {
 		int problemNumber = cursor.getInt(0);
 		String problemWord = cursor.getString(1);
 		int insertionIndex = cursor.getInt(2);
-		int levelNumber = cursor.getInt(3);
+		int endIndex = cursor.getInt(3);
+		int levelNumber = cursor.getInt(4);
 		cursor.close();
 
-		SubstitutionProblem problem = new SubstitutionProblem(levelNumber,problemNumber,problemWord,insertionIndex);
+		SubstitutionProblem problem = new SubstitutionProblem(levelNumber,problemNumber,problemWord,insertionIndex,endIndex);
 		findAnswers(problem);
 
 		return problem;

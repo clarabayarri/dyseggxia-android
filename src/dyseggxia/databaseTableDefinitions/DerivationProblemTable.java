@@ -1,9 +1,13 @@
 package dyseggxia.databaseTableDefinitions;
 
+import java.util.List;
+
+import dyseggxia.utilities.AssetsReader;
+import dyseggxia.utilities.WordProblemDataTuple;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
-public class DerivationProblemTable extends DatabaseTable {
+public class DerivationProblemTable extends WordProblemDatabaseTable {
 
 	public static String TABLE_NAME = "derivation_problems";
 	
@@ -20,16 +24,17 @@ public class DerivationProblemTable extends DatabaseTable {
 			COLUMN_WORD + " text not null, " +
 			COLUMN_SUFFIX_START_INDEX + " integer not null, " +
 			COLUMN_LEVEL_NUMBER + " integer not null, " +
-			"unique(" + COLUMN_NUMBER + "," + COLUMN_LEVEL_NUMBER + ")" +
+			"unique(" + COLUMN_NUMBER + "," + COLUMN_LEVEL_NUMBER + ") " +
 			"foreign key (" + COLUMN_LEVEL_NUMBER + ") " +
 			"references " + LevelTable.TABLE_NAME + "(" + LevelTable.COLUMN_NUMBER + ") );";
 	
 	@Override
-	public void populateTable(SQLiteDatabase database) {
-		insertProblem(database,1,"problema",6,1);
-		insertProblem(database,2,"inserci—n",5,1);
-		insertProblem(database,1,"palabra",6,2);
-		insertProblem(database,2,"lectura",5,2);
+	protected void loadLevelData(AssetsReader reader, SQLiteDatabase database, int level) {
+		List<WordProblemDataTuple> data = reader.readWordProblems("derivation", level);
+		for(int i = 0; i < data.size(); ++i) {
+			WordProblemDataTuple word = data.get(i);
+			insertProblem(database,i,word.word,word.startIndex,level);
+		}
 	}
 	
 	private void insertProblem(SQLiteDatabase database, int index, String word, int suffixIndex, int levelNumber) {

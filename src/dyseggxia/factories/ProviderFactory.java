@@ -24,6 +24,7 @@ import dyseggxia.providers.ProblemProviderI;
 import dyseggxia.providers.SentenceSeparationProblemProvider;
 import dyseggxia.providers.SubstitutionAnswerProvider;
 import dyseggxia.providers.SubstitutionProblemProvider;
+import dyseggxia.providers.TrackingDataProvider;
 
 public class ProviderFactory {
 
@@ -35,6 +36,7 @@ public class ProviderFactory {
 	private AnswerProviderI answerProvider;
 	private ProblemProviderI problemProvider;
 	private LevelProviderI levelProvider;
+	private TrackingDataProvider trackingDataProvider;
 	
 	private InsertionProblemProvider insertionProblemProvider;
 	private OmissionProblemProvider omissionProblemProvider;
@@ -175,6 +177,13 @@ public class ProviderFactory {
 			return getDerivationAnswerProvider();
 		}
 		return null;
+	}
+	
+	public TrackingDataProvider getTrackingDataProvider() {
+		if(trackingDataProvider == null) {
+			trackingDataProvider = new TrackingDataProvider(getDatabaseHelper());
+		}
+		return trackingDataProvider;
 	}
 	
 	public DatabaseHelper getDatabaseHelper() {

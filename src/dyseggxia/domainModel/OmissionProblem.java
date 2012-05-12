@@ -1,50 +1,35 @@
 package dyseggxia.domainModel;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class OmissionProblem extends WordProblem {
 
 	private static String typeName = "omission";
-	private Character insertedLetter;
+	private String insertedLetter;
 	
-	public OmissionProblem(int level, int number, String word, int wordIndex) {
-		super(level, number, word, wordIndex);
+	public OmissionProblem(int level, int number, String word, int wordIndex, int endIndex) {
+		super(level, number, word, wordIndex, endIndex);
 	}
 	
-	public OmissionProblem(int level, int number, String word, int wordIndex, Character insertedLetter) {
-		this(level, number, word, wordIndex);
+	public OmissionProblem(int level, int number, String word, int wordIndex, int endIndex, String insertedLetter) {
+		this(level, number, word, wordIndex, endIndex);
 		this.insertedLetter = insertedLetter;
 	}
 	
-	public void setInsertedLetter(Character insertedLetter) {
+	public void setInsertedLetter(String insertedLetter) {
 		this.insertedLetter = insertedLetter;
 	}
 
 	@Override
-	protected List<String> createProblemFromCorrectWord() {
-		return insertExtraLetter(correctWord);
-	}
-	
-	private List<String> insertExtraLetter(String word) {
-		char[] viewableWord = word.toCharArray();
-		List<String> letters = new ArrayList<String>();
-		for(char letter : viewableWord) {
-			Character character = new Character(letter);
-			letters.add(character.toString());
-		}
-		letters.add(wordIndex, insertedLetter.toString());
-		return letters;
+	protected String createProblemFromCorrectWord() {
+		String beggining = correctWord.substring(0, wordExtractStartIndex);
+		String end = correctWord.substring(wordExtractEndIndex, correctWord.length());
+		String composedWord = beggining + insertedLetter + end;
+		return composedWord;
 	}
 
 	@Override
 	public String getTypeName() {
 		return typeName;
-	}
-	
-	@Override
-	public boolean isCorrectAnswer(int wordIndex, int answerIndex) {
-		return this.wordIndex == wordIndex;
 	}
 
 }

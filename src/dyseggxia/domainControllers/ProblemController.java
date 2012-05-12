@@ -30,7 +30,7 @@ public class ProblemController {
 			Class<?> type = getRandomProblemType();
 			int randomNumber = getRandomNumber(provider.findNumProblemsForLevel(level.getNumber(), type));
 			try {
-				Problem problem = getProblem(level.getNumber(), randomNumber+1, type);
+				Problem problem = getProblem(level.getNumber(), randomNumber, type);
 				problems.add(problem);
 			}
 			catch(Exception e) {

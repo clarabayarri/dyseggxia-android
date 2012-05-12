@@ -1,6 +1,7 @@
 package dyseggxia.databaseTableDefinitions;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 public class UserLevelsDataTable extends DatabaseTable{
@@ -33,7 +34,7 @@ public class UserLevelsDataTable extends DatabaseTable{
 	}
 	
 	@Override
-	public void populateTable(SQLiteDatabase database) {
+	public void populateTable(Context context, SQLiteDatabase database) {
 		insertData(database,1);
 	}
 

@@ -17,10 +17,14 @@
         android:id="@+id/cubeAnswerVerticalLayout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
         android:layout_margin="20dp"
+        android:layout_toLeftOf="@id/cubeWordVerticalLayout"
         android:background="@drawable/cubosverticalbox"
+        android:gravity="center|center_horizontal"
         android:orientation="vertical" >
 
     </LinearLayout>
@@ -29,8 +33,8 @@
         android:id="@+id/movingVerticalLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true" >
+        android:layout_alignParentBottom="true" >
+
     </LinearLayout>
 
 </RelativeLayout>

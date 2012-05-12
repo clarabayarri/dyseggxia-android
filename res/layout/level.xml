@@ -4,32 +4,60 @@
     android:layout_height="match_parent"
     android:background="@drawable/background" >
 
-    <LinearLayout
-        android:id="@+id/problemsLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" >
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/levelDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/problemsLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:text="@string/description"
-        android:textAppearance="@style/DyseggxiaSubtitleAppearance" />
-
     <TextView
         android:id="@+id/levelTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/levelDescription"
         android:layout_centerHorizontal="true"
-        android:text="@string/level_1"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:text="@string/description"
         android:textAppearance="@style/DyseggxiaTitleAppearance" />
-
+    
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res/dyseggxia.activities"
+        android:id="@+id/problemsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/levelTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        android:paddingBottom="40dp" >
+        
+        <dyseggxia.views.ProblemView
+            android:id="@+id/ProblemView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/cuadradetelila"
+            android:onClick="onClick"
+            android:textAppearance="@style/DyseggxiaSubtitleAppearance" />
+        
+        <dyseggxia.views.ProblemView
+            android:id="@+id/ProblemView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/cuadradeterojo"
+            android:onClick="onClick"
+            android:textAppearance="@style/DyseggxiaSubtitleAppearance" />
+        
+        <dyseggxia.views.ProblemView
+            android:id="@+id/ProblemView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/cuadradeteverde"
+            android:onClick="onClick"
+            android:textAppearance="@style/DyseggxiaSubtitleAppearance" />
+        
+    </LinearLayout>
 
 </RelativeLayout>

@@ -5,12 +5,13 @@ import android.widget.LinearLayout;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
 import dyseggxia.domainModel.InsertionProblem;
-import dyseggxia.views.CubeLayoutView;
+import dyseggxia.views.CubeAnswersLayoutView;
+import dyseggxia.views.CubeWordLayoutView;
 
 public class InsertionCubeController extends CubeController {
 
 	private InsertionProblem problem;
-	private CubeLayoutView answerLayout;
+	private CubeAnswersLayoutView answerLayout;
 	
 	public InsertionCubeController(CubesActivity context, InsertionProblem problem) {
 		this.context = context;
@@ -23,9 +24,9 @@ public class InsertionCubeController extends CubeController {
 	}
 	
 	private void loadViews() {
-		wordLayout = new CubeLayoutView(this,problem.getWord(),0,false);
+		wordLayout = new CubeWordLayoutView(this,problem.getWord(),false);
 		wordLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeWordLayout));
-		answerLayout = new CubeLayoutView(this,problem.getAnswers(),1,true);
+		answerLayout = new CubeAnswersLayoutView(this,problem.getAnswers(),true);
 		answerLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeAnswerLayout));
 		movingLayout = (LinearLayout)context.findViewById(R.id.movingLayout);
 	}
@@ -39,9 +40,14 @@ public class InsertionCubeController extends CubeController {
 	public void viewDroppedOnIndex(int index) {
 		if(invisibleImage != null) {
 			movingLayout.removeAllViews();
-			if(problem.isCorrectAnswer(index,invisibleImage.getIndex())) {
+			String wrongWord = problem.getWord();
+			String givenAnswer = wrongWord.replaceFirst(" ", invisibleImage.getText().toString());
+			if(problem.isCorrectAnswer(givenAnswer)) {
 				wordLayout.setLetterInIndex(index,invisibleImage.getTextContents());
 				success();
+			}
+			else {
+				fail(problem.getAnswers().get(invisibleImage.getIndex()));
 			}
 		}
 	}

@@ -15,15 +15,17 @@
         android:theme="@style/DiseggxiaStyle">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LevelSelectActivity" />
-        <activity android:name=".LevelActivity" />
+        <activity android:name=".InfoActivity" android:theme="@style/DyseggxiaDialog" android:screenOrientation="landscape" />
+        <activity android:name=".LevelSelectActivity" android:screenOrientation="landscape" />
+        <activity android:name=".LevelActivity" android:screenOrientation="landscape" />
         <activity android:name=".CubesActivity" android:screenOrientation="landscape" />
     </application>
 

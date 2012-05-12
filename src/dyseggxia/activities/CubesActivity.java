@@ -8,6 +8,7 @@ import android.view.View.OnTouchListener;
 import com.google.android.apps.analytics.easytracking.TrackedActivity;
 
 import dyseggxia.domainControllers.ProblemController;
+import dyseggxia.domainControllers.UserDataController;
 import dyseggxia.domainModel.Problem;
 import dyseggxia.factories.ControllerFactory;
 import dyseggxia.factories.ViewControllerFactory;
@@ -19,7 +20,7 @@ public class CubesActivity extends TrackedActivity implements OnTouchListener {
 	private ProblemController controller;
 	private Problem problem;
 	private int levelNumber;
-	
+	private UserDataController userDataController;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class CubesActivity extends TrackedActivity implements OnTouchListener {
 		else setContentView(R.layout.cubes);
 		ControllerFactory factory = new ControllerFactory(this);
 		controller = factory.getProblemController();
+		userDataController = factory.getUserDataController();
 	}
 	
 	@Override
@@ -58,11 +60,11 @@ public class CubesActivity extends TrackedActivity implements OnTouchListener {
 	}
 	
 	public void problemAccomplished() {
-		
+		userDataController.trackData(problem, true, "", 0);
 	}
 	
-	public void problemFailed() {
-		
+	public void problemFailed(String chosenAnswer) {
+		userDataController.trackData(problem, false, chosenAnswer, 0);
 	}
 	
 }

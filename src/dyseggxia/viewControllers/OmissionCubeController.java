@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
 import dyseggxia.domainModel.OmissionProblem;
-import dyseggxia.views.CubeLayoutView;
+import dyseggxia.views.CubeWordLayoutView;
 
 public class OmissionCubeController extends CubeController {
 
@@ -23,7 +23,7 @@ public class OmissionCubeController extends CubeController {
 	}
 	
 	private void loadViews() {
-		wordLayout = new CubeLayoutView(this,problem.getWord(),0,true);
+		wordLayout = new CubeWordLayoutView(this,problem.getWord(),true);
 		wordLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeWordLayout));
 		movingLayout = (LinearLayout)context.findViewById(R.id.movingLayout);
 		context.findViewById(R.id.cubeAnswerLayout).setVisibility(View.GONE);
@@ -32,10 +32,15 @@ public class OmissionCubeController extends CubeController {
 	@Override
 	protected void itemSelected(MotionEvent event){
 		movingLayout.removeAllViews();
-		if(problem.isCorrectAnswer(invisibleImage.getIndex(),0)) {
+		String wrongWord = problem.getWord();
+		int index = invisibleImage.getIndex();
+		String givenWord = wrongWord.substring(0, index);
+		if(index < wrongWord.length()-1) givenWord = givenWord + wrongWord.substring(index+1, wrongWord.length());
+		if(problem.isCorrectAnswer(givenWord)) {
 			wordLayout.removeChild(invisibleImage);
 			success();
 		}
+		else fail(String.valueOf(invisibleImage.getIndex()));
 	}
 
 }

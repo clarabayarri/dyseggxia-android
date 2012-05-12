@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">Dyseggxia</string>
-    <string name="level_select">Select a level</string>
-    <string name="level_1">Level 1</string>
+    <string name="level_select">Escoge un nivel</string>
     <string name="description">description</string>
-
+    <string name="activate_tracking">Activar tracking</string>
+    <string name="usernameHint">username</string>
+    <string name="ok">OK</string>
+	<string name="easy">Fácil</string>
+	<string name="medium">Medio</string>
+	<string name="hard">Difícil</string>
+	<string name="security_code">security code</string>
 </resources>

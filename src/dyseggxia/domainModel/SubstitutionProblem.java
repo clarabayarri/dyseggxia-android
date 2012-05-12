@@ -8,23 +8,19 @@ public class SubstitutionProblem extends WordProblem {
 
 private static String typeName = "substitution";
 	
-	private Character insertedWrongLetter;
+	private String insertedWrongLetter;
 	
-	public SubstitutionProblem(int level, int number, String word, int wordIndex) {
-		super(level,number,word,wordIndex);
+	public SubstitutionProblem(int level, int number, String word, int wordIndex, int endIndex) {
+		super(level, number, word, wordIndex, endIndex);
 	}
 	
-	public SubstitutionProblem(int level, int number, String word, int wordIndex, List<String> wrongAnswers) {
-		this(level, number, word, wordIndex);
+	public SubstitutionProblem(int level, int number, String word, int wordIndex, int endIndex, List<String> wrongAnswers) {
+		this(level, number, word, wordIndex, endIndex);
 		addAnswers(wrongAnswers);
 	}
 
-	public boolean isCorrectAnswer(int wordIndex, int answerIndex) {
-		return (wordIndex == this.wordIndex && answerIndex == this.answerIndex);
-	}
-
 	@Override
-	protected List<String> createProblemFromCorrectWord() {
+	protected String createProblemFromCorrectWord() {
 		return changeWordIndexLetterToCharacter(correctWord, insertedWrongLetter);
 	}
 
@@ -37,7 +33,7 @@ private static String typeName = "substitution";
 	public void addAnswers(List<String> answers) {
 		this.answers = new ArrayList<String>(answers);
 		int i = getRandomWrongAnswerIndex();
-		this.insertedWrongLetter = answers.get(i).charAt(0);
+		this.insertedWrongLetter = answers.get(i);
 		answers.remove(i);
 		addCorrectAnswerToAnswers();
 	}

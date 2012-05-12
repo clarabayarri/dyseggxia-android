@@ -1,9 +1,12 @@
 package dyseggxia.databaseTableDefinitions;
 
+import java.util.List;
+
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import dyseggxia.utilities.AssetsReader;
 
-public class SentenceSeparationProblemTable extends DatabaseTable {
+public class SentenceSeparationProblemTable extends WordProblemDatabaseTable {
 
 public static String TABLE_NAME = "sentence_separation_problems";
 	
@@ -18,7 +21,7 @@ public static String TABLE_NAME = "sentence_separation_problems";
 			COLUMN_NUMBER + " integer not null, " + 
 			COLUMN_SENTENCE + " text not null, " +
 			COLUMN_LEVEL_NUMBER + " integer not null, " +
-			"unique(" + COLUMN_NUMBER + "," + COLUMN_LEVEL_NUMBER + ")" +
+			"unique(" + COLUMN_NUMBER + "," + COLUMN_LEVEL_NUMBER + ") " +
 			"foreign key (" + COLUMN_LEVEL_NUMBER + ") " +
 			"references " + LevelTable.TABLE_NAME + "(" + LevelTable.COLUMN_NUMBER + ") );";
 	
@@ -37,13 +40,12 @@ public static String TABLE_NAME = "sentence_separation_problems";
 	}
 	
 	@Override
-	public void populateTable(SQLiteDatabase database) {
-		insertProblem(database,1,"al medico",1);
-		insertProblem(database,2,"a la hora",1);
-		insertProblem(database,1,"al medico",2);
-		insertProblem(database,2,"la taza",2);
-		insertProblem(database,1,"en la casa",3);
-		insertProblem(database,2,"por la acera",3);
+	protected void loadLevelData(AssetsReader reader, SQLiteDatabase database, int level) {
+		List<String> data = reader.readSentenceProblems("separation", level);
+		for(int i = 0; i < data.size(); ++i) {
+			String sentence = data.get(i);
+			insertProblem(database,i,sentence,level);
+		}
 	}
 	
 	private void insertProblem(SQLiteDatabase database, int index, String sentence, int levelNumber) {

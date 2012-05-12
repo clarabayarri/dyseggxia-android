@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
 import dyseggxia.domainControllers.LevelController;
 import dyseggxia.domainModel.Level;
 import dyseggxia.factories.ControllerFactory;
@@ -24,17 +23,22 @@ public class LevelSelectActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.levelselect);
 		ControllerFactory factory = new ControllerFactory(this);
 		controller = factory.getLevelController();
+	}
+	
+	@Override
+	public void onStart() {
+		super.onStart();
 		levels = controller.getAllLevels();
 		loadLevels();
 	}
 
 	private void loadLevels() {
-		LinearLayout levelsLayout = (LinearLayout)findViewById(R.id.levelsLayout);
-		for(Level level : levels) {
-			LevelView levelView = new LevelView(level, this);
-			levelView.setOnClickListener(this);
-			levelsLayout.addView(levelView);
-		}
+		LevelView levelView1 = (LevelView)findViewById(R.id.LevelView1);
+		levelView1.setLevel(levels.get(0));
+		LevelView levelView2 = (LevelView)findViewById(R.id.LevelView2);
+		levelView2.setLevel(levels.get(1));
+		LevelView levelView3 = (LevelView)findViewById(R.id.LevelView3);
+		levelView3.setLevel(levels.get(2));
 	}
 
 	@Override

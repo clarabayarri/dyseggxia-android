@@ -45,10 +45,11 @@ public class InsertionProblemProvider extends AbstractProblemProvider {
 		int problemNumber = cursor.getInt(0);
 		String problemWord = cursor.getString(1);
 		int insertionIndex = cursor.getInt(2);
-		int levelNumber = cursor.getInt(3);
+		int endIndex = cursor.getInt(3);
+		int levelNumber = cursor.getInt(4);
 		cursor.close();
 
-		InsertionProblem problem = new InsertionProblem(levelNumber,problemNumber,problemWord,insertionIndex);
+		InsertionProblem problem = new InsertionProblem(levelNumber,problemNumber,problemWord,insertionIndex,endIndex);
 		findAnswers(problem);
 
 		return problem;

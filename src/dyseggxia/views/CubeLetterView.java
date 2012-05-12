@@ -7,7 +7,6 @@ import dyseggxia.activities.R;
 
 public class CubeLetterView extends Button {
 
-	private static final int[] imageResources = {R.drawable.cuboslettercube,R.drawable.cubosficha};
 	private int index;
 	private CubeLayoutView layout;
 	
@@ -15,18 +14,11 @@ public class CubeLetterView extends Button {
 		super(layout.getContext());
 		this.layout = layout;
 		this.index = index;
-		this.setBackgroundResource(imageResources[layout.getPosition()]);
+		this.setBackgroundResource(layout.getLetterResourceDrawable());
 		this.setText(letter);
+		this.setTextAppearance(layout.getContext(), R.style.DyseggxiaProblemLetterAppearance);
 		if(clickable) this.setOnTouchListener(layout.getContext());
 		if(letter.equals(' ')) this.setVisibility(View.INVISIBLE);
-	}
-	
-	public CubeLetterView(CubeLayoutView layout, String letter, boolean clickable) {
-		super(layout.getContext());
-		this.index = 0;
-		this.setBackgroundResource(imageResources[layout.getPosition()]);
-		this.setText(letter);
-		if(clickable) this.setOnTouchListener(layout.getContext());
 	}
 	
 	public int getIndex() {
@@ -41,9 +33,12 @@ public class CubeLetterView extends Button {
 		return this.getText().toString();
 	}
 	
-	public void setWidth(float f) {
+	@Override
+	public void setWidth(int f) {
 		LayoutParams params = this.getLayoutParams();
 		params.width = (int) f;
+		int padding = (int)(f * 0.3);
+		if(layout.getClass().equals(CubeWordLayoutView.class)) this.setPadding(0, padding, padding, 0);
 		this.setLayoutParams(params);
 	}
 	

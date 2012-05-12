@@ -1,13 +1,12 @@
 package dyseggxia.domainModel;
 
-import java.util.List;
 
 
 public abstract class Problem {
 	
 	private int level;
 	private int number;
-	protected List<String> word;
+	protected String displayedWord;
 	protected String correctWord;
 	
 	public Problem(int level, int number, String word) {
@@ -24,17 +23,23 @@ public abstract class Problem {
 		return this.number;
 	}
 	
-	public List<String> getWord() {
-		if(word == null) {
-			word = createProblemFromCorrectWord();
+	public String getWord() {
+		if(displayedWord == null) {
+			displayedWord = createProblemFromCorrectWord();
 		}
-		return word;
+		return displayedWord;
 	}
 	
-	protected abstract List<String> createProblemFromCorrectWord();
+	protected abstract String createProblemFromCorrectWord();
 	
 	public abstract String getTypeName();
+
+	public String getCorrectWord() {
+		return correctWord;
+	}
 	
-	
+	public boolean isCorrectAnswer(String word) {
+		return word.equals(correctWord);
+	}
 	
 }
