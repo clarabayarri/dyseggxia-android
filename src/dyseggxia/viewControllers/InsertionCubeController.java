@@ -33,7 +33,10 @@ public class InsertionCubeController extends CubeController {
 	
 	@Override
 	protected void itemSelected(MotionEvent event){
-		wordLayout.checkForDropEvent(event);
+		//wordLayout.checkForDropEvent(event);
+		int index = problem.getWord().indexOf(" ");
+		viewDroppedOnIndex(index);
+		
 	}
 	
 	@Override
