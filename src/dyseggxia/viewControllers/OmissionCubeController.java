@@ -3,6 +3,7 @@ package dyseggxia.viewControllers;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
 import dyseggxia.domainModel.OmissionProblem;
@@ -23,6 +24,8 @@ public class OmissionCubeController extends CubeController {
 	}
 	
 	private void loadViews() {
+		TextView problemName = (TextView)context.findViewById(R.id.problemNameLabel);
+		problemName.setText(context.getText(R.string.omission));
 		wordLayout = new CubeWordLayoutView(this,problem.getWord(),true);
 		wordLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeWordLayout));
 		movingLayout = (LinearLayout)context.findViewById(R.id.movingLayout);

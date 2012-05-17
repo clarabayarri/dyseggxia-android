@@ -118,4 +118,13 @@ public abstract class CubeLayoutView {
 		}
 	}
 	
+	public String getDisplayedText() {
+		String result = "";
+		for(int i = 0; i < layout.getChildCount(); ++i) {
+			CubeLetterView child = (CubeLetterView)layout.getChildAt(i);
+			result += child.getTextContents();
+		}
+		return result;
+	}
+	
 }

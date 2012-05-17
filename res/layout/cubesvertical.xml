@@ -4,14 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/cubosbackground" >
 
-    <LinearLayout
-        android:id="@+id/cubeWordVerticalLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="20dip">
-    </LinearLayout>
+    
 
     <LinearLayout
         android:id="@+id/cubeAnswerVerticalLayout"
@@ -22,10 +15,20 @@
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
         android:layout_margin="20dp"
-        android:layout_toLeftOf="@id/cubeWordVerticalLayout"
         android:background="@drawable/cubosverticalbox"
         android:gravity="center|center_horizontal"
         android:orientation="vertical" >
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/cubeWordVerticalLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="20dip"
+        android:layout_toLeftOf="@id/cubeAnswerVerticalLayout" >
 
     </LinearLayout>
 
@@ -36,5 +39,13 @@
         android:layout_alignParentBottom="true" >
 
     </LinearLayout>
+    
+    <TextView
+            android:id="@+id/problemNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dip"
+            android:text=""
+            android:textAppearance="@style/DyseggxiaSubtitleAppearance" />
 
 </RelativeLayout>

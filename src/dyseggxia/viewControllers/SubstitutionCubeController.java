@@ -2,6 +2,7 @@ package dyseggxia.viewControllers;
 
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
 import dyseggxia.domainModel.SubstitutionProblem;
@@ -25,6 +26,8 @@ public class SubstitutionCubeController extends CubeController {
 	}
 
 	private void loadViews() {
+		TextView problemName = (TextView)context.findViewById(R.id.problemNameLabel);
+		problemName.setText(context.getText(R.string.substitution));
 		wordLayout = new CubeWordLayoutView(this,problem.getWord(),false);
 		wordLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeWordLayout));
 		answerLayout = new CubeAnswersLayoutView(this,problem.getAnswers(),true);

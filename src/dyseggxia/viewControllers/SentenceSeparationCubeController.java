@@ -6,6 +6,7 @@ import java.util.List;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
@@ -16,7 +17,7 @@ public class SentenceSeparationCubeController extends CubeController {
 
 	private SentenceSeparationProblem problem;
 	private List<Integer> solutionsProposed = new ArrayList<Integer>();
-	private float originalTouchX;
+	//private float originalTouchX;
 	
 	public SentenceSeparationCubeController(CubesActivity context, SentenceSeparationProblem problem) {
 		this.context = context;
@@ -30,6 +31,8 @@ public class SentenceSeparationCubeController extends CubeController {
 	}
 	
 	private void loadViews() {
+		TextView problemName = (TextView)context.findViewById(R.id.problemNameLabel);
+		problemName.setText(context.getText(R.string.sentenceseparation));
 		wordLayout = new CubeWordLayoutView(this,problem.getWord(),true);
 		wordLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeWordLayout));
 		movingLayout = (LinearLayout)context.findViewById(R.id.movingLayout);
@@ -39,7 +42,7 @@ public class SentenceSeparationCubeController extends CubeController {
 	@Override
 	protected void startMovingView(View view, MotionEvent event) {
 		super.startMovingView(view, event);
-		this.originalTouchX = event.getRawX();
+		//this.originalTouchX = event.getRawX();
 	}
 
 	@Override
@@ -82,20 +85,14 @@ public class SentenceSeparationCubeController extends CubeController {
 		//wordLayout.addSpace(index);
 		solutionsProposed.add(index);
 		if(problem.getNumAnswers() <= solutionsProposed.size()) {
-			String wrongWord = problem.getWord();
-			for(Integer i : solutionsProposed) {
-				wrongWord = wrongWord.substring(0, i) + " " + wrongWord.substring(i,wrongWord.length());
-			}
+			String wrongWord = wordLayout.getDisplayedText();
 			System.out.println("guess: " + wrongWord);
 			if(problem.isCorrectAnswer(wrongWord)) {
 				//wordLayout.removeChild(invisibleImage);
 				success();
 			}
 			else {
-				String answer = "";
-				for(Integer i : solutionsProposed) answer = answer + i.toString() + " ";
-				System.out.println(answer);
-				fail(answer);
+				fail(wrongWord);
 			}
 		}
 	}

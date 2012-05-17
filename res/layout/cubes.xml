@@ -31,7 +31,16 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true" >
+
     </LinearLayout>
+    
+    <TextView
+            android:id="@+id/problemNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dip"
+            android:text=""
+            android:textAppearance="@style/DyseggxiaSubtitleAppearance" />
     
      <ImageView
          android:id="@+id/direccion"
@@ -41,6 +50,7 @@
          android:layout_alignParentLeft="true"
          android:layout_margin="10dp"
          android:src="@drawable/direction"
-         android:visibility="gone" />
+         android:visibility="gone" 
+         android:contentDescription="@string/direction"/>
 
 </RelativeLayout>
