@@ -21,7 +21,7 @@
 	    <item name="android:textSize">10pt</item>
 	</style>
 	<style name="DyseggxiaButtonTextAppearance" parent="@android:style/TextAppearance">
-	    <item name="android:textSize">11pt</item>
+	    <item name="android:textSize">10pt</item>
 	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaLevelButton" parent="@android:style/Widget.Button">

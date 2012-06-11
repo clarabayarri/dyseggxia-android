@@ -2,6 +2,8 @@ package dyseggxia.domainModel;
 
 import java.util.List;
 
+import dyseggxia.activities.R;
+
 public class DerivationProblem extends WordProblem {
 
 	private static String typeName = "derivation";
@@ -31,6 +33,16 @@ public class DerivationProblem extends WordProblem {
 		String correctAnswer = correctWord.substring(wordExtractStartIndex,correctWord.length());
 		answers.add(index, correctAnswer);
 		answerIndex = index;
+	}
+
+	@Override
+	public int getLocalizedTypeName() {
+		return R.string.derivation;
+	}
+
+	@Override
+	public int getProblemTypeImageIdentifier() {
+		return R.drawable.derivationpenguin;
 	}
 
 }

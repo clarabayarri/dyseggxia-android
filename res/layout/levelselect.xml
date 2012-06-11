@@ -55,6 +55,7 @@
         android:id="@+id/levelSelectBackButton"
         style="@style/DyseggxiaBackButton"
         android:layout_alignLeft="@+id/levelSelectLevelsLayout"
-        android:layout_alignTop="@+id/levelSelectTitle"/>
+        android:layout_alignTop="@+id/levelSelectTitle"
+        android:onClick="onClick"/>
 
 </RelativeLayout>

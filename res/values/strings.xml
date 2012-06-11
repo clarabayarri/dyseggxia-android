@@ -17,7 +17,7 @@
 	<string name="insertion">Inserción</string>
 	<string name="omission">Omisión</string>
 	<string name="substitution">Sustitución</string>
-	<string name="sentenceseparation">Separación de palabras</string>
+	<string name="sentenceseparation">Separación</string>
 	<string name="childrenmode">modo infantil</string>
 	<string name="adultmode">modo adulto</string>
 </resources>

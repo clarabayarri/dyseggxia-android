@@ -1,5 +1,7 @@
 package dyseggxia.domainModel;
 
+import dyseggxia.activities.R;
+
 
 public class SentenceSeparationProblem extends Problem {
 
@@ -27,6 +29,16 @@ public class SentenceSeparationProblem extends Problem {
 	
 	public int getNumAnswers() {
 		return separations;
+	}
+
+	@Override
+	public int getLocalizedTypeName() {
+		return R.string.sentenceseparation;
+	}
+
+	@Override
+	public int getProblemTypeImageIdentifier() {
+		return R.drawable.sentenceseparationpenguin;
 	}
 
 }

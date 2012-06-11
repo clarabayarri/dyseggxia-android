@@ -2,6 +2,7 @@ package dyseggxia.domainModel;
 
 
 
+
 public abstract class Problem {
 	
 	private int level;
@@ -33,6 +34,10 @@ public abstract class Problem {
 	protected abstract String createProblemFromCorrectWord();
 	
 	public abstract String getTypeName();
+	
+	public abstract int getLocalizedTypeName();
+	
+	public abstract int getProblemTypeImageIdentifier();
 
 	public String getCorrectWord() {
 		return correctWord;

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import dyseggxia.activities.R;
+
 public class SubstitutionProblem extends WordProblem {
 
 private static String typeName = "substitution";
@@ -42,6 +44,16 @@ private static String typeName = "substitution";
 		Random random = new Random();
 		int randomIndex = random.nextInt(100);
 		return randomIndex % answers.size();
+	}
+
+	@Override
+	public int getLocalizedTypeName() {
+		return R.string.substitution;
+	}
+
+	@Override
+	public int getProblemTypeImageIdentifier() {
+		return R.drawable.substitutionpenguin;
 	}
 	
 }

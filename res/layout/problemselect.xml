@@ -5,59 +5,51 @@
     android:background="@drawable/background" >
 
     <TextView
-        android:id="@+id/levelTitle"
+        android:id="@+id/problemSelectTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="18dp"
-        android:text="@string/description"
+        android:maxLines="1"
+        android:text="@string/level_select"
         android:textAppearance="@style/DyseggxiaTitleAppearance" />
     
     <LinearLayout
         xmlns:app="http://schemas.android.com/apk/res/dyseggxia.activities"
-        android:id="@+id/problemsLayout"
+        android:id="@+id/problemSelectProblemsLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/levelTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/problemSelectTitle"
         android:layout_margin="10dp"
-        android:paddingBottom="40dp" >
+        android:gravity="center" >
         
         <dyseggxia.views.ProblemView
             android:id="@+id/ProblemView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/cuadradetelila"
-            android:onClick="onClick"
-            android:textAppearance="@style/DyseggxiaSubtitleAppearance" />
+            style="@style/DyseggxiaLevelButton"
+            android:onClick="onClick"/>
         
         <dyseggxia.views.ProblemView
             android:id="@+id/ProblemView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/cuadradeterojo"
-            android:onClick="onClick"
-            android:textAppearance="@style/DyseggxiaSubtitleAppearance" />
+            style="@style/DyseggxiaLevelButton"
+            android:onClick="onClick"/>
         
         <dyseggxia.views.ProblemView
             android:id="@+id/ProblemView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/cuadradeteverde"
-            android:onClick="onClick"
-            android:textAppearance="@style/DyseggxiaSubtitleAppearance" />
+            style="@style/DyseggxiaLevelButton"
+            android:onClick="onClick"/>
         
     </LinearLayout>
+    
+    <Button
+        android:id="@+id/problemSelectBackButton"
+        style="@style/DyseggxiaBackButton"
+        android:layout_alignLeft="@+id/problemSelectProblemsLayout"
+        android:layout_alignTop="@+id/problemSelectTitle"
+        android:onClick="onClick"/>
 
 </RelativeLayout>

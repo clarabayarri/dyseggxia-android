@@ -2,6 +2,8 @@ package dyseggxia.domainModel;
 
 import java.util.List;
 
+import dyseggxia.activities.R;
+
 public class InsertionProblem extends WordProblem {
 
 	private static String typeName = "insertion";
@@ -23,5 +25,15 @@ public class InsertionProblem extends WordProblem {
 	@Override
 	public String getTypeName() {
 		return typeName;
+	}
+
+	@Override
+	public int getLocalizedTypeName() {
+		return R.string.insertion;
+	}
+
+	@Override
+	public int getProblemTypeImageIdentifier() {
+		return R.drawable.insertionpenguin;
 	}
 }

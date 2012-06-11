@@ -1,5 +1,7 @@
 package dyseggxia.domainModel;
 
+import dyseggxia.activities.R;
+
 
 public class OmissionProblem extends WordProblem {
 
@@ -30,6 +32,16 @@ public class OmissionProblem extends WordProblem {
 	@Override
 	public String getTypeName() {
 		return typeName;
+	}
+
+	@Override
+	public int getLocalizedTypeName() {
+		return R.string.omission;
+	}
+
+	@Override
+	public int getProblemTypeImageIdentifier() {
+		return R.drawable.omissionpenguin;
 	}
 
 }
