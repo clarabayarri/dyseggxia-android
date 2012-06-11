@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
         android:layout_margin="20dp"
-        android:background="@drawable/cubosverticalbox"
+        android:background="@drawable/cubesanswersverticalbox"
         android:gravity="center|center_horizontal"
         android:orientation="vertical" >
 

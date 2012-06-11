@@ -11,7 +11,8 @@
 		<item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaTitleAppearance" parent="@android:style/TextAppearance">
-	    <item name="android:textSize">20pt</item>
+	    <item name="android:textSize">14pt</item>
+	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaSubtitleAppearance" parent="@android:style/TextAppearance">
 	    <item name="android:textSize">10pt</item>    
@@ -19,9 +20,31 @@
 	<style name="DyseggxiaProblemLetterAppearance" parent="@android:style/TextAppearance">
 	    <item name="android:textSize">10pt</item>
 	</style>
-	
+	<style name="DyseggxiaButtonTextAppearance" parent="@android:style/TextAppearance">
+	    <item name="android:textSize">11pt</item>
+	    <item name="android:textStyle">bold</item>
+	</style>
 	<style name="DyseggxiaLevelButton" parent="@android:style/Widget.Button">
 	    <item name="android:padding">10dp</item>
+	    <item name="android:adjustViewBounds">true</item>
+	    <item name="android:gravity">bottom|center</item>
+	    <item name="android:paddingBottom">25dp</item>
+	    <item name="android:layout_width">132dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_weight">1</item>
+            
+	    <item name="android:textAppearance">@style/DyseggxiaButtonTextAppearance</item>
+	</style>
+	<style name="DyseggxiaBackButton" parent="@android:style/Widget.Button">
+	    <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">29dp</item>
+        <item name="android:gravity">right|center</item>
+        <item name="android:paddingRight">13dp</item>
+        <item name="android:textSize">6pt</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/menuatras</item>
+        <item name="android:text">@string/back</item>
 	</style>
 	<style name="DyseggxiaDialog" parent="android:Theme.Dialog">
 	    <item name="android:windowNoTitle">true</item>

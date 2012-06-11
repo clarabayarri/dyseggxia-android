@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/activate_tracking"
-            android:textColor="@color/dark_grey" />
+            android:textColor="@color/dark_grey"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/usernameBox"
@@ -33,7 +34,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/security_code" />
+            android:hint="@string/security_code"
+            android:visibility="gone" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/radio0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/childrenmode" />
+
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/adultmode" />
+        </RadioGroup>
 
         <Button
             android:id="@+id/infoOkButton"

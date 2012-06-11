@@ -15,7 +15,7 @@ import dyseggxia.domainModel.Problem;
 import dyseggxia.factories.ControllerFactory;
 import dyseggxia.views.ProblemView;
 
-public class LevelActivity extends Activity implements OnClickListener {
+public class ProblemSelectActivity extends Activity implements OnClickListener {
 	
 	private LevelController levelController;
 	private ProblemController problemController;
@@ -24,7 +24,7 @@ public class LevelActivity extends Activity implements OnClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.level);
+		setContentView(R.layout.problemselect);
 		ControllerFactory factory = new ControllerFactory(this);
 		levelController = factory.getLevelController();
 		problemController = factory.getProblemController();

@@ -6,58 +6,55 @@
     android:background="@drawable/background" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/levelSelectTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="18dp"
+        android:maxLines="1"
         android:text="@string/level_select"
         android:textAppearance="@style/DyseggxiaTitleAppearance" />
 
     <LinearLayout
         xmlns:app="http://schemas.android.com/apk/res/dyseggxia.activities"
-        android:id="@+id/levelsLayout"
+        android:id="@+id/levelSelectLevelsLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/levelSelectTitle"
         android:layout_margin="10dp"
-        android:paddingBottom="40dp" >
+        android:gravity="center">
 
         <dyseggxia.views.LevelView
             android:id="@+id/LevelView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/cuadradetelila"
+            style="@style/DyseggxiaLevelButton"
+            android:background="@drawable/pinguinofacil"
             android:onClick="onClick"
-            android:textAppearance="@style/DyseggxiaSubtitleAppearance" />
+            android:text="@string/easy" />
 
         <dyseggxia.views.LevelView
             android:id="@+id/LevelView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/cuadradeterojo"
+            style="@style/DyseggxiaLevelButton"
+            android:background="@drawable/pinguinomedio"
             android:onClick="onClick"
-            android:textAppearance="@style/DyseggxiaSubtitleAppearance" />
+            android:text="@string/medium" />
 
         <dyseggxia.views.LevelView
             android:id="@+id/LevelView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/cuadradeteverde"
+            style="@style/DyseggxiaLevelButton"
+            android:background="@drawable/pinguinodificil"
             android:onClick="onClick"
-            android:textAppearance="@style/DyseggxiaSubtitleAppearance" />
-
+            android:text="@string/hard" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/levelSelectBackButton"
+        style="@style/DyseggxiaBackButton"
+        android:layout_alignLeft="@+id/levelSelectLevelsLayout"
+        android:layout_alignTop="@+id/levelSelectTitle"/>
 
 </RelativeLayout>

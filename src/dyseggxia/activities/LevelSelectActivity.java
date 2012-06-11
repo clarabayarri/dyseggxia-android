@@ -34,21 +34,26 @@ public class LevelSelectActivity extends Activity implements OnClickListener {
 
 	private void loadLevels() {
 		LevelView levelView1 = (LevelView)findViewById(R.id.LevelView1);
-		levelView1.setLevel(levels.get(0));
+		levelView1.setLevel(0);
 		LevelView levelView2 = (LevelView)findViewById(R.id.LevelView2);
-		levelView2.setLevel(levels.get(1));
+		levelView2.setLevel(1);
 		LevelView levelView3 = (LevelView)findViewById(R.id.LevelView3);
-		levelView3.setLevel(levels.get(2));
+		levelView3.setLevel(2);
 	}
 
 	@Override
 	public void onClick(View v) {
-		LevelView view = (LevelView)v;
-		startLevel(view.getLevel());
+		if(v instanceof LevelView) {
+			LevelView view = (LevelView)v;
+			startLevel(levels.get(view.getLevel()));
+		}
+		else if(v.getId() == R.id.levelSelectBackButton) {
+			finish();
+		}
 	}
 
 	private void startLevel(Level level) {
-		Intent levelIntent = new Intent(this, LevelActivity.class);
+		Intent levelIntent = new Intent(this, ProblemSelectActivity.class);
 		levelIntent.putExtra("levelNumber", level.getNumber());
 		startActivity(levelIntent);
 	}

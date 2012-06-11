@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Dyseggxia</string>
-    <string name="level_select">Escoge un nivel</string>
+    <string name="level_select">Selecciona un nivel</string>
     <string name="description">descripción</string>
     <string name="activate_tracking">Activar tracking</string>
     <string name="usernameHint">username</string>
@@ -10,6 +10,7 @@
 	<string name="easy">Fácil</string>
 	<string name="medium">Medio</string>
 	<string name="hard">Difícil</string>
+	<string name="back">Atrás</string>
 	<string name="security_code">código de seguridad</string>
 	<string name="direction">dirección</string>
 	<string name="derivation">Derivación</string>
@@ -17,4 +18,6 @@
 	<string name="omission">Omisión</string>
 	<string name="substitution">Sustitución</string>
 	<string name="sentenceseparation">Separación de palabras</string>
+	<string name="childrenmode">modo infantil</string>
+	<string name="adultmode">modo adulto</string>
 </resources>
