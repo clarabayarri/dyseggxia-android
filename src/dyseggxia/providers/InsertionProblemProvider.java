@@ -57,6 +57,6 @@ public class InsertionProblemProvider extends AbstractProblemProvider {
 	
 	protected void findAnswers(InsertionProblem problem) {
 		List<String> answers = answerProvider.getAnswersForProblem(problem);
-		problem.addAnswers(answers);
+		problem.setAnswers(answers);
 	}
 }

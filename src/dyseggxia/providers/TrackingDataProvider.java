@@ -19,7 +19,7 @@ public class TrackingDataProvider {
 		ContentValues dadesAEnviar = new ContentValues();
 		dadesAEnviar.put(TrackingData.COLUMN_LEVEL_NUMBER, problem.getLevel());
 		dadesAEnviar.put(TrackingData.COLUMN_PROBLEM_NUMBER, problem.getNumber());
-		dadesAEnviar.put(TrackingData.COLUMN_WORD, problem.getCorrectWord());
+		dadesAEnviar.put(TrackingData.COLUMN_WORD, problem.getDisplayedText());
 		if(correct) {
 			dadesAEnviar.put(TrackingData.COLUMN_CORRECT, "S");
 		}

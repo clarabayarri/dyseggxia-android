@@ -15,7 +15,8 @@
 	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaSubtitleAppearance" parent="@android:style/TextAppearance">
-	    <item name="android:textSize">10pt</item>    
+	    <item name="android:textSize">9pt</item>
+	    <item name="android:textStyle">bold</item>   
 	</style>
 	<style name="DyseggxiaProblemLetterAppearance" parent="@android:style/TextAppearance">
 	    <item name="android:textSize">10pt</item>

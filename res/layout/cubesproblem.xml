@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cubosbackground" >
+
+    <Button
+        android:id="@+id/cubesProblemBackButton"
+        style="@style/DyseggxiaBackButton"
+        android:layout_margin="10dp"
+        android:onClick="onClick" />
+
+    <TextView
+        android:id="@+id/cubesProblemTypeLabel"
+        style="@style/DyseggxiaSubtitleAppearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="bottom|center"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:text="@string/insertion" />
+
+    <LinearLayout
+        android:id="@+id/cubesProblemCentralView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cubesProblemTypeLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/cubesProblemBackButton"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" >
+    </LinearLayout>
+    
+</RelativeLayout>

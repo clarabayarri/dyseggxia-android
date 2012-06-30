@@ -3,23 +3,17 @@ package dyseggxia.domainModel;
 import dyseggxia.activities.R;
 
 
-public class SentenceSeparationProblem extends Problem {
+public class SentenceSeparationProblem extends SentenceProblem {
 
 	private static String typeName = "sentence separation";
-	int separations = -1;
 	
-	public SentenceSeparationProblem(int level, int number, String word) {
-		super(level, number, word);
+	public SentenceSeparationProblem(int level, int number, String sentence) {
+		super(level, number, sentence);
 	}
 
 	@Override
-	protected String createProblemFromCorrectWord() {
-		int i = 0;
-		while(i > -1) {
-			i = correctWord.indexOf(" ", i+1);
-			++separations;
-		}
-		return correctWord.replace(" ", "");
+	protected String generateProblem() {
+		return sentence.replace(" ", "");
 	}
 
 	@Override
@@ -27,8 +21,9 @@ public class SentenceSeparationProblem extends Problem {
 		return typeName;
 	}
 	
-	public int getNumAnswers() {
-		return separations;
+	public int getNumberOfSpacesInProblem() {
+		String[] chunks = sentence.split(" ");
+		return chunks.length - 1;
 	}
 
 	@Override

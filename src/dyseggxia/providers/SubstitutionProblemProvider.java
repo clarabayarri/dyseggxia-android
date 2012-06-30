@@ -55,7 +55,7 @@ public class SubstitutionProblemProvider extends AbstractProblemProvider {
 	
 	protected void findAnswers(SubstitutionProblem problem) {
 		List<String> answers = answerProvider.getAnswersForProblem(problem);
-		problem.addAnswers(answers);
+		problem.setAnswers(answers);
 	}
 
 }

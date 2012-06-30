@@ -8,11 +8,11 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
-import dyseggxia.viewControllers.CubeController;
+import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
 public abstract class CubeLayoutView {
 
-	protected CubeController controller;
+	protected GenericCubesProblemViewController controller;
 	protected LinearLayout layout;
 	protected List<String> letters;
 	
@@ -22,7 +22,7 @@ public abstract class CubeLayoutView {
 	protected int maxHeight;
 	protected int letterResourceDrawable;
 	
-	public CubeLayoutView(CubeController controller, boolean draggable) {
+	public CubeLayoutView(GenericCubesProblemViewController controller, boolean draggable) {
 		this.controller = controller;
 		this.draggable = draggable;
 	}

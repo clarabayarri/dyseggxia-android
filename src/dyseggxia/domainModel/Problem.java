@@ -7,13 +7,11 @@ public abstract class Problem {
 	
 	private int level;
 	private int number;
-	protected String displayedWord;
-	protected String correctWord;
+	protected String displayedText;
 	
-	public Problem(int level, int number, String word) {
+	public Problem(int level, int number) {
 		this.level = level;
 		this.number = number;
-		this.correctWord = word;
 	}
 	
 	public int getLevel() {
@@ -24,27 +22,19 @@ public abstract class Problem {
 		return this.number;
 	}
 	
-	public String getWord() {
-		if(displayedWord == null) {
-			displayedWord = createProblemFromCorrectWord();
+	public String getDisplayedText() {
+		if(displayedText == null) {
+			displayedText = generateProblem();
 		}
-		return displayedWord;
+		return displayedText;
 	}
 	
-	protected abstract String createProblemFromCorrectWord();
+	protected abstract String generateProblem();
 	
 	public abstract String getTypeName();
 	
 	public abstract int getLocalizedTypeName();
 	
 	public abstract int getProblemTypeImageIdentifier();
-
-	public String getCorrectWord() {
-		return correctWord;
-	}
-	
-	public boolean isCorrectAnswer(String word) {
-		return word.equals(correctWord);
-	}
 	
 }

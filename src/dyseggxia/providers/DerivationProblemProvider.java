@@ -57,7 +57,7 @@ public class DerivationProblemProvider extends AbstractProblemProvider {
 	
 	protected void findAnswers(DerivationProblem problem) {
 		List<String> answers = answerProvider.getAnswersForProblem(problem);
-		problem.addAnswers(answers);
+		problem.setAnswers(answers);
 	}
 
 }

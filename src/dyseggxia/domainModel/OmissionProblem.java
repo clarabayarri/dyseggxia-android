@@ -1,12 +1,14 @@
 package dyseggxia.domainModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dyseggxia.activities.R;
 
 
 public class OmissionProblem extends WordProblem {
 
 	private static String typeName = "omission";
-	private String insertedLetter;
 	
 	public OmissionProblem(int level, int number, String word, int wordIndex, int endIndex) {
 		super(level, number, word, wordIndex, endIndex);
@@ -14,18 +16,20 @@ public class OmissionProblem extends WordProblem {
 	
 	public OmissionProblem(int level, int number, String word, int wordIndex, int endIndex, String insertedLetter) {
 		this(level, number, word, wordIndex, endIndex);
-		this.insertedLetter = insertedLetter;
+		this.answers = new ArrayList<String>();
+		this.answers.add(insertedLetter);
 	}
 	
 	public void setInsertedLetter(String insertedLetter) {
-		this.insertedLetter = insertedLetter;
+		this.answers = new ArrayList<String>();
+		this.answers.add(insertedLetter);
 	}
 
 	@Override
-	protected String createProblemFromCorrectWord() {
+	protected String generateProblem() {
 		String beggining = correctWord.substring(0, wordExtractStartIndex);
 		String end = correctWord.substring(wordExtractEndIndex, correctWord.length());
-		String composedWord = beggining + insertedLetter + end;
+		String composedWord = beggining + answers.get(0) + end;
 		return composedWord;
 	}
 
@@ -42,6 +46,11 @@ public class OmissionProblem extends WordProblem {
 	@Override
 	public int getProblemTypeImageIdentifier() {
 		return R.drawable.omissionpenguin;
+	}
+
+	@Override
+	public List<String> getDisplayAnswers() {
+		return null;
 	}
 
 }

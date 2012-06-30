@@ -1,6 +1,8 @@
 package dyseggxia.domainModel;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import dyseggxia.activities.R;
 
@@ -14,25 +16,17 @@ public class DerivationProblem extends WordProblem {
 	
 	public DerivationProblem(int level, int number, String word, int wordIndex, int endIndex, List<String> wrongAnswers) {
 		this(level, number, word, wordIndex, endIndex);
-		addAnswers(wrongAnswers);
+		this.answers = new ArrayList<String>(wrongAnswers);
 	}
 	
 	@Override
-	protected String createProblemFromCorrectWord() {
+	protected String generateProblem() {
 		return correctWord.substring(0, wordExtractStartIndex);
 	}
 
 	@Override
 	public String getTypeName() {
 		return typeName;
-	}
-	
-	@Override
-	protected void addCorrectAnswerToAnswers() {
-		int index = getRandomAnswerIndex();
-		String correctAnswer = correctWord.substring(wordExtractStartIndex,correctWord.length());
-		answers.add(index, correctAnswer);
-		answerIndex = index;
 	}
 
 	@Override
@@ -43,6 +37,19 @@ public class DerivationProblem extends WordProblem {
 	@Override
 	public int getProblemTypeImageIdentifier() {
 		return R.drawable.derivationpenguin;
+	}
+
+	@Override
+	public List<String> getDisplayAnswers() {
+		List<String> displayAnswers = new ArrayList<String>();
+		Random random = new Random();
+		int randomIndex = 0;
+		for(String s : answers) {
+			displayAnswers.add(randomIndex,s);
+			randomIndex = (random.nextInt(100) % displayAnswers.size()+1);
+		}
+		displayAnswers.add(randomIndex, correctWord.substring(wordExtractStartIndex+1,correctWord.length()));
+		return displayAnswers;
 	}
 
 }

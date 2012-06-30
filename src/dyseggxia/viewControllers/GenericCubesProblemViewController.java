@@ -10,23 +10,38 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
-import dyseggxia.views.CubeWordLayoutView;
 import dyseggxia.views.CubeLetterView;
+import dyseggxia.views.ProblemWordLayout;
 
-public abstract class CubeController {
+public abstract class GenericCubesProblemViewController {
 
 	protected CubesActivity context;
-	protected CubeWordLayoutView wordLayout;
+	
 	protected LinearLayout movingLayout;
 	protected CubeLetterView movingImage;
 	protected CubeLetterView invisibleImage;
+	
+	protected LinearLayout view;
+	protected ProblemWordLayout wordLayout;
 	private Handler handler;
 	
 	public CubesActivity getContext() {
 		return context;
 	}
 	
-	public abstract void initializeInterface();
+	public void setView(LinearLayout view) {
+		this.view = view;
+	}
+	
+	public abstract void initLayout();
+	
+	public void successWithSolution(String solution) {
+		context.problemAccomplished();
+	}
+	
+	public void fail() {
+		wordLayout.restoreOriginalWord();
+	}
 	
 	public boolean onTouch(View view, MotionEvent event) {
 		switch(event.getAction()) {
@@ -87,7 +102,7 @@ public abstract class CubeController {
 	}
 	
 	protected void success() {
-		wordLayout.animateCorrectAnswer();
+		//wordLayout.animateCorrectAnswer();
 		context.problemAccomplished();
 		
 		//temp:

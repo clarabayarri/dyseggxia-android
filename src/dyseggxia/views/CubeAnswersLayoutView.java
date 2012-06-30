@@ -4,11 +4,11 @@ import java.util.List;
 
 import android.widget.LinearLayout;
 import dyseggxia.activities.R;
-import dyseggxia.viewControllers.CubeController;
+import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
 public class CubeAnswersLayoutView extends CubeLayoutView {
 	
-	public CubeAnswersLayoutView(CubeController controller, List<String> letters, boolean draggable) {
+	public CubeAnswersLayoutView(GenericCubesProblemViewController controller, List<String> letters, boolean draggable) {
 		super(controller, draggable);
 		this.letters = letters;
 		this.letterResourceDrawable = R.drawable.cubosficha;

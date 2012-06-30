@@ -10,40 +10,23 @@ public class SubstitutionProblem extends WordProblem {
 
 private static String typeName = "substitution";
 	
-	private String insertedWrongLetter;
-	
 	public SubstitutionProblem(int level, int number, String word, int wordIndex, int endIndex) {
 		super(level, number, word, wordIndex, endIndex);
 	}
 	
 	public SubstitutionProblem(int level, int number, String word, int wordIndex, int endIndex, List<String> wrongAnswers) {
 		this(level, number, word, wordIndex, endIndex);
-		addAnswers(wrongAnswers);
+		this.answers = new ArrayList<String>(wrongAnswers);
 	}
 
 	@Override
-	protected String createProblemFromCorrectWord() {
-		return changeWordIndexLetterToCharacter(correctWord, insertedWrongLetter);
+	protected String generateProblem() {
+		return changeWordRangeToContents(getRandomAnswer());
 	}
 
 	@Override
 	public String getTypeName() {
 		return typeName;
-	}
-	
-	@Override
-	public void addAnswers(List<String> answers) {
-		this.answers = new ArrayList<String>(answers);
-		int i = getRandomWrongAnswerIndex();
-		this.insertedWrongLetter = answers.get(i);
-		answers.remove(i);
-		addCorrectAnswerToAnswers();
-	}
-	
-	private int getRandomWrongAnswerIndex() {
-		Random random = new Random();
-		int randomIndex = random.nextInt(100);
-		return randomIndex % answers.size();
 	}
 
 	@Override
@@ -54,6 +37,19 @@ private static String typeName = "substitution";
 	@Override
 	public int getProblemTypeImageIdentifier() {
 		return R.drawable.substitutionpenguin;
+	}
+
+	@Override
+	public List<String> getDisplayAnswers() {
+		List<String> displayAnswers = new ArrayList<String>();
+		Random random = new Random();
+		int randomIndex = 0;
+		for(String s : answers) {
+			displayAnswers.add(randomIndex,s);
+			randomIndex = (random.nextInt(100) % displayAnswers.size()+1);
+		}
+		displayAnswers.add(randomIndex, correctWordRangeAsAnswerString());
+		return displayAnswers;
 	}
 	
 }

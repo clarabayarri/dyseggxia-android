@@ -12,8 +12,9 @@ import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
 import dyseggxia.domainModel.SentenceSeparationProblem;
 import dyseggxia.views.CubeWordLayoutView;
+import dyseggxia.views.ProblemWordLayout;
 
-public class SentenceSeparationCubeController extends CubeController {
+public class SentenceSeparationCubeController extends GenericCubesProblemViewController {
 
 	private SentenceSeparationProblem problem;
 	private List<Integer> solutionsProposed = new ArrayList<Integer>();
@@ -22,21 +23,22 @@ public class SentenceSeparationCubeController extends CubeController {
 	public SentenceSeparationCubeController(CubesActivity context, SentenceSeparationProblem problem) {
 		this.context = context;
 		this.problem = problem;
-		context.findViewById(R.id.direccion).setVisibility(View.VISIBLE);
 	}
 	
 	@Override
-	public void initializeInterface() {
+	public void initLayout() {
 		loadViews();
 	}
 	
 	private void loadViews() {
-		TextView problemName = (TextView)context.findViewById(R.id.problemNameLabel);
+		TextView problemName = (TextView)context.findViewById(R.id.cubesProblemTypeLabel);
 		problemName.setText(context.getText(R.string.sentenceseparation));
-		wordLayout = new CubeWordLayoutView(this,problem.getWord(),true);
-		wordLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeWordLayout));
+		wordLayout = new ProblemWordLayout(this,problem.getDisplayedText());
+		this.view.setOrientation(LinearLayout.VERTICAL);
+		this.view.addView(wordLayout);
+		/*wordLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeWordLayout));
 		movingLayout = (LinearLayout)context.findViewById(R.id.movingLayout);
-		context.findViewById(R.id.cubeAnswerLayout).setVisibility(View.GONE);
+		context.findViewById(R.id.cubeAnswerLayout).setVisibility(View.GONE);*/
 	}
 	
 	@Override
@@ -51,7 +53,7 @@ public class SentenceSeparationCubeController extends CubeController {
 		if(movingLayout.getChildCount() == 1) {
 			//if(event.getRawX() > originalTouchX) {
 				int numSpaces = getNumSpacesBefore(movingImage.getIndex());
-				wordLayout.moveRightLettersToLayout(movingImage.getIndex()+numSpaces, movingLayout);
+				//wordLayout.moveRightLettersToLayout(movingImage.getIndex()+numSpaces, movingLayout);
 //			}
 //			else if(event.getRawX() < originalTouchX) {
 //				wordLayout.moveLeftLettersToLayout(movingImage.getIndex(), movingLayout);
@@ -81,10 +83,10 @@ public class SentenceSeparationCubeController extends CubeController {
 	protected void itemSelected(MotionEvent event) {
 		int index = movingImage.getIndex();
 		movingLayout.removeAllViews();
-		wordLayout.makeAllVisible();
+		//wordLayout.makeAllVisible();
 		//wordLayout.addSpace(index);
 		solutionsProposed.add(index);
-		if(problem.getNumAnswers() <= solutionsProposed.size()) {
+		/*if(problem.getNumAnswers() <= solutionsProposed.size()) {
 			String wrongWord = wordLayout.getDisplayedText();
 			System.out.println("guess: " + wrongWord);
 			if(problem.isCorrectAnswer(wrongWord)) {
@@ -94,14 +96,14 @@ public class SentenceSeparationCubeController extends CubeController {
 			else {
 				fail(wrongWord);
 			}
-		}
+		}*/
 	}
 	
 	@Override
 	protected void fail(String chosenAnswer) {
 		super.fail(chosenAnswer);
 		solutionsProposed.clear();
-		initializeInterface();
+		initLayout();
 	}
 
 }

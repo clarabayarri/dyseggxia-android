@@ -7,7 +7,7 @@ import dyseggxia.domainModel.OmissionProblem;
 import dyseggxia.domainModel.Problem;
 import dyseggxia.domainModel.SentenceSeparationProblem;
 import dyseggxia.domainModel.SubstitutionProblem;
-import dyseggxia.viewControllers.CubeController;
+import dyseggxia.viewControllers.GenericCubesProblemViewController;
 import dyseggxia.viewControllers.DerivationCubeController;
 import dyseggxia.viewControllers.InsertionCubeController;
 import dyseggxia.viewControllers.OmissionCubeController;
@@ -16,7 +16,7 @@ import dyseggxia.viewControllers.SubstitutionCubeController;
 
 public class ViewControllerFactory {
 
-	public static CubeController getCorrectCubeController(CubesActivity context, Problem problem) {
+	public static GenericCubesProblemViewController getCorrectCubeController(CubesActivity context, Problem problem) {
 		if(problem.getClass().equals(InsertionProblem.class)) {
 			return new InsertionCubeController(context, (InsertionProblem)problem);
 		}

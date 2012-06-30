@@ -6,11 +6,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import dyseggxia.activities.R;
-import dyseggxia.viewControllers.CubeController;
+import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
 public class CubeWordLayoutView extends CubeLayoutView {
 	
-	public CubeWordLayoutView(CubeController controller, String letters, boolean draggable) {
+	public CubeWordLayoutView(GenericCubesProblemViewController controller, String letters, boolean draggable) {
 		super(controller, draggable);
 		System.out.println(letters);
 		char[] wordLetters = letters.toCharArray();
