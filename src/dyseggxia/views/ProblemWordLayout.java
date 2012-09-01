@@ -1,14 +1,14 @@
 package dyseggxia.views;
 
+import android.view.DragEvent;
 import android.view.Gravity;
-import android.widget.LinearLayout;
+import android.view.View;
 import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
-public class ProblemWordLayout extends LinearLayout {
+public class ProblemWordLayout extends GenericDragDropLayout {
 
 	private GenericCubesProblemViewController delegate;
 	private String displayWord;
-	private boolean movable;
 	
 	public ProblemWordLayout(GenericCubesProblemViewController delegate, String word) {
 		super(delegate.getContext());
@@ -48,4 +48,9 @@ public class ProblemWordLayout extends LinearLayout {
 		initLayout();
 	}
 
+	@Override
+	protected void onDrop(View view, DragEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
 }

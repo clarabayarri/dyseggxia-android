@@ -2,12 +2,13 @@ package dyseggxia.views;
 
 import java.util.List;
 
+import android.view.DragEvent;
 import android.view.Gravity;
-import android.widget.LinearLayout;
+import android.view.View;
 import dyseggxia.activities.R;
 import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
-public class ProblemAnswerLayout extends LinearLayout {
+public class ProblemAnswerLayout extends GenericDragDropLayout {
 
 	private GenericCubesProblemViewController delegate;
 	private List<String> displayedAnswers;
@@ -37,5 +38,11 @@ public class ProblemAnswerLayout extends LinearLayout {
 			
 			letterView.setLayoutParams(params);
 		}
+	}
+
+	@Override
+	protected void onDrop(View view, DragEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 }
