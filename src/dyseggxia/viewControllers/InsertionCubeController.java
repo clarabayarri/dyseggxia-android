@@ -37,7 +37,7 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 	
 	private void addWordLayout() {
 		wordLayout = new ProblemWordLayout(this,problem.getDisplayedText());
-		this.view.addView(wordLayout);
+		this.view.addView(wordLayout, 0);
 		LayoutParams params = (LayoutParams) wordLayout.getLayoutParams();
 		params.weight = 1;
 		wordLayout.setLayoutParams(params);

@@ -4,34 +4,31 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
 import com.google.android.apps.analytics.easytracking.TrackedActivity;
 
 import dyseggxia.domainControllers.ProblemController;
-import dyseggxia.domainControllers.UserDataController;
 import dyseggxia.domainModel.Problem;
 import dyseggxia.factories.ControllerFactory;
 import dyseggxia.factories.ViewControllerFactory;
-import dyseggxia.viewControllers.CubeController;
+import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
 public class CubesActivity extends TrackedActivity implements OnTouchListener {
 
-	private CubeController viewController;
+	private GenericCubesProblemViewController viewController;
 	private ProblemController controller;
 	private Problem problem;
 	private int levelNumber;
-	private UserDataController userDataController;
+	//private UserDataController userDataController;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if(this.getIntent().getStringExtra("problemType").equals("derivation")) {
-			setContentView(R.layout.cubesvertical);
-		}
-		else setContentView(R.layout.cubes);
+		setContentView(R.layout.cubesproblem);
 		ControllerFactory factory = new ControllerFactory(this);
 		controller = factory.getProblemController();
-		userDataController = factory.getUserDataController();
+		//userDataController = factory.getUserDataController();
 	}
 	
 	@Override
@@ -39,7 +36,8 @@ public class CubesActivity extends TrackedActivity implements OnTouchListener {
 		super.onStart();
 		loadProblem();
 		viewController = ViewControllerFactory.getCorrectCubeController(this, problem);
-		viewController.initializeInterface();
+		viewController.setView((LinearLayout)findViewById(R.id.cubesProblemCentralView));
+		viewController.initLayout();
 	}
 
 	private void loadProblem() {
@@ -53,6 +51,10 @@ public class CubesActivity extends TrackedActivity implements OnTouchListener {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public void onClick(View view) {
+		finish();
+	}
 
 	@Override
 	public boolean onTouch(View view, MotionEvent event) {
@@ -60,11 +62,12 @@ public class CubesActivity extends TrackedActivity implements OnTouchListener {
 	}
 	
 	public void problemAccomplished() {
-		userDataController.trackData(problem, true, "", 0);
+		//userDataController.trackData(problem, true, "", 0);
+		finish();
 	}
 	
 	public void problemFailed(String chosenAnswer) {
-		userDataController.trackData(problem, false, chosenAnswer, 0);
+		//userDataController.trackData(problem, false, chosenAnswer, 0);
 	}
 	
 }

@@ -13,7 +13,7 @@ public class UserDataTracker {
 		try {
 			dadesAEnviar.put("levelNumber", problem.getLevel());
 			dadesAEnviar.put("problemNumber", problem.getNumber());
-			dadesAEnviar.put("word", problem.getCorrectWord());
+			dadesAEnviar.put("word", problem.getDisplayedText());
 			if(correct) {
 				dadesAEnviar.put("correct", "S");
 			}

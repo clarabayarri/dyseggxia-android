@@ -1,6 +1,7 @@
 package dyseggxia.views;
 
 import dyseggxia.activities.R;
+import android.graphics.Typeface;
 import android.widget.Button;
 
 public class WordCubeView extends Button {
@@ -12,6 +13,8 @@ public class WordCubeView extends Button {
 		this.setBackgroundResource(R.drawable.cuboslettercube);
 		this.displayLetter = letter;
 		this.setText(letter);
+		this.setTextSize(30.f);
+		this.setTypeface(Typeface.DEFAULT_BOLD);
 	}
 	
 	public String getDisplayedText() {

@@ -26,7 +26,7 @@ public class ProblemAnswerLayout extends LinearLayout {
 	
 	public void initLayout() {
 		this.setBackgroundResource(R.drawable.cubesanswersbox);
-		this.setPadding(10, 10, 10, 10);
+		this.setPadding(15, 15, 15, 15);
 		for(int i = 0; i < displayedAnswers.size(); ++i) {
 			String letter = displayedAnswers.get(i);
 			AnswerCubeView letterView = new AnswerCubeView(this,letter);
@@ -34,6 +34,7 @@ public class ProblemAnswerLayout extends LinearLayout {
 			LayoutParams params = (LayoutParams) letterView.getLayoutParams();
 			params.weight = 1;
 			params.setMargins(5, 5, 5, 5);
+			
 			letterView.setLayoutParams(params);
 		}
 	}

@@ -35,6 +35,12 @@
             android:background="@drawable/pinguinofacil"
             android:onClick="onClick"
             android:text="@string/easy" />
+        
+        <View 
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+        </View>
 
         <dyseggxia.views.LevelView
             android:id="@+id/LevelView2"
@@ -42,6 +48,12 @@
             android:background="@drawable/pinguinomedio"
             android:onClick="onClick"
             android:text="@string/medium" />
+        
+        <View 
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+        </View>
 
         <dyseggxia.views.LevelView
             android:id="@+id/LevelView3"
