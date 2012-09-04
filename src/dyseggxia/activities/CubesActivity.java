@@ -1,9 +1,7 @@
 package dyseggxia.activities;
 
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 
 import com.google.android.apps.analytics.easytracking.TrackedActivity;
@@ -14,7 +12,7 @@ import dyseggxia.factories.ControllerFactory;
 import dyseggxia.factories.ViewControllerFactory;
 import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
-public class CubesActivity extends TrackedActivity implements OnTouchListener {
+public class CubesActivity extends TrackedActivity {
 
 	private GenericCubesProblemViewController viewController;
 	private ProblemController controller;
@@ -54,11 +52,6 @@ public class CubesActivity extends TrackedActivity implements OnTouchListener {
 	
 	public void onClick(View view) {
 		finish();
-	}
-
-	@Override
-	public boolean onTouch(View view, MotionEvent event) {
-		return viewController.onTouch(view,event);
 	}
 	
 	public void problemAccomplished() {

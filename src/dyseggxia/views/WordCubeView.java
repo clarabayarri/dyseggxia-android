@@ -1,35 +1,37 @@
 package dyseggxia.views;
 
-import dyseggxia.activities.R;
-import android.content.ClipData;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Button;
+import dyseggxia.activities.R;
 
 public class WordCubeView extends Button {
 
+	private ProblemWordLayout parent;
 	private String displayLetter;
+	private boolean shouldBeDraggable;
 	
-	public WordCubeView(ProblemWordLayout parent, String letter) {
+	public WordCubeView(ProblemWordLayout parent, String letter, boolean shouldBeDraggable) {
 		super(parent.getDelegate().getContext());
 		this.setBackgroundResource(R.drawable.cuboslettercube);
 		this.displayLetter = letter;
 		this.setText(letter);
+		this.setTag(letter);
 		this.setTextSize(30.f);
 		this.setTypeface(Typeface.DEFAULT_BOLD);
-		this.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View view, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					ClipData dragData = ClipData.newPlainText(displayLetter, displayLetter);
-				    View.DragShadowBuilder myShadow = new View.DragShadowBuilder(WordCubeView.this);
-				    startDrag(dragData, myShadow, null, 0);
-					return true;
-				}
-				return false;
-			}
-		});
+		this.shouldBeDraggable = shouldBeDraggable;
+		this.parent = parent;
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		Log.i("CLARA", "onTouch");
+		if (shouldBeDraggable && event.getAction() == MotionEvent.ACTION_DOWN) {
+			parent.onChildTouched(this);
+			return true;
+		}
+		return false;
 	}
 	
 	public String getDisplayedText() {

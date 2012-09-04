@@ -1,6 +1,5 @@
 package dyseggxia.viewControllers;
 
-import android.view.MotionEvent;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
@@ -32,11 +31,12 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 		
 		addWordLayout();
 		addAnswersLayout();
-		/*movingLayout = (LinearLayout)context.findViewById(R.id.movingLayout);*/
+		
+		wordLayout.setOnDragListener(answerLayout);
 	}
 	
 	private void addWordLayout() {
-		wordLayout = new ProblemWordLayout(this,problem.getDisplayedText());
+		wordLayout = new ProblemWordLayout(this, problem.getDisplayedText(), false);
 		this.view.addView(wordLayout, 0);
 		LayoutParams params = (LayoutParams) wordLayout.getLayoutParams();
 		params.weight = 1;
@@ -45,36 +45,27 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 	}
 	
 	private void addAnswersLayout() {
-		answerLayout = new ProblemAnswerLayout(this,problem.getDisplayAnswers());
+		answerLayout = new ProblemAnswerLayout(this, problem.getDisplayAnswers(), true);
 		this.view.addView(answerLayout);
 		LayoutParams params = (LayoutParams) answerLayout.getLayoutParams();
 		params.weight = 1.5f;
 		params.setMargins(10, 10, 10, 10);
 		answerLayout.setLayoutParams(params);
 		answerLayout.initLayout();
-	}
-	
-	@Override
-	protected void itemSelected(MotionEvent event){
-		//wordLayout.checkForDropEvent(event);
-		int index = problem.getDisplayedText().indexOf(" ");
-		viewDroppedOnIndex(index);
 		
+		//answerLayout.setOnDragListener(wordLayout);
 	}
 	
 	@Override
-	public void viewDroppedOnIndex(int index) {
-		if(invisibleImage != null) {
-			movingLayout.removeAllViews();
-			String wrongWord = problem.getDisplayedText();
-			String givenAnswer = wrongWord.replaceFirst(" ", invisibleImage.getText().toString());
-			if(problem.isCorrectAnswer(givenAnswer)) {
-				//wordLayout.setLetterInIndex(index,invisibleImage.getTextContents());
-				success();
-			}
-			else {
-				fail(problem.getDisplayAnswers().get(invisibleImage.getIndex()));
-			}
+	public void viewDroppedOnIndex(int index, String text) {
+		String wrongWord = problem.getDisplayedText();
+		String givenAnswer = wrongWord.replaceFirst(" ", text);
+		if(problem.isCorrectAnswer(givenAnswer)) {
+			//wordLayout.setLetterInIndex(index,invisibleImage.getTextContents());
+			success();
+		}
+		else {
+			fail(text);
 		}
 	}
 }

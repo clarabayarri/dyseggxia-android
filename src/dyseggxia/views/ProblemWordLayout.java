@@ -1,21 +1,22 @@
 package dyseggxia.views;
 
-import android.view.DragEvent;
 import android.view.Gravity;
-import android.view.View;
 import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
 public class ProblemWordLayout extends GenericDragDropLayout {
 
 	private GenericCubesProblemViewController delegate;
 	private String displayWord;
+	private boolean contentsShouldBeDraggable;
 	
-	public ProblemWordLayout(GenericCubesProblemViewController delegate, String word) {
+	public ProblemWordLayout(GenericCubesProblemViewController delegate, String word, 
+			boolean contentsShouldBeDraggable) {
 		super(delegate.getContext());
 		this.delegate = delegate;
 		this.setOrientation(HORIZONTAL);
 		this.setGravity(Gravity.CENTER_VERTICAL);
 		this.displayWord = word;
+		this.contentsShouldBeDraggable = contentsShouldBeDraggable;
 	}
 	
 	public GenericCubesProblemViewController getDelegate() {
@@ -32,7 +33,7 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 		
 		for(int i = 0; i < displayWord.length(); ++i) {
 			String letter = displayWord.substring(i, i+1);
-			WordCubeView letterView = new WordCubeView(this,letter);
+			WordCubeView letterView = new WordCubeView(this, letter, contentsShouldBeDraggable);
 			this.addView(letterView);
 			LayoutParams params = (LayoutParams) letterView.getLayoutParams();
 			params.weight = 1;
@@ -49,8 +50,8 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 	}
 
 	@Override
-	protected void onDrop(View view, DragEvent event) {
+	protected void onDrop(int position, String contents) {
 		// TODO Auto-generated method stub
-		
+		delegate.viewDroppedOnIndex(position, contents);
 	}
 }
