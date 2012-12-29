@@ -32,7 +32,8 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 		addWordLayout();
 		addAnswersLayout();
 		
-		wordLayout.setOnDragListener(answerLayout);
+		dragHelper.setDragElementListener(answerLayout);
+		dragHelper.setDropElementListener(wordLayout);
 	}
 	
 	private void addWordLayout() {
@@ -52,8 +53,6 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 		params.setMargins(10, 10, 10, 10);
 		answerLayout.setLayoutParams(params);
 		answerLayout.initLayout();
-		
-		//answerLayout.setOnDragListener(wordLayout);
 	}
 	
 	@Override
@@ -61,7 +60,7 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 		String wrongWord = problem.getDisplayedText();
 		String givenAnswer = wrongWord.replaceFirst(" ", text);
 		if(problem.isCorrectAnswer(givenAnswer)) {
-			//wordLayout.setLetterInIndex(index,invisibleImage.getTextContents());
+			wordLayout.setLetterInIndex(index,text);
 			success();
 		}
 		else {

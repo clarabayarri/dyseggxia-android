@@ -22,14 +22,20 @@ public class OmissionCubeController extends GenericCubesProblemViewController {
 	}
 	
 	private void loadViews() {
+		this.view.setOrientation(LinearLayout.VERTICAL);
 		TextView problemName = (TextView)context.findViewById(R.id.cubesProblemTypeLabel);
 		problemName.setText(context.getText(R.string.omission));
+		
+		addWordLayout();
+		
+		dragHelper.setDragElementListener(wordLayout);
+		dragHelper.setDropElementListener(wordLayout);
+	}
+	
+	private void addWordLayout() {
 		wordLayout = new ProblemWordLayout(this, problem.getDisplayedText(), true);
-		this.view.setOrientation(LinearLayout.VERTICAL);
 		this.view.addView(wordLayout);
-		/*wordLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeWordLayout));
-		movingLayout = (LinearLayout)context.findViewById(R.id.movingLayout);
-		context.findViewById(R.id.cubeAnswerLayout).setVisibility(View.GONE);*/
+		wordLayout.initLayout();
 	}
 
 	@Override

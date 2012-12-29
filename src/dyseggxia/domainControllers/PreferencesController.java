@@ -10,6 +10,34 @@ public class PreferencesController {
 		this.adapter = adapter;
 	}
 	
+	public int getCurrentScore() {
+		return adapter.getCurrentScore();
+	}
+	
+	public void increaseScore(int value) {
+		adapter.increaseScore(value);
+	}
+	
+	public void setScore(int value) {
+		adapter.setScore(value);
+	}
+	
+	public String getCurrentLanguage() {
+		return adapter.getCurrentLanguage();
+	}
+	
+	public void increaseCurrentLanguage() {
+		adapter.increaseCurrentLanguage();
+	}
+	
+	public int getCurrentLevel() {
+		return adapter.getCurrentLevel();
+	}
+	
+	public void increaseCurrentLevel() {
+		adapter.increaseCurrentLevel();
+	}
+	
 	public boolean isTrackingActivated() {
 		return adapter.isTrackingActivated();
 	}

@@ -26,3 +26,6 @@ assets/
 
 # robolectric files
 tmp/
+
+.metadata
+.settings

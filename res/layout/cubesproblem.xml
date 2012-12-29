@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cubesproblemmain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/cubosbackground" >
@@ -15,11 +16,10 @@
         style="@style/DyseggxiaSubtitleAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="bottom|center"
-        android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
+        android:padding="10dp"
         android:text="@string/insertion" />
 
     <LinearLayout
@@ -33,5 +33,12 @@
         android:layout_marginRight="20dp" >
         
     </LinearLayout>
+    
+    <FrameLayout 
+        android:id="@+id/movingView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        
+    </FrameLayout>
     
 </RelativeLayout>

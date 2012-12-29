@@ -5,6 +5,7 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="lib" path="libs/EasyTracker.jar"/>
 	<classpathentry kind="lib" path="libs/libGoogleAnalytics.jar"/>
-	<classpathentry kind="lib" path="/Applications/programming/eclipse/android-sdk-macosx/platforms/android-14/android.jar"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="lib" path="/Applications/eclipse/android-sdk-macosx/android-sdks/platforms/android-8/android.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

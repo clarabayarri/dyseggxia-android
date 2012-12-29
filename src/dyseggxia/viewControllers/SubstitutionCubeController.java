@@ -2,15 +2,17 @@ package dyseggxia.viewControllers;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.LinearLayout.LayoutParams;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
 import dyseggxia.domainModel.SubstitutionProblem;
+import dyseggxia.views.ProblemAnswerLayout;
 import dyseggxia.views.ProblemWordLayout;
 
 public class SubstitutionCubeController extends GenericCubesProblemViewController {
 
 	private SubstitutionProblem problem;
-
+	private ProblemAnswerLayout answerLayout;
 	
 	public SubstitutionCubeController(CubesActivity context, SubstitutionProblem problem) {
 		this.context = context;
@@ -23,15 +25,34 @@ public class SubstitutionCubeController extends GenericCubesProblemViewControlle
 	}
 
 	private void loadViews() {
-		TextView problemName = (TextView)context.findViewById(R.id.cubesProblemTypeLabel);
-		problemName.setText(context.getText(R.string.substitution));
-		wordLayout = new ProblemWordLayout(this, problem.getDisplayedText(), true);
 		this.view.setOrientation(LinearLayout.VERTICAL);
-		this.view.addView(wordLayout);
-		/*wordLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeWordLayout));
-		answerLayout = new CubeAnswersLayoutView(this,problem.getAnswers(),true);
-		answerLayout.fillLayout((LinearLayout)context.findViewById(R.id.cubeAnswerLayout));
-		movingLayout = (LinearLayout)context.findViewById(R.id.movingLayout);*/
+		TextView problemName = (TextView)context.findViewById(R.id.cubesProblemTypeLabel);
+		problemName.setText(context.getText(R.string.insertion));
+		
+		addWordLayout();
+		addAnswersLayout();
+		
+		dragHelper.setDragElementListener(answerLayout);
+		dragHelper.setDropElementListener(wordLayout);
+	}
+	
+	private void addWordLayout() {
+		wordLayout = new ProblemWordLayout(this, problem.getDisplayedText(), false);
+		this.view.addView(wordLayout, 0);
+		LayoutParams params = (LayoutParams) wordLayout.getLayoutParams();
+		params.weight = 1;
+		wordLayout.setLayoutParams(params);
+		wordLayout.initLayout();
+	}
+	
+	private void addAnswersLayout() {
+		answerLayout = new ProblemAnswerLayout(this, problem.getDisplayAnswers(), true);
+		this.view.addView(answerLayout);
+		LayoutParams params = (LayoutParams) answerLayout.getLayoutParams();
+		params.weight = 1.5f;
+		params.setMargins(10, 10, 10, 10);
+		answerLayout.setLayoutParams(params);
+		answerLayout.initLayout();
 	}
 	
 	@Override

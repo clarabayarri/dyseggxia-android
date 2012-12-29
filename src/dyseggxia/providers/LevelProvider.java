@@ -17,7 +17,6 @@ public class LevelProvider implements LevelProviderI {
 		this.helper = helper;
 	}
 	
-	@Override
 	public List<Level> findAllLevelBasicData() {
 		SQLiteDatabase database = helper.getWritableDatabase();
 		List<Level> levels = new ArrayList<Level>();
@@ -33,7 +32,6 @@ public class LevelProvider implements LevelProviderI {
 		return levels;
 	}
 	
-	@Override
 	public Level findLevel(int levelNumber) {
 		Level level = getBasicLevel(levelNumber);
 		return level;

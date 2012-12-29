@@ -14,7 +14,6 @@ public class AnswerProvider implements AnswerProviderI {
 		providerFactory = ProviderFactory.getInstance(context);
 	}
 	
-	@Override
 	public List<String> getAnswersForProblem(Problem problem) {
 		return providerFactory.getAnswerProvider(problem.getClass()).getAnswersForProblem(problem);
 	}

@@ -1,26 +1,21 @@
 package dyseggxia.views;
 
 import android.view.Gravity;
+import android.view.View;
 import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
 public class ProblemWordLayout extends GenericDragDropLayout {
 
-	private GenericCubesProblemViewController delegate;
 	private String displayWord;
-	private boolean contentsShouldBeDraggable;
 	
 	public ProblemWordLayout(GenericCubesProblemViewController delegate, String word, 
 			boolean contentsShouldBeDraggable) {
 		super(delegate.getContext());
-		this.delegate = delegate;
 		this.setOrientation(HORIZONTAL);
 		this.setGravity(Gravity.CENTER_VERTICAL);
 		this.displayWord = word;
-		this.contentsShouldBeDraggable = contentsShouldBeDraggable;
-	}
-	
-	public GenericCubesProblemViewController getDelegate() {
-		return this.delegate;
+		setDelegate(delegate);
+		setDraggable(contentsShouldBeDraggable);
 	}
 	
 	public void initLayout() {
@@ -33,14 +28,15 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 		
 		for(int i = 0; i < displayWord.length(); ++i) {
 			String letter = displayWord.substring(i, i+1);
-			WordCubeView letterView = new WordCubeView(this, letter, contentsShouldBeDraggable);
-			this.addView(letterView);
-			LayoutParams params = (LayoutParams) letterView.getLayoutParams();
+			WordCube letterView = new WordCube(getContext(), letter);
+			View child = letterView.getView();
+			this.addView(child);
+			LayoutParams params = (LayoutParams) child.getLayoutParams();
 			params.weight = 1;
 			
-			letterView.setLayoutParams(params);
-			int padding = (int)(letterView.getWidth() * 0.3);
-			letterView.setPadding(0, padding, padding, 0);
+			child.setLayoutParams(params);
+			int padding = (int)(child.getWidth() * 0.3);
+			child.setPadding(0, padding, padding, 0);
 		}
 	}
 	
@@ -49,9 +45,8 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 		initLayout();
 	}
 
-	@Override
-	protected void onDrop(int position, String contents) {
-		// TODO Auto-generated method stub
-		delegate.viewDroppedOnIndex(position, contents);
+	public void setLetterInIndex(int index, String text) {
+		WordCube child = (WordCube) getChildAt(index).getTag();
+		child.changeDisplayedText(text);
 	}
 }

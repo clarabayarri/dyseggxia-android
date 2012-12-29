@@ -22,9 +22,9 @@
 	<string name="adultmode">modo adulto</string>
 	
 	<string name="menulogo">logotipo</string>
-	<string name="play">Jugar</string>
+	<string name="play">Play</string>
 	<string name="language">idioma</string>
-	<string name="spanish">Español</string>
+	<string name="spanish">English</string>
 	<string name="scorebucket">Contador de puntos</string>
 	
 	<string name="word_cube_background">fondo de un cubo</string>

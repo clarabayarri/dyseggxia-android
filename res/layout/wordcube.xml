@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center" >
+    
+	<ImageView 
+	    android:src="@drawable/cubeslettercube"
+	    android:scaleType="centerInside"
+	    android:layout_centerInParent="true"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:contentDescription="@string/word_cube_background"/>
+	<TextView 
+	    android:id="@+id/cube_contents"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+	    android:paddingBottom="11dp"
+	    android:paddingTop="25dp"
+	    android:paddingRight="25dp"
+	    android:textAppearance="@style/DyseggxiaProblemLetterAppearance"
+	    android:gravity="center" />
+    
+</RelativeLayout>

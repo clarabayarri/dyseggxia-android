@@ -1,41 +1,51 @@
 package dyseggxia.views;
 
-import android.content.ClipData;
 import android.content.Context;
-import android.util.Log;
-import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnDragListener;
 import android.widget.LinearLayout;
+import dyseggxia.viewControllers.DragHelper;
+import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
-public abstract class GenericDragDropLayout extends LinearLayout implements OnDragListener {
+public abstract class GenericDragDropLayout extends LinearLayout 
+	implements DragHelper.DragElementListener, DragHelper.DropElementListener {
+	
+	private GenericCubesProblemViewController delegate;
+	private boolean isDraggable;
 	
 	public GenericDragDropLayout(Context context) {
 		super(context);
 	}
-
+	
+	public void setDelegate(GenericCubesProblemViewController delegate) {
+		this.delegate = delegate;
+	}
+	
+	public void setDraggable(boolean draggable) {
+		this.isDraggable = draggable;
+	}
+	
 	@Override
-	public boolean onDrag(View view, DragEvent event) {
-		if (event.getAction() == DragEvent.ACTION_DRAG_STARTED) {
-			return true;
-		} else if (event.getAction() == DragEvent.ACTION_DROP) {
-			((GenericDragDropLayout) view).onDrop(event);
-			return true;
+	public boolean onTouchEvent(MotionEvent event) {
+		if (isDraggable) {
+			int position = (int) (event.getX() / getChildAt(0).getMeasuredWidth());
+			View child = getChildAt(position);
+			return delegate.onTouchChild(event, child);
 		}
 		return false;
 	}
 	
-	private void onDrop(DragEvent event) {
-		String answer = event.getClipData().getItemAt(0).getText().toString();
-		int position = (int) (event.getX() / getChildAt(0).getMeasuredWidth());
-		onDrop(position, answer);
+	public void onDragStarted(View view) {
+		view.setVisibility(View.INVISIBLE);
 	}
 	
-	protected abstract void onDrop(int position, String contents);
-
-	public void onChildTouched(View child) {
-		ClipData dragData = ClipData.newPlainText("", (String) child.getTag());
-	    View.DragShadowBuilder myShadow = new View.DragShadowBuilder(child);
-	    startDrag(dragData, myShadow, null, 0);
+	public void onDragEnded(View view) {
+		view.setVisibility(View.VISIBLE);
+	}
+	
+	public void onDrop(View view, MotionEvent event) {
+		String contents = (String) view.getTag();
+		int position = (int) (event.getX() / getChildAt(0).getMeasuredWidth());
+		delegate.viewDroppedOnIndex(position, contents);
 	}
 }

@@ -33,9 +33,9 @@ public class LevelTable extends DatabaseTable {
 	
 	@Override
 	public void populateTable(Context context, SQLiteDatabase database) {
-		insertLevel(database,1,context.getResources().getString(R.string.easy));
-		insertLevel(database,2,context.getResources().getString(R.string.medium));
-		insertLevel(database,3,context.getResources().getString(R.string.hard));
+		insertLevel(database,1,context.getResources().getString(R.string.level0));
+		insertLevel(database,2,context.getResources().getString(R.string.level1));
+		insertLevel(database,3,context.getResources().getString(R.string.level2));
 	}
 	
 	private void insertLevel(SQLiteDatabase database, int number, String description) {

@@ -2,7 +2,6 @@ package dyseggxia.activities;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.google.android.apps.analytics.easytracking.TrackedActivity;
 
@@ -34,7 +33,7 @@ public class CubesActivity extends TrackedActivity {
 		super.onStart();
 		loadProblem();
 		viewController = ViewControllerFactory.getCorrectCubeController(this, problem);
-		viewController.setView((LinearLayout)findViewById(R.id.cubesProblemCentralView));
+		viewController.bindView(findViewById(R.id.cubesproblemmain));
 		viewController.initLayout();
 	}
 
