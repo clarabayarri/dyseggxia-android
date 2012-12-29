@@ -4,37 +4,29 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import dyseggxia.databaseTableDefinitions.AnswerTable;
+import dyseggxia.databaseTableDefinitions.CompletedProblemDataTable;
 import dyseggxia.databaseTableDefinitions.DatabaseTable;
-import dyseggxia.databaseTableDefinitions.DerivationAnswersTable;
-import dyseggxia.databaseTableDefinitions.DerivationProblemTable;
-import dyseggxia.databaseTableDefinitions.InsertionAnswersTable;
-import dyseggxia.databaseTableDefinitions.InsertionProblemTable;
 import dyseggxia.databaseTableDefinitions.LevelTable;
-import dyseggxia.databaseTableDefinitions.OmissionAnswersTable;
-import dyseggxia.databaseTableDefinitions.OmissionProblemTable;
-import dyseggxia.databaseTableDefinitions.SentenceSeparationProblemTable;
-import dyseggxia.databaseTableDefinitions.SubstitutionAnswersTable;
-import dyseggxia.databaseTableDefinitions.SubstitutionProblemTable;
+import dyseggxia.databaseTableDefinitions.ProblemTable;
 import dyseggxia.databaseTableDefinitions.TrackingData;
-import dyseggxia.databaseTableDefinitions.UserLevelsDataTable;
+import dyseggxia.utilities.AssetsReader;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "dyseggxia.db";
 	private static final int DATABASE_VERSION = 1;
-	private static DatabaseTable[] tables = {new LevelTable(), 
-		new InsertionProblemTable(), new InsertionAnswersTable(), 
-		new OmissionProblemTable(), new OmissionAnswersTable(), 
-		new SubstitutionProblemTable(), new SubstitutionAnswersTable(),
-		new DerivationProblemTable(), new DerivationAnswersTable(),
-		new SentenceSeparationProblemTable(), new UserLevelsDataTable(),
-		new TrackingData()};
+	private static DatabaseTable[] tables;
 	
 	private Context context;
 	
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		this.context = context;
+		AssetsReader reader = new AssetsReader(context);
+		tables = new DatabaseTable[] {new LevelTable(), 
+				new ProblemTable(reader), new AnswerTable(reader), new CompletedProblemDataTable(),
+				new TrackingData()};
 	}
 	
 	@Override

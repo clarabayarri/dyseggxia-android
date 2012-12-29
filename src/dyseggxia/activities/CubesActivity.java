@@ -5,7 +5,10 @@ import android.view.View;
 
 import com.google.android.apps.analytics.easytracking.TrackedActivity;
 
+import dyseggxia.domainControllers.LevelController;
+import dyseggxia.domainControllers.PreferencesController;
 import dyseggxia.domainControllers.ProblemController;
+import dyseggxia.domainModel.Level;
 import dyseggxia.domainModel.Problem;
 import dyseggxia.factories.ControllerFactory;
 import dyseggxia.factories.ViewControllerFactory;
@@ -14,18 +17,22 @@ import dyseggxia.viewControllers.GenericCubesProblemViewController;
 public class CubesActivity extends TrackedActivity {
 
 	private GenericCubesProblemViewController viewController;
-	private ProblemController controller;
+	private ProblemController problemController;
+	private PreferencesController prefController;
+	private Level level;
 	private Problem problem;
-	private int levelNumber;
-	//private UserDataController userDataController;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.cubesproblem);
 		ControllerFactory factory = new ControllerFactory(this);
-		controller = factory.getProblemController();
-		//userDataController = factory.getUserDataController();
+		LevelController levelController = factory.getLevelController();
+		problemController = factory.getProblemController();
+		prefController = factory.getPreferencesController();
+		
+		level = levelController.getLevel(prefController.getCurrentLevel(), 
+				prefController.getCurrentLanguage());
 	}
 	
 	@Override
@@ -38,11 +45,8 @@ public class CubesActivity extends TrackedActivity {
 	}
 
 	private void loadProblem() {
-		levelNumber = this.getIntent().getIntExtra("levelNumber", 1);
-		int problemNumber = this.getIntent().getIntExtra("problemNumber", 1);
-		String problemType = this.getIntent().getStringExtra("problemType");
 		try {
-			problem = controller.getProblem(levelNumber, problemNumber, problemType);
+			problem = problemController.getRandomProblemForLevel(level);
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -54,12 +58,11 @@ public class CubesActivity extends TrackedActivity {
 	}
 	
 	public void problemAccomplished() {
-		//userDataController.trackData(problem, true, "", 0);
 		finish();
 	}
 	
 	public void problemFailed(String chosenAnswer) {
-		//userDataController.trackData(problem, false, chosenAnswer, 0);
+		
 	}
 	
 }

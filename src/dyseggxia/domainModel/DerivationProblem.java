@@ -10,12 +10,12 @@ public class DerivationProblem extends WordProblem {
 
 	private static String typeName = "derivation";
 	
-	public DerivationProblem(int level, int number, String word, int wordIndex, int endIndex) {
-		super(level, number, word, wordIndex, endIndex);
+	public DerivationProblem(int level, String language, int number, String word, int wordIndex, int endIndex) {
+		super(level, language, number, word, wordIndex, endIndex);
 	}
 	
-	public DerivationProblem(int level, int number, String word, int wordIndex, int endIndex, List<String> wrongAnswers) {
-		this(level, number, word, wordIndex, endIndex);
+	public DerivationProblem(int level, String language, int number, String word, int wordIndex, int endIndex, List<String> wrongAnswers) {
+		this(level, language, number, word, wordIndex, endIndex);
 		this.answers = new ArrayList<String>(wrongAnswers);
 	}
 	

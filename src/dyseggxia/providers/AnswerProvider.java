@@ -1,21 +1,36 @@
 package dyseggxia.providers;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import dyseggxia.databaseTableDefinitions.AnswerTable;
 import dyseggxia.domainModel.Problem;
-import dyseggxia.factories.ProviderFactory;
 
 public class AnswerProvider implements AnswerProviderI {
 	
-	private ProviderFactory providerFactory;
+	private DatabaseHelper helper;
 	
-	public AnswerProvider(Context context) {
-		providerFactory = ProviderFactory.getInstance(context);
+	public AnswerProvider(DatabaseHelper helper) {
+		this.helper = helper;
 	}
 	
 	public List<String> getAnswersForProblem(Problem problem) {
-		return providerFactory.getAnswerProvider(problem.getClass()).getAnswersForProblem(problem);
+		SQLiteDatabase database = helper.getWritableDatabase();
+		List<String> answers = new ArrayList<String>();
+		Cursor cursor = database.query(AnswerTable.TABLE_NAME, AnswerTable.ALL_COLUMNS, 
+				AnswerTable.COLUMN_LEVEL_NUMBER + "=" + problem.getLevel() + " AND " + 
+				AnswerTable.COLUMN_LEVEL_LANGUAGE + "='" + problem.getLanguage() + "' AND " + 
+				AnswerTable.COLUMN_PROBLEM_NUMBER + "=" + problem.getNumber(), null, null, null, null);
+		cursor.moveToFirst();
+		while(!cursor.isAfterLast()) {
+			String answer = cursor.getString(AnswerTable.COLUMN_ANSWER_INDEX);
+			answers.add(answer);
+			cursor.moveToNext();
+		}
+		cursor.close();
+		return answers;
 	}
 
 }

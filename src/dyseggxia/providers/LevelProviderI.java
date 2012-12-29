@@ -7,5 +7,5 @@ import dyseggxia.domainModel.Level;
 public interface LevelProviderI {
 
 	public List<Level> findAllLevelBasicData();
-	public Level findLevel(int levelNumber);
+	public Level findLevel(int levelNumber, String language);
 }

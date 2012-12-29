@@ -4,6 +4,6 @@ import dyseggxia.domainModel.Problem;
 
 public interface ProblemProviderI {
 
-	public Problem findProblem(int levelNumber, int problemId, Class<?> type) throws Exception;
-	public int findNumProblemsForLevel(int levelNumber, Class<?> type);
+	public Problem findProblem(int levelNumber, String language, int problemId) throws Exception;
+
 }

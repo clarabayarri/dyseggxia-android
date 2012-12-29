@@ -11,22 +11,62 @@ import android.content.Context;
 public class AssetsReader {
 	
 	private Context context;
+	private List<WordProblemDataTuple> sentenceProblems;
+	private List<WordProblemDataTuple> wordProblems;
+	private static final String[] wordProblemTypes = {"insertion", "omission", "substitution", "derivation"};
+	private static final String[] sentenceProblemTypes = {"separation"};
+	private static final String[] languages = {"es", "en"};
+	private static final int numLevels = 3;
 	
 	public AssetsReader(Context context) {
 		this.context = context;
 	}
+	
+	public List<WordProblemDataTuple> getSentenceProblems() {
+		if (sentenceProblems == null) read();
+		return sentenceProblems;
+	}
+	
+	public List<WordProblemDataTuple> getWordProblems() {
+		if (wordProblems == null) read();
+		return wordProblems;
+	}
+	
+	private void read() {
+		sentenceProblems = new ArrayList<WordProblemDataTuple>();
+		wordProblems = new ArrayList<WordProblemDataTuple>();
+		for (int level = 0; level < numLevels; ++level) {
+			for (String language : languages) {
+				for (String type : wordProblemTypes) {
+					wordProblems.addAll(readWordProblems(type, level, language));
+				}
+				for (String type : sentenceProblemTypes) {
+					sentenceProblems.addAll(readSentenceProblems(type, level, language));
+				}
+			}
+		}
+	}
 
-	public List<String> readSentenceProblems(String type, int level) {
-		String[] data = readProblemsFromFile(type + "-" + level + ".txt");
-		List<String> result = new ArrayList<String>();
-		for(String line : data) {
-			result.add(line);
+	private List<WordProblemDataTuple> readSentenceProblems(String type, int level, String lang) {
+		int trueLevel = level+1;
+		String[] data = readProblemsFromFile(type + "-" + trueLevel + "-" + lang + ".txt");
+		List<WordProblemDataTuple> result = new ArrayList<WordProblemDataTuple>();
+		for(int i = 0; i < data.length; ++i) {
+			String line = data[i];
+			WordProblemDataTuple problem = new WordProblemDataTuple();
+			problem.word = line;
+			problem.levelNumber = level;
+			problem.language = lang;
+			problem.number = i;
+			problem.type = type;
+			result.add(problem);
 		}
 		return result;
 	}
 	
-	public List<WordProblemDataTuple> readWordProblems(String type, int level) {
-		String[] readData = readProblemsFromFile(type + "-" + level + ".txt");
+	private List<WordProblemDataTuple> readWordProblems(String type, int level, String lang) {
+		int trueLevel = level+1;
+		String[] readData = readProblemsFromFile(type + "-" + trueLevel + "-" + lang + ".txt");
 		List<WordProblemDataTuple> result = new ArrayList<WordProblemDataTuple>();
 		for(int i = 0; i < readData.length; ++i) {
 			String[] data = readData[i].split("(\\s)+");
@@ -35,16 +75,18 @@ public class AssetsReader {
 				newData.word = data[0];
 				newData.startIndex = Integer.valueOf(data[1].substring(0, 1));
 				newData.endIndex = Integer.valueOf(data[1].substring(data[1].length()-1, data[1].length()));
-				System.out.println(data[2]);
 				newData.answers = data[2].split("\\|");
-				System.out.println(newData.answers);
+				newData.levelNumber = level;
+				newData.language = lang;
+				newData.number = i;
+				newData.type = type;
 				result.add(newData);
 			}
 		}
 		return result;
 	}
 	
-	public String[] readProblemsFromFile(String file) {
+	private String[] readProblemsFromFile(String file) {
 		try {
             InputStream is = context.getAssets().open(file);
 

@@ -10,12 +10,13 @@ public class SubstitutionProblem extends WordProblem {
 
 private static String typeName = "substitution";
 	
-	public SubstitutionProblem(int level, int number, String word, int wordIndex, int endIndex) {
-		super(level, number, word, wordIndex, endIndex);
+	public SubstitutionProblem(int level, String language, int number, String word, int wordIndex, int endIndex) {
+		super(level, language, number, word, wordIndex, endIndex);
 	}
 	
-	public SubstitutionProblem(int level, int number, String word, int wordIndex, int endIndex, List<String> wrongAnswers) {
-		this(level, number, word, wordIndex, endIndex);
+	public SubstitutionProblem(int level, String language, int number, String word, 
+			int wordIndex, int endIndex, List<String> wrongAnswers) {
+		this(level, language, number, word, wordIndex, endIndex);
 		this.answers = new ArrayList<String>(wrongAnswers);
 	}
 

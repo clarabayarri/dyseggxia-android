@@ -4,7 +4,6 @@ import android.content.Context;
 import dyseggxia.domainControllers.LevelController;
 import dyseggxia.domainControllers.PreferencesController;
 import dyseggxia.domainControllers.ProblemController;
-import dyseggxia.domainControllers.UserDataController;
 import dyseggxia.utilities.PreferencesAdapter;
 
 public class ControllerFactory {
@@ -12,7 +11,6 @@ public class ControllerFactory {
 	private Context context;
 	private ProblemController problemController;
 	private LevelController levelController;
-	private UserDataController userDataController;
 	private PreferencesController preferencesController;
 	
 	public ControllerFactory(Context context) {
@@ -31,13 +29,6 @@ public class ControllerFactory {
 			levelController = new LevelController(ProviderFactory.getInstance(context).getLevelProvider());
 		}
 		return levelController;
-	}
-	
-	public UserDataController getUserDataController() {
-		if(userDataController == null) {
-			userDataController = new UserDataController(context);
-		}
-		return userDataController;
 	}
 	
 	public PreferencesController getPreferencesController() {

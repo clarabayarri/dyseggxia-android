@@ -1,28 +1,18 @@
 package dyseggxia.factories;
 
 import android.content.Context;
-import dyseggxia.domainModel.DerivationProblem;
-import dyseggxia.domainModel.InsertionProblem;
-import dyseggxia.domainModel.OmissionProblem;
-import dyseggxia.domainModel.SentenceSeparationProblem;
-import dyseggxia.domainModel.SubstitutionProblem;
-import dyseggxia.providers.AbstractAnswerProvider;
 import dyseggxia.providers.AbstractProblemProvider;
 import dyseggxia.providers.AnswerProvider;
 import dyseggxia.providers.AnswerProviderI;
 import dyseggxia.providers.DatabaseHelper;
-import dyseggxia.providers.DerivationAnswerProvider;
 import dyseggxia.providers.DerivationProblemProvider;
-import dyseggxia.providers.InsertionAnswerProvider;
 import dyseggxia.providers.InsertionProblemProvider;
 import dyseggxia.providers.LevelProvider;
 import dyseggxia.providers.LevelProviderI;
-import dyseggxia.providers.OmissionAnswerProvider;
 import dyseggxia.providers.OmissionProblemProvider;
 import dyseggxia.providers.ProblemProvider;
 import dyseggxia.providers.ProblemProviderI;
 import dyseggxia.providers.SentenceSeparationProblemProvider;
-import dyseggxia.providers.SubstitutionAnswerProvider;
 import dyseggxia.providers.SubstitutionProblemProvider;
 import dyseggxia.providers.TrackingDataProvider;
 
@@ -43,11 +33,6 @@ public class ProviderFactory {
 	private SubstitutionProblemProvider substitutionProblemProvider;
 	private DerivationProblemProvider derivationProblemProvider;
 	private SentenceSeparationProblemProvider sentenceSeparationProblemProvider;
-	
-	private InsertionAnswerProvider insertionAnswerProvider;
-	private OmissionAnswerProvider omissionAnswerProvider;
-	private SubstitutionAnswerProvider substitutionAnswerProvider;
-	private DerivationAnswerProvider derivationAnswerProvider;
 	
 	private ProviderFactory(Context context) {
 		this.context = context;
@@ -95,34 +80,6 @@ public class ProviderFactory {
 		return sentenceSeparationProblemProvider;
 	}
 	
-	private InsertionAnswerProvider getInsertionAnswerProvider() {
-		if(insertionAnswerProvider == null) {
-			insertionAnswerProvider = new InsertionAnswerProvider(getDatabaseHelper());
-		}
-		return insertionAnswerProvider;
-	}
-	
-	private OmissionAnswerProvider getOmissionAnswerProvider() {
-		if(omissionAnswerProvider == null) {
-			omissionAnswerProvider = new OmissionAnswerProvider(getDatabaseHelper());
-		}
-		return omissionAnswerProvider;
-	}
-	
-	private SubstitutionAnswerProvider getSubstitutionAnswerProvider() {
-		if(substitutionAnswerProvider == null) {
-			substitutionAnswerProvider = new SubstitutionAnswerProvider(getDatabaseHelper());
-		}
-		return substitutionAnswerProvider;
-	}
-	
-	private DerivationAnswerProvider getDerivationAnswerProvider() {
-		if(derivationAnswerProvider == null) {
-			derivationAnswerProvider = new DerivationAnswerProvider(getDatabaseHelper());
-		}
-		return derivationAnswerProvider;
-	}
-	
 	public LevelProviderI getLevelProvider() {
 		if(levelProvider == null) {
 			levelProvider = new LevelProvider(getDatabaseHelper());
@@ -132,25 +89,25 @@ public class ProviderFactory {
 	
 	public ProblemProviderI getProblemProvider() {
 		if(problemProvider == null) {
-			problemProvider = new ProblemProvider(context);
+			problemProvider = new ProblemProvider(context, getDatabaseHelper());
 		}
 		return problemProvider;
 	}
 	
-	public AbstractProblemProvider getProblemProvider(Class<?> type) {
-		if(type.equals(InsertionProblem.class)) {
+	public AbstractProblemProvider getProblemProvider(String type) {
+		if(type.equals("insertion")) {
 			return getInsertionProblemProvider();
 		}
-		if(type.equals(OmissionProblem.class)) {
+		if(type.equals("omission")) {
 			return getOmissionProblemProvider();
 		}
-		if(type.equals(SubstitutionProblem.class)) {
+		if(type.equals("substitution")) {
 			return getSubstitutionProblemProvider();
 		}
-		if(type.equals(DerivationProblem.class)) {
+		if(type.equals("derivation")) {
 			return getDerivationProblemProvider();
 		}
-		if(type.equals(SentenceSeparationProblem.class)) {
+		if(type.equals("separation")) {
 			return getSentenceSeparationProblemProvider();
 		}
 		return null;
@@ -158,25 +115,9 @@ public class ProviderFactory {
 	
 	public AnswerProviderI getAnswerProvider() {
 		if(answerProvider == null) {
-			answerProvider = new AnswerProvider(context);
+			answerProvider = new AnswerProvider(getDatabaseHelper());
 		}
 		return answerProvider;
-	}
-	
-	public AbstractAnswerProvider getAnswerProvider(Class<?> type) {
-		if(type.equals(InsertionProblem.class)) {
-			return getInsertionAnswerProvider();
-		}
-		if(type.equals(OmissionProblem.class)) {
-			return getOmissionAnswerProvider();
-		}
-		if(type.equals(SubstitutionProblem.class)) {
-			return getSubstitutionAnswerProvider();
-		}
-		if(type.equals(DerivationProblem.class)) {
-			return getDerivationAnswerProvider();
-		}
-		return null;
 	}
 	
 	public TrackingDataProvider getTrackingDataProvider() {

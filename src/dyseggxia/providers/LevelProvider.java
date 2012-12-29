@@ -6,6 +6,7 @@ import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import dyseggxia.databaseTableDefinitions.LevelTable;
+import dyseggxia.databaseTableDefinitions.ProblemTable;
 import dyseggxia.domainModel.Level;
 
 public class LevelProvider implements LevelProviderI {
@@ -24,7 +25,7 @@ public class LevelProvider implements LevelProviderI {
 				null, null, null, null, null);
 		cursor.moveToFirst();
 		while(!cursor.isAfterLast()) {
-			Level level = mapRow(cursor);
+			Level level = mapRow(database, cursor);
 			levels.add(level);
 			cursor.moveToNext();
 		}
@@ -32,24 +33,39 @@ public class LevelProvider implements LevelProviderI {
 		return levels;
 	}
 	
-	public Level findLevel(int levelNumber) {
-		Level level = getBasicLevel(levelNumber);
+	public Level findLevel(int levelNumber, String language) {
+		Level level = getBasicLevel(levelNumber, language);
 		return level;
 	}
+	
+	private int findNumProblemsForLevel(SQLiteDatabase database, int levelNumber, String language) {
+		String consulta = "SELECT Count(*) FROM " + ProblemTable.TABLE_NAME + " WHERE " + 
+				ProblemTable.COLUMN_LEVEL_NUMBER + " = " + levelNumber +
+				" AND " + ProblemTable.COLUMN_LEVEL_LANGUAGE + " = '" + language + "'";
+		Cursor cursor = database.rawQuery(consulta, null);
+		cursor.moveToFirst();
+		int numRows = cursor.getInt(0);
+		cursor.close();
+		return numRows;
+	}
 
-	private Level getBasicLevel(int levelNumber) {
+	private Level getBasicLevel(int levelNumber, String language) {
 		SQLiteDatabase database = helper.getWritableDatabase();
 		Cursor cursor = database.query(table.getTableName(), LevelTable.ALL_COLUMNS, 
-				LevelTable.COLUMN_NUMBER + "=" + levelNumber, null, null, null, null);
+				LevelTable.COLUMN_NUMBER + " = " + levelNumber + " AND " + 
+						LevelTable.COLUMN_LANGUAGE + " = '" + language + "'", null, null, null, null);
 		cursor.moveToFirst();
-		Level level = mapRow(cursor);
-		cursor.close();
+		Level level = mapRow(database, cursor);
 		database.close();
 		return level;
 	}
 
-	private Level mapRow(Cursor cursor) {
-		Level level = new Level(cursor.getInt(0),cursor.getString(1));
+	private Level mapRow(SQLiteDatabase database, Cursor cursor) {
+		int number = cursor.getInt(LevelTable.COLUMN_NUMBER_INDEX);
+		String language = cursor.getString(LevelTable.COLUMN_LANGUAGE_INDEX);
+		cursor.close();
+		int numProblems = findNumProblemsForLevel(database, number, language);
+		Level level = new Level(number,language, numProblems);
 		return level;
 	}
 

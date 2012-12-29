@@ -10,8 +10,8 @@ public abstract class WordProblem extends Problem {
 	protected List<String> answers;
 	protected String correctWord;
 	
-	public WordProblem(int level, int number, String word, int wordStartIndex, int wordEndIndex) {
-		super(level, number);
+	public WordProblem(int level, String language, int number, String word, int wordStartIndex, int wordEndIndex) {
+		super(level, language, number);
 		this.correctWord = word;
 		this.wordExtractStartIndex = wordStartIndex;
 		this.wordExtractEndIndex = wordEndIndex;

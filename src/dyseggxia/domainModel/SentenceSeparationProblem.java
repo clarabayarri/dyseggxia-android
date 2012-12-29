@@ -7,8 +7,8 @@ public class SentenceSeparationProblem extends SentenceProblem {
 
 	private static String typeName = "sentence separation";
 	
-	public SentenceSeparationProblem(int level, int number, String sentence) {
-		super(level, number, sentence);
+	public SentenceSeparationProblem(int level, String language, int number, String sentence) {
+		super(level, language, number, sentence);
 	}
 
 	@Override

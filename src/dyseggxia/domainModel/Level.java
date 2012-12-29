@@ -4,16 +4,12 @@ package dyseggxia.domainModel;
 public class Level {
 
 	private int number;
-	private String description;
+	private String language;
 	private int numProblems;
 	
-	public Level(int number, String description) {
+	public Level(int number, String language, int numProblems) {
 		this.number = number;
-		this.description = description;
-	}
-	
-	public Level(int number, String description, int numProblems) {
-		this(number, description);
+		this.language = language;
 		this.numProblems = numProblems;
 	}
 
@@ -21,8 +17,8 @@ public class Level {
 		return this.number;
 	}
 
-	public String getDescription() {
-		return this.description;
+	public String getLanguage() {
+		return this.language;
 	}
 	
 	public void setNumProblems(int numProblems) {

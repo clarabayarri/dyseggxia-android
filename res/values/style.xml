@@ -6,7 +6,6 @@
     </style>
     
     <style name="DyseggxiaTextAppearance" parent="@android:style/TextAppearance">
-		<item name="android:textColor">@color/dark_grey</item>
 		<item name="android:textSize">10pt</item>
 		<item name="android:textStyle">bold</item>
 	</style>
@@ -23,7 +22,7 @@
 	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaButtonTextAppearance" parent="@android:style/TextAppearance">
-	    <item name="android:textSize">6pt</item>
+	    <item name="android:textSize">10pt</item>
 	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaButton" parent="@android:style/Widget.Button">
@@ -59,28 +58,28 @@
         <item name="android:text">@string/play</item>
 	</style>
 	<style name="DyseggxiaBackButton" parent="@style/DyseggxiaButton">
-	    <item name="android:layout_width">90dp</item>
-        <item name="android:layout_height">35dp</item>
+	    <item name="android:layout_width">115dp</item>
+        <item name="android:layout_height">50dp</item>
         <item name="android:gravity">right|center</item>
         <item name="android:paddingRight">13dp</item>
         <item name="android:background">@drawable/backbutton</item>
         <item name="android:text">@string/back</item>
 	</style>
 	<style name="DyseggxiaChangeLanguageButton" parent="@style/DyseggxiaButton">
-	    <item name="android:layout_width">120dp</item>
-        <item name="android:layout_height">52dp</item>
+	    <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">70dp</item>
         <item name="android:gravity">right</item>
-        <item name="android:paddingRight">7dp</item>
-        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingTop">1dp</item>
         <item name="android:background">@drawable/languagebutton</item>
         <item name="android:text">@string/spanish</item>
 	</style>
 	<style name="DyseggxiaChangeLevelButton" parent="@style/DyseggxiaButton">
-	    <item name="android:layout_width">110dp</item>
-        <item name="android:layout_height">52dp</item>
+	    <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">65dp</item>
         <item name="android:gravity">right|center</item>
-        <item name="android:paddingRight">13dp</item>
-        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingTop">23dp</item>
         <item name="android:background">@drawable/level0button</item>
         <item name="android:text">@string/level0</item>
 	</style>

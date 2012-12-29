@@ -13,8 +13,8 @@ public class LevelController {
 		this.provider = provider;
 	}
 
-	public Level getLevel(int levelNumber) {
-		return provider.findLevel(levelNumber);
+	public Level getLevel(int levelNumber, String language) {
+		return provider.findLevel(levelNumber, language);
 	}
 	
 	public List<Level> getAllLevels() {
