@@ -23,6 +23,10 @@ public class ProblemAnswerLayout extends GenericDragDropLayout {
 	}
 	
 	public void initLayout() {
+		LayoutParams params = (LayoutParams) this.getLayoutParams();
+		params.leftMargin = 30;
+		params.rightMargin = 30;
+		this.setLayoutParams(params);
 		this.setBackgroundResource(R.drawable.cubesanswersbox);
 		this.setPadding(15, 15, 15, 15);
 		for(int i = 0; i < displayedAnswers.size(); ++i) {

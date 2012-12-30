@@ -3,12 +3,10 @@ package dyseggxia.domainModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import dyseggxia.activities.R;
-
 
 public class OmissionProblem extends WordProblem {
 
-	private static String typeName = "omission";
+	public static final String typeName = "omission";
 	
 	public OmissionProblem(int level, String language, int number, String word, int wordIndex, int endIndex) {
 		super(level, language, number, word, wordIndex, endIndex);
@@ -27,26 +25,23 @@ public class OmissionProblem extends WordProblem {
 	}
 
 	@Override
-	protected String generateProblem() {
+	protected void generateProblem() {
+		List<String> text = new ArrayList<String>();
 		String beggining = correctWord.substring(0, wordExtractStartIndex);
+		for (int i = 0; i < beggining.length(); ++i) {
+			text.add(beggining.substring(i,i+1));
+		}
+		text.add(answers.get(0));
 		String end = correctWord.substring(wordExtractEndIndex, correctWord.length());
-		String composedWord = beggining + answers.get(0) + end;
-		return composedWord;
+		for (int i = 0; i < end.length(); ++i) {
+			text.add(end.substring(i,i+1));
+		}
+		this.displayedText = text;
 	}
 
 	@Override
 	public String getTypeName() {
 		return typeName;
-	}
-
-	@Override
-	public int getLocalizedTypeName() {
-		return R.string.omission;
-	}
-
-	@Override
-	public int getProblemTypeImageIdentifier() {
-		return R.drawable.omissionpenguin;
 	}
 
 	@Override

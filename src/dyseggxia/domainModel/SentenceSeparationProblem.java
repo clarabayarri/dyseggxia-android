@@ -1,19 +1,25 @@
 package dyseggxia.domainModel;
 
-import dyseggxia.activities.R;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SentenceSeparationProblem extends SentenceProblem {
 
-	private static String typeName = "sentence separation";
+	public static final String typeName = "separation";
 	
 	public SentenceSeparationProblem(int level, String language, int number, String sentence) {
 		super(level, language, number, sentence);
 	}
 
 	@Override
-	protected String generateProblem() {
-		return sentence.replace(" ", "");
+	protected void generateProblem() {
+		String noBlanks = sentence.replace(" ", "");
+		List<String> text = new ArrayList<String>();
+		for (int i = 0; i < noBlanks.length(); ++i) {
+			text.add(noBlanks.substring(i,i+1));
+		}
+		this.displayedText = text;
 	}
 
 	@Override
@@ -24,16 +30,6 @@ public class SentenceSeparationProblem extends SentenceProblem {
 	public int getNumberOfSpacesInProblem() {
 		String[] chunks = sentence.split(" ");
 		return chunks.length - 1;
-	}
-
-	@Override
-	public int getLocalizedTypeName() {
-		return R.string.sentenceseparation;
-	}
-
-	@Override
-	public int getProblemTypeImageIdentifier() {
-		return R.drawable.sentenceseparationpenguin;
 	}
 
 }

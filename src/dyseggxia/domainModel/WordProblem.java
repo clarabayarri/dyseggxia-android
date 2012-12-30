@@ -1,5 +1,6 @@
 package dyseggxia.domainModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -23,6 +24,7 @@ public abstract class WordProblem extends Problem {
 	
 	public abstract List<String> getDisplayAnswers();
 	
+	@Override
 	public boolean isCorrectAnswer(String answer) {
 		return answer.equals(correctWord);
 	}
@@ -33,11 +35,18 @@ public abstract class WordProblem extends Problem {
 		return answers.get(randomIndex);
 	}
 	
-	protected String changeWordRangeToContents(String contents) {
+	protected void changeWordRangeToContents(String contents) {
+		List<String> text = new ArrayList<String>();
 		String start = correctWord.substring(0, wordExtractStartIndex);
-		String middle = start + contents;
-		String end = middle + correctWord.substring(wordExtractEndIndex+1, correctWord.length());
-		return end;
+		for (int i = 0; i < start.length(); ++i) {
+			text.add(start.substring(i,i+1));
+		}
+		text.add(contents);
+		String end = correctWord.substring(wordExtractEndIndex+1, correctWord.length());
+		for (int i = 0; i < end.length(); ++i) {
+			text.add(end.substring(i,i+1));
+		}
+		this.displayedText = text;
 	}
 	
 	protected String correctWordRangeAsAnswerString() {

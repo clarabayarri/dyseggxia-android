@@ -15,6 +15,11 @@ public class OmissionCubeController extends GenericCubesProblemViewController {
 		this.context = context;
 		this.problem = problem;
 	}
+
+	@Override
+	public int getInstructionsId() {
+		return R.string.omission_desc;
+	}
 	
 	@Override
 	public void initLayout() {
@@ -40,14 +45,15 @@ public class OmissionCubeController extends GenericCubesProblemViewController {
 
 	@Override
 	public void viewDroppedOnIndex(int index, String text) {
-		String wrongWord = problem.getDisplayedText();
-		String givenWord = wrongWord.substring(0, index);
-		if(index < wrongWord.length()-1) givenWord = givenWord + wrongWord.substring(index+1, wrongWord.length());
+		wordLayout.removeCubeAt(index);
+		String givenWord = wordLayout.getDisplayedText();
 		if(problem.isCorrectAnswer(givenWord)) {
 			//wordLayout.removeChild(invisibleImage);
-			success();
+			successWithSolution(givenWord);
 		}
-		else fail(text);
+		else {
+			failWithSolution(givenWord);
+		}
 	}
 
 }

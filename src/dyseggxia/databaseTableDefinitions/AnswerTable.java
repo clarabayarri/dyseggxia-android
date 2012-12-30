@@ -52,8 +52,10 @@ public class AnswerTable extends DatabaseTable {
 		List<WordProblemDataTuple> data = reader.getWordProblems();
 		for(int i = 0; i < data.size(); ++i) {
 			WordProblemDataTuple word = data.get(i);
-			for(String answer : word.answers) {
-				insertAnswer(database, word.levelNumber, word.language, word.number, answer);
+			if (word.answers != null) {
+				for(String answer : word.answers) {
+					insertAnswer(database, word.levelNumber, word.language, word.number, answer);
+				}
 			}
 		}
 	}

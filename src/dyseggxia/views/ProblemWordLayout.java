@@ -1,14 +1,18 @@
 package dyseggxia.views;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.view.Gravity;
 import android.view.View;
 import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
 public class ProblemWordLayout extends GenericDragDropLayout {
 
-	private String displayWord;
+	private List<String> displayWord;
+	private List<WordCube> children;
 	
-	public ProblemWordLayout(GenericCubesProblemViewController delegate, String word, 
+	public ProblemWordLayout(GenericCubesProblemViewController delegate, List<String> word, 
 			boolean contentsShouldBeDraggable) {
 		super(delegate.getContext());
 		this.setOrientation(HORIZONTAL);
@@ -18,16 +22,31 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 		setDraggable(contentsShouldBeDraggable);
 	}
 	
-	public void initLayout() {
-		int realWidth = this.getWidth();
-		int realHeight = this.getHeight();
-		int wordWidth = realWidth/displayWord.length();
-		if(realHeight > wordWidth) {
-			this.setPadding(0, (realHeight - wordWidth)/2, 0, (realHeight - wordWidth)/2);
+	@Override
+	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+		super.onSizeChanged(w, h, oldw, oldh);
+		if (w > 0 && h > 0) {
+			int wordWidth = w/displayWord.size();
+			if(h > w) {
+				this.setPadding(0, (h - wordWidth)/2, 0, (h - wordWidth)/2);
+			}
+			
 		}
+	}
+	
+	public String getDisplayedText() {
+		String result = "";
+		for (int i = 0; i < children.size(); ++i) {
+			result = result + children.get(i).getDisplayedText();
+		}
+		return result;
+	}
+	
+	public void initLayout() {
+		children = new ArrayList<WordCube>();
 		
-		for(int i = 0; i < displayWord.length(); ++i) {
-			String letter = displayWord.substring(i, i+1);
+		for(int i = 0; i < displayWord.size(); ++i) {
+			String letter = displayWord.get(i);
 			WordCube letterView = new WordCube(getContext(), letter);
 			View child = letterView.getView();
 			this.addView(child);
@@ -37,6 +56,8 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 			child.setLayoutParams(params);
 			int padding = (int)(child.getWidth() * 0.3);
 			child.setPadding(0, padding, padding, 0);
+			
+			children.add(letterView);
 		}
 	}
 	
@@ -46,7 +67,12 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 	}
 
 	public void setLetterInIndex(int index, String text) {
-		WordCube child = (WordCube) getChildAt(index).getTag();
+		WordCube child = children.get(index);
 		child.changeDisplayedText(text);
+	}
+	
+	public void removeCubeAt(int index) {
+		this.removeViewAt(index);
+		children.remove(index);
 	}
 }

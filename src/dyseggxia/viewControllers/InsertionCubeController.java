@@ -2,7 +2,6 @@ package dyseggxia.viewControllers;
 
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
 import dyseggxia.domainModel.InsertionProblem;
@@ -18,6 +17,11 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 		this.context = context;
 		this.problem = problem;
 	}
+
+	@Override
+	public int getInstructionsId() {
+		return R.string.insertion_desc;
+	}
 	
 	@Override
 	public void initLayout() {
@@ -26,8 +30,6 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 	
 	private void loadViews() {
 		this.view.setOrientation(LinearLayout.VERTICAL);
-		TextView problemName = (TextView)context.findViewById(R.id.cubesProblemTypeLabel);
-		problemName.setText(context.getText(R.string.insertion));
 		
 		addWordLayout();
 		addAnswersLayout();
@@ -57,14 +59,15 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 	
 	@Override
 	public void viewDroppedOnIndex(int index, String text) {
-		String wrongWord = problem.getDisplayedText();
-		String givenAnswer = wrongWord.replaceFirst(" ", text);
+		// Replace letter in wordLayout
+		wordLayout.setLetterInIndex(index,text);
+		// Check
+		String givenAnswer = wordLayout.getDisplayedText();
 		if(problem.isCorrectAnswer(givenAnswer)) {
-			wordLayout.setLetterInIndex(index,text);
-			success();
+			successWithSolution(givenAnswer);
 		}
 		else {
-			fail(text);
+			failWithSolution(givenAnswer);
 		}
 	}
 }

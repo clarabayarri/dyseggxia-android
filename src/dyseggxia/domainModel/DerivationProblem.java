@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import dyseggxia.activities.R;
-
 public class DerivationProblem extends WordProblem {
 
-	private static String typeName = "derivation";
+	public static final String typeName = "derivation";
 	
 	public DerivationProblem(int level, String language, int number, String word, int wordIndex, int endIndex) {
 		super(level, language, number, word, wordIndex, endIndex);
@@ -20,23 +18,18 @@ public class DerivationProblem extends WordProblem {
 	}
 	
 	@Override
-	protected String generateProblem() {
-		return correctWord.substring(0, wordExtractStartIndex);
+	protected void generateProblem() {
+		String start = correctWord.substring(0, wordExtractStartIndex);
+		List<String> text = new ArrayList<String>();
+		for (int i = 0; i < start.length(); ++i) {
+			text.add(start.substring(i,i+1));
+		}
+		this.displayedText = text;
 	}
 
 	@Override
 	public String getTypeName() {
 		return typeName;
-	}
-
-	@Override
-	public int getLocalizedTypeName() {
-		return R.string.derivation;
-	}
-
-	@Override
-	public int getProblemTypeImageIdentifier() {
-		return R.drawable.derivationpenguin;
 	}
 
 	@Override

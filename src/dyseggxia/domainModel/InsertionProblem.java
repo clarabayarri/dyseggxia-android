@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import dyseggxia.activities.R;
-
 public class InsertionProblem extends WordProblem {
 
-	private static String typeName = "insertion";
+	public static final String typeName = "insertion";
 	
 	public InsertionProblem(int level, String language, int number, String word, int wordIndex, int endIndex) {
 		super(level, language, number, word, wordIndex, endIndex);
@@ -21,23 +19,13 @@ public class InsertionProblem extends WordProblem {
 	}
 	
 	@Override
-	protected String generateProblem() {
-		return changeWordRangeToContents(" ");
+	protected void generateProblem() {
+		changeWordRangeToContents(" ");
 	}
 
 	@Override
 	public String getTypeName() {
 		return typeName;
-	}
-
-	@Override
-	public int getLocalizedTypeName() {
-		return R.string.insertion;
-	}
-
-	@Override
-	public int getProblemTypeImageIdentifier() {
-		return R.drawable.insertionpenguin;
 	}
 
 	@Override

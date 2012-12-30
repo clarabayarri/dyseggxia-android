@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import dyseggxia.activities.R;
-
 public class SubstitutionProblem extends WordProblem {
 
-private static String typeName = "substitution";
+	public static final String typeName = "substitution";
 	
 	public SubstitutionProblem(int level, String language, int number, String word, int wordIndex, int endIndex) {
 		super(level, language, number, word, wordIndex, endIndex);
@@ -21,23 +19,13 @@ private static String typeName = "substitution";
 	}
 
 	@Override
-	protected String generateProblem() {
-		return changeWordRangeToContents(getRandomAnswer());
+	protected void generateProblem() {
+		changeWordRangeToContents(getRandomAnswer());
 	}
 
 	@Override
 	public String getTypeName() {
 		return typeName;
-	}
-
-	@Override
-	public int getLocalizedTypeName() {
-		return R.string.substitution;
-	}
-
-	@Override
-	public int getProblemTypeImageIdentifier() {
-		return R.drawable.substitutionpenguin;
 	}
 
 	@Override

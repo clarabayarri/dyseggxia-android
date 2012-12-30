@@ -9,6 +9,7 @@ public abstract class SentenceProblem extends Problem {
 		this.sentence = sentence;
 	}
 
+	@Override
 	public boolean isCorrectAnswer(String answer) {
 		return answer.equals(sentence);
 	}

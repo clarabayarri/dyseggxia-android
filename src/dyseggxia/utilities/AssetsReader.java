@@ -11,7 +11,6 @@ import android.content.Context;
 public class AssetsReader {
 	
 	private Context context;
-	private List<WordProblemDataTuple> sentenceProblems;
 	private List<WordProblemDataTuple> wordProblems;
 	private static final String[] wordProblemTypes = {"insertion", "omission", "substitution", "derivation"};
 	private static final String[] sentenceProblemTypes = {"separation"};
@@ -22,65 +21,57 @@ public class AssetsReader {
 		this.context = context;
 	}
 	
-	public List<WordProblemDataTuple> getSentenceProblems() {
-		if (sentenceProblems == null) read();
-		return sentenceProblems;
-	}
-	
 	public List<WordProblemDataTuple> getWordProblems() {
 		if (wordProblems == null) read();
 		return wordProblems;
 	}
 	
 	private void read() {
-		sentenceProblems = new ArrayList<WordProblemDataTuple>();
 		wordProblems = new ArrayList<WordProblemDataTuple>();
 		for (int level = 0; level < numLevels; ++level) {
 			for (String language : languages) {
-				for (String type : wordProblemTypes) {
-					wordProblems.addAll(readWordProblems(type, level, language));
-				}
-				for (String type : sentenceProblemTypes) {
-					sentenceProblems.addAll(readSentenceProblems(type, level, language));
-				}
+				wordProblems.addAll(readWordProblems(level, language));
 			}
 		}
 	}
-
-	private List<WordProblemDataTuple> readSentenceProblems(String type, int level, String lang) {
-		int trueLevel = level+1;
-		String[] data = readProblemsFromFile(type + "-" + trueLevel + "-" + lang + ".txt");
-		List<WordProblemDataTuple> result = new ArrayList<WordProblemDataTuple>();
-		for(int i = 0; i < data.length; ++i) {
-			String line = data[i];
-			WordProblemDataTuple problem = new WordProblemDataTuple();
-			problem.word = line;
-			problem.levelNumber = level;
-			problem.language = lang;
-			problem.number = i;
-			problem.type = type;
-			result.add(problem);
-		}
-		return result;
-	}
 	
-	private List<WordProblemDataTuple> readWordProblems(String type, int level, String lang) {
+	private List<WordProblemDataTuple> readWordProblems(int level, String lang) {
 		int trueLevel = level+1;
-		String[] readData = readProblemsFromFile(type + "-" + trueLevel + "-" + lang + ".txt");
 		List<WordProblemDataTuple> result = new ArrayList<WordProblemDataTuple>();
-		for(int i = 0; i < readData.length; ++i) {
-			String[] data = readData[i].split("(\\s)+");
-			if(data.length >= 3) {
-				WordProblemDataTuple newData = new WordProblemDataTuple();
-				newData.word = data[0];
-				newData.startIndex = Integer.valueOf(data[1].substring(0, 1));
-				newData.endIndex = Integer.valueOf(data[1].substring(data[1].length()-1, data[1].length()));
-				newData.answers = data[2].split("\\|");
-				newData.levelNumber = level;
-				newData.language = lang;
-				newData.number = i;
-				newData.type = type;
-				result.add(newData);
+		int index = 0;
+		for (String type : wordProblemTypes) {
+			String[] readData = readProblemsFromFile(type + "-" + trueLevel + "-" + lang + ".txt");
+			for(int i = 0; i < readData.length; ++i) {
+				String[] data = readData[i].split("(\\s)+");
+				if(data.length >= 3) {
+					WordProblemDataTuple newData = new WordProblemDataTuple();
+					newData.word = data[0];
+					newData.startIndex = Integer.valueOf(data[1].substring(0, 1));
+					newData.endIndex = Integer.valueOf(data[1].substring(data[1].length()-1, data[1].length()));
+					newData.answers = data[2].split("\\|");
+					newData.levelNumber = level;
+					newData.language = lang;
+					newData.number = index;
+					newData.type = type;
+					result.add(newData);
+					++index;
+				}
+			}
+		}
+		for (String type : sentenceProblemTypes) {
+			String[] data = readProblemsFromFile(type + "-" + trueLevel + "-" + lang + ".txt");
+			for(int i = 0; i < data.length; ++i) {
+				String line = data[i];
+				WordProblemDataTuple problem = new WordProblemDataTuple();
+				problem.word = line;
+				problem.levelNumber = level;
+				problem.language = lang;
+				problem.number = index;
+				problem.type = type;
+				problem.startIndex = 0;
+				problem.endIndex = 0;
+				result.add(problem);
+				++index;
 			}
 		}
 		return result;

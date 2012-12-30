@@ -2,6 +2,7 @@ package dyseggxia.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.apps.analytics.easytracking.TrackedActivity;
 
@@ -39,9 +40,6 @@ public class CubesActivity extends TrackedActivity {
 	public void onStart() {
 		super.onStart();
 		loadProblem();
-		viewController = ViewControllerFactory.getCorrectCubeController(this, problem);
-		viewController.bindView(findViewById(R.id.cubesproblemmain));
-		viewController.initLayout();
 	}
 
 	private void loadProblem() {
@@ -51,18 +49,38 @@ public class CubesActivity extends TrackedActivity {
 		catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
+		viewController = ViewControllerFactory.getCorrectCubeController(this, problem);
+		viewController.bindView(findViewById(R.id.cubesproblemmain));
+		viewController.initLayout();
+		TextView instructionLabel = (TextView) findViewById(R.id.cubesProblemTypeLabel);
+		instructionLabel.setText(viewController.getInstructionsId());
 	}
 	
 	public void onClick(View view) {
-		finish();
+		switch (view.getId()) {
+		case R.id.cubesProblemBackButton:
+			finishPlaying();
+			break;
+		}
 	}
 	
-	public void problemAccomplished() {
-		finish();
-	}
-	
-	public void problemFailed(String chosenAnswer) {
+	public void problemAccomplished(String solution, int intents, String wrongSolutions) {
+		// TODO: save completed problem
 		
+		int score = Math.max(0, level.getNumber() + 1 - intents);
+		prefController.increaseScore(score);
+		
+		// TODO: show complete dialog
+		
+		// TODO: check achievements
+	}
+	
+	public void continuePlaying() {
+		loadProblem();
+	}
+	
+	public void finishPlaying() {
+		finish();
 	}
 	
 }

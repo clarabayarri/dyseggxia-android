@@ -1,14 +1,13 @@
 package dyseggxia.domainModel;
 
-
-
+import java.util.List;
 
 public abstract class Problem {
 	
 	private int level;
 	private String language;
 	private int number;
-	protected String displayedText;
+	protected List<String> displayedText;
 	
 	public Problem(int level, String language, int number) {
 		this.level = level;
@@ -28,19 +27,17 @@ public abstract class Problem {
 		return this.number;
 	}
 	
-	public String getDisplayedText() {
+	public List<String> getDisplayedText() {
 		if(displayedText == null) {
-			displayedText = generateProblem();
+			generateProblem();
 		}
 		return displayedText;
 	}
 	
-	protected abstract String generateProblem();
+	protected abstract void generateProblem();
 	
 	public abstract String getTypeName();
 	
-	public abstract int getLocalizedTypeName();
-	
-	public abstract int getProblemTypeImageIdentifier();
+	public abstract boolean isCorrectAnswer(String answer);
 	
 }

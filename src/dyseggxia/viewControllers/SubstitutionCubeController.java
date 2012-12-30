@@ -18,6 +18,11 @@ public class SubstitutionCubeController extends GenericCubesProblemViewControlle
 		this.context = context;
 		this.problem = problem;
 	}
+
+	@Override
+	public int getInstructionsId() {
+		return R.string.substitution_desc;
+	}
 	
 	@Override
 	public void initLayout() {
@@ -57,12 +62,11 @@ public class SubstitutionCubeController extends GenericCubesProblemViewControlle
 	
 	@Override
 	public void viewDroppedOnIndex(int index, String text) {
-		String wrongWord = problem.getDisplayedText();
-		String givenAnswer = wrongWord.substring(0, index) + text;
-		if(index < wrongWord.length()-1) givenAnswer = givenAnswer + wrongWord.substring(index+1,wrongWord.length());
+		wordLayout.setLetterInIndex(index, text);
+		String givenAnswer = wordLayout.getDisplayedText();
 		if(problem.isCorrectAnswer(givenAnswer)) {
 			//wordLayout.setLetterInIndex(index,invisibleImage.getTextContents());
-			success();
+			successWithSolution(givenAnswer);
 		}
 		else {
 			//fail(problem.getAnswers().get(invisibleImage.getIndex()));

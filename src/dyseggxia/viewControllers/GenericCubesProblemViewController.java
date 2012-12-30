@@ -1,6 +1,5 @@
 package dyseggxia.viewControllers;
 
-import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -14,8 +13,9 @@ public abstract class GenericCubesProblemViewController {
 	
 	protected LinearLayout view;
 	protected ProblemWordLayout wordLayout;
-	private Handler handler;
 	protected DragHelper dragHelper;
+	protected int intents;
+	protected String wrongSolutions;
 	
 	public CubesActivity getContext() {
 		return context;
@@ -26,35 +26,29 @@ public abstract class GenericCubesProblemViewController {
 		
 		View movingView = view.findViewById(R.id.movingView);
 		dragHelper = new DragHelper(movingView);
+		intents = 0;
+		wrongSolutions = "";
 	}
+	
+	public abstract int getInstructionsId();
 	
 	public abstract void initLayout();
 	
 	public void successWithSolution(String solution) {
-		context.problemAccomplished();
+		context.problemAccomplished(solution, intents, wrongSolutions);
 	}
 	
-	public void fail() {
+	public void failWithSolution(String solution) {
+		wrongSolutions = wrongSolutions + solution + ", ";
+		++intents;
 		wordLayout.restoreOriginalWord();
 	}
+	
+	
+	// BORRAR MAYBE
 
 	public void viewDroppedOnIndex(int index, String text) {
 		
-	}
-	
-	protected void success() {
-		//wordLayout.animateCorrectAnswer();
-		context.problemAccomplished();
-		
-		if(handler == null) handler = new Handler();
-		handler.postDelayed(new Runnable() {
-			public void run() {
-				context.finish();
-			}}, 1000);
-	}
-	
-	protected void fail(String chosenAnswer) {
-		context.problemFailed(chosenAnswer);
 	}
 
 	public boolean onTouchChild(MotionEvent event, View view2) {

@@ -66,10 +66,6 @@ public class ProblemTable extends DatabaseTable {
 			insertProblem(database, word.number, word.type, word.word, 
 					word.startIndex, word.endIndex, word.levelNumber, word.language);
 		}
-		List<WordProblemDataTuple> sentences = reader.getSentenceProblems();
-		for (WordProblemDataTuple word : sentences) {
-			insertProblem(database, word.number, word.type, word.word, 0, 0, word.levelNumber, word.language);
-		}
 	}
 
 	private void insertProblem(SQLiteDatabase database, int number, String type, String word, 
