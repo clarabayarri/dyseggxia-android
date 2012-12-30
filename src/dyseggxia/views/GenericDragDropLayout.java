@@ -10,8 +10,8 @@ import dyseggxia.viewControllers.GenericCubesProblemViewController;
 public abstract class GenericDragDropLayout extends LinearLayout 
 	implements DragHelper.DragElementListener, DragHelper.DropElementListener {
 	
-	private GenericCubesProblemViewController delegate;
-	private boolean isDraggable;
+	protected GenericCubesProblemViewController delegate;
+	protected boolean isDraggable;
 	
 	public GenericDragDropLayout(Context context) {
 		super(context);

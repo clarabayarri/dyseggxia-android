@@ -46,6 +46,16 @@ public class OmissionCubeController extends GenericCubesProblemViewController {
 	@Override
 	public void viewDroppedOnIndex(int index, String text) {
 		wordLayout.removeCubeAt(index);
+		check();
+	}
+	
+	@Override
+	public void onClickAnswer(int index, String text) {
+		wordLayout.removeCubeAt(index);
+		check();
+	}
+	
+	private void check() {
 		String givenWord = wordLayout.getDisplayedText();
 		if(problem.isCorrectAnswer(givenWord)) {
 			//wordLayout.removeChild(invisibleImage);

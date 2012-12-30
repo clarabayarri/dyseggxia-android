@@ -59,9 +59,17 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 	
 	@Override
 	public void viewDroppedOnIndex(int index, String text) {
-		// Replace letter in wordLayout
 		wordLayout.setLetterInIndex(index,text);
-		// Check
+		check();
+	}
+	
+	@Override
+	public void onClickAnswer(int index, String text) {
+		wordLayout.setLetterInSpace(text);
+		check();
+	}
+	
+	private void check() {
 		String givenAnswer = wordLayout.getDisplayedText();
 		if(problem.isCorrectAnswer(givenAnswer)) {
 			successWithSolution(givenAnswer);

@@ -19,7 +19,7 @@ public class DerivationProblem extends WordProblem {
 	
 	@Override
 	protected void generateProblem() {
-		String start = correctWord.substring(0, wordExtractStartIndex);
+		String start = correctWord.substring(0, wordExtractStartIndex+1);
 		List<String> text = new ArrayList<String>();
 		for (int i = 0; i < start.length(); ++i) {
 			text.add(start.substring(i,i+1));

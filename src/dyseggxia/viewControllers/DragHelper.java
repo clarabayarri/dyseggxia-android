@@ -75,7 +75,7 @@ public class DragHelper {
 			movingView.addView(child.getView());
 		} else {
 			AnswerCube child = new AnswerCube(originalDraggedView.getContext(),
-					((AnswerCube) originalDraggedView.getTag()).getDisplayedText());
+					((AnswerCube) originalDraggedView.getTag()).getDisplayedText(), false);
 			movingView.addView(child.getView());
 		}
 		// TODO: set initial translation

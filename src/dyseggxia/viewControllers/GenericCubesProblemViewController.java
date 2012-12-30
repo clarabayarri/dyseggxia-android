@@ -54,4 +54,8 @@ public abstract class GenericCubesProblemViewController {
 	public boolean onTouchChild(MotionEvent event, View view2) {
 		return dragHelper.onTouch(event, view2);
 	}
+	
+	public void onClickAnswer(int index, String text) {
+		
+	}
 }
