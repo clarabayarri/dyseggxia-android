@@ -6,9 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 import dyseggxia.activities.R;
 
-public class WordCube {
+public class WordCube extends GenericDraggableCube {
 
-	private String displayLetter;
 	private View view;
 	private TextView label;
 	
@@ -28,10 +27,6 @@ public class WordCube {
 			label.setText(displayLetter);
 		}
 		return view;
-	}
-	
-	public String getDisplayedText() {
-		return this.displayLetter;
 	}
 	
 	public void changeDisplayedText(String newText) {

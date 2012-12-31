@@ -38,7 +38,11 @@
     <FrameLayout 
         android:id="@+id/movingView"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_alignTop="@id/cubesProblemCentralView"
+        android:layout_alignBaseline="@id/cubesProblemCentralView"
+        android:layout_alignLeft="@id/cubesProblemCentralView"
+        android:layout_alignRight="@id/cubesProblemCentralView" >
         
     </FrameLayout>
     

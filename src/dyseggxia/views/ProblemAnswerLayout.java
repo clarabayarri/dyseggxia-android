@@ -36,7 +36,6 @@ public class ProblemAnswerLayout extends GenericDragDropLayout implements View.O
 			String letter = displayedAnswers.get(i);
 			AnswerCube letterView = new AnswerCube(getContext(), letter, false);
 			View child = letterView.getView();
-			child.setOnClickListener(this);
 			this.addView(child);
 			((LinearLayout.LayoutParams) child.getLayoutParams()).weight = 1.0f;
 			children.add(letterView);

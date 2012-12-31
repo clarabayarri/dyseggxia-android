@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import dyseggxia.activities.R;
@@ -34,7 +35,6 @@ public class ProblemAnswerVerticalLayout extends GenericDragDropLayout implement
 			String letter = displayedAnswers.get(i);
 			AnswerCube letterView = new AnswerCube(getContext(), letter, true);
 			View child = letterView.getView();
-			child.setOnClickListener(this);
 			this.addView(child);
 			((LinearLayout.LayoutParams) child.getLayoutParams()).weight = 1.0f;
 			children.add(letterView);
@@ -46,5 +46,15 @@ public class ProblemAnswerVerticalLayout extends GenericDragDropLayout implement
 			int index = this.indexOfChild(v);
 			delegate.onClickAnswer(index, children.get(index).getDisplayedText());
 		}
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		if (isDraggable) {
+			int position = (int) (event.getY() / getChildAt(0).getMeasuredHeight());
+			View child = getChildAt(position);
+			return delegate.onTouchChild(event, child);
+		}
+		return false;
 	}
 }

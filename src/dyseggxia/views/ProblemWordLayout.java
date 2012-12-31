@@ -3,11 +3,12 @@ package dyseggxia.views;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
-public class ProblemWordLayout extends GenericDragDropLayout implements View.OnClickListener {
+public class ProblemWordLayout extends GenericDragDropLayout {
 
 	private List<String> originalWord;
 	private List<String> displayWord;
@@ -63,7 +64,6 @@ public class ProblemWordLayout extends GenericDragDropLayout implements View.OnC
 		child.setLayoutParams(params);
 		int padding = (int)(child.getWidth() * 0.3);
 		child.setPadding(0, padding, padding, 0);
-		child.setOnClickListener(this);
 		children.add(index, letterView);
 	}
 	
@@ -91,9 +91,11 @@ public class ProblemWordLayout extends GenericDragDropLayout implements View.OnC
 		children.remove(index);
 	}
 
+	@Override
 	public void onClick(View v) {
 		if (isDraggable) {
 			int index = this.indexOfChild(v);
+			Log.i("CLARA", "click on index " + index);
 			delegate.onClickAnswer(index, children.get(index).getDisplayedText());
 		}
 	}

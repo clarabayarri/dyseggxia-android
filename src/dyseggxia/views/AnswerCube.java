@@ -6,9 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 import dyseggxia.activities.R;
 
-public class AnswerCube {
+public class AnswerCube extends GenericDraggableCube {
 
-	private String displayLetter;
 	private View view;
 	private TextView label;
 	private boolean vertical;
@@ -19,6 +18,10 @@ public class AnswerCube {
 		this.context = context;
 		this.displayLetter = letter;
 		this.vertical = vertical;
+	}
+	
+	public boolean isVertical() {
+		return vertical;
 	}
 	
 	public View getView() {
@@ -35,9 +38,5 @@ public class AnswerCube {
 			label.setText(displayLetter);
 		}
 		return view;
-	}
-	
-	public String getDisplayedText() {
-		return this.displayLetter;
 	}
 }
