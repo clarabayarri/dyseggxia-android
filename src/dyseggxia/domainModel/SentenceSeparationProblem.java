@@ -27,6 +27,21 @@ public class SentenceSeparationProblem extends SentenceProblem {
 		return typeName;
 	}
 	
+	public boolean isCorrectPartialAnswer(String partialAnswer) {
+		String[] partialParts = partialAnswer.split(" ");
+		String[] sentenceParts = sentence.split(" ");
+		int index = 0;
+		for (int i = 0; i < partialParts.length; ++i) {
+			index += partialParts[i].length();
+			int sum = 0;
+			for (int j = 0; j < sentenceParts.length && sum < index; ++j) {
+				sum += sentenceParts[j].length();
+			}
+			if (sum > index) return false;
+		}
+		return true;
+	}
+	
 	public int getNumberOfSpacesInProblem() {
 		String[] chunks = sentence.split(" ");
 		return chunks.length - 1;

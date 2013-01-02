@@ -1,15 +1,20 @@
 package dyseggxia.viewControllers;
 
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
 import dyseggxia.domainModel.SentenceSeparationProblem;
+import dyseggxia.utilities.SwipeDetector;
 import dyseggxia.views.ProblemWordLayout;
 
 public class SentenceSeparationCubeController extends GenericCubesProblemViewController {
 
 	private SentenceSeparationProblem problem;
+	private int numSolutionsProposed;
+	private GestureDetector gestureDetector;
 	//private float originalTouchX;
 	
 	public SentenceSeparationCubeController(CubesActivity context, SentenceSeparationProblem problem) {
@@ -25,6 +30,7 @@ public class SentenceSeparationCubeController extends GenericCubesProblemViewCon
 	@Override
 	public void initLayout() {
 		loadViews();
+		numSolutionsProposed = 0;
 	}
 	
 	private void loadViews() {
@@ -40,13 +46,50 @@ public class SentenceSeparationCubeController extends GenericCubesProblemViewCon
 		params.weight = 1;
 		wordLayout.setLayoutParams(params);
 		wordLayout.initLayout();
+		gestureDetector = new GestureDetector(context, new SwipeDetector(wordLayout, wordLayout.getHeight()));
 	}
-
-	/*@Override
-	protected void fail(String chosenAnswer) {
-		super.fail(chosenAnswer);
-		solutionsProposed.clear();
-		initLayout();
-	}*/
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent ev) {
+		return gestureDetector.onTouchEvent(ev);
+	}
+	
+	@Override
+	public void swipeOnIndex(int index) {
+		addSpaceAtIndex(index);
+	}
+	
+	private void addSpaceAtIndex(int index) {
+		wordLayout.addSpaceInIndex(index);
+		++numSolutionsProposed;
+		if (numSolutionsProposed < problem.getNumberOfSpacesInProblem()) {
+			checkPartial();
+		} else {
+			checkFinal();
+		}
+	}
+	
+	private void checkPartial() {
+		String givenAnswer = wordLayout.getDisplayedText();
+		if(!problem.isCorrectPartialAnswer(givenAnswer)) {
+			failWithSolution(givenAnswer);
+		}
+	}
+	
+	private void checkFinal() {
+		String givenAnswer = wordLayout.getDisplayedText();
+		if(problem.isCorrectAnswer(givenAnswer)) {
+			successWithSolution(givenAnswer);
+		}
+		else {
+			failWithSolution(givenAnswer);
+		}
+	}
+	
+	@Override
+	public void restore() {
+		super.restore();
+		numSolutionsProposed = 0;
+	}
 
 }

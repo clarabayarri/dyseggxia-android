@@ -74,14 +74,20 @@ public class DerivationCubeController extends GenericCubesProblemViewController 
 	
 	private void check() {
 		String givenAnswer = wordLayout.getDisplayedText();
+		answerLayout.invalidateTouch();
 		if(problem.isCorrectAnswer(givenAnswer)) {
 			successWithSolution(givenAnswer);
 		}
 		else {
 			failWithSolution(givenAnswer);
-			answerLayout.setVisibility(View.VISIBLE);
-			wordLayout.restoreOriginalWord();
 		}
+	}
+	
+	@Override
+	public void restore() {
+		super.restore();
+		answerLayout.setVisibility(View.VISIBLE);
+		answerLayout.acceptTouches();
 	}
 
 }

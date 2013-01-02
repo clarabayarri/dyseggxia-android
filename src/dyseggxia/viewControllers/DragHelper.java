@@ -47,6 +47,7 @@ public class DragHelper {
 	}
 	
 	public boolean onTouch(MotionEvent event, View view) {
+		if (view == null) return false;
 		int action = event.getAction();
 		switch (action) {
 		case MotionEvent.ACTION_DOWN:

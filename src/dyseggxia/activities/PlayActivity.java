@@ -65,6 +65,9 @@ public class PlayActivity extends Activity implements OnClickListener {
 			prefController.increaseCurrentLevel();
 			loadInfo();
 			break;
+		case R.id.customPingu:
+			startCustomPingu();
+			break;
 		}
 		
 	}
@@ -72,6 +75,10 @@ public class PlayActivity extends Activity implements OnClickListener {
 	private void startProblem() {
 		Intent problemIntent = new Intent(this, CubesActivity.class);
 		startActivity(problemIntent);
+	}
+	
+	private void startCustomPingu() {
+		// TODO: tienda
 	}
 
 }

@@ -33,4 +33,8 @@ public class WordCube extends GenericDraggableCube {
 	    displayLetter = newText;
 	    label.setText(displayLetter);
 	}
+	
+	public void hideBackground() {
+		view.findViewById(R.id.wordcube_background).setVisibility(View.INVISIBLE);
+	}
 }

@@ -1,6 +1,7 @@
 package dyseggxia.activities;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import dyseggxia.domainModel.Level;
 import dyseggxia.domainModel.Problem;
 import dyseggxia.factories.ControllerFactory;
 import dyseggxia.factories.ViewControllerFactory;
+import dyseggxia.viewControllers.CompleteDialogController;
 import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
 public class CubesActivity extends TrackedActivity {
@@ -59,7 +61,12 @@ public class CubesActivity extends TrackedActivity {
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.cubesProblemBackButton:
+		case R.id.completedialogBackButton:
 			finishPlaying();
+			break;
+		case R.id.completedialogContinueButton:
+			findViewById(R.id.completeDialogView).setVisibility(View.GONE);
+			continuePlaying();
 			break;
 		}
 	}
@@ -70,7 +77,8 @@ public class CubesActivity extends TrackedActivity {
 		int score = Math.max(0, level.getNumber() + 1 - intents);
 		prefController.increaseScore(score);
 		
-		// TODO: show complete dialog
+		CompleteDialogController dialog = new CompleteDialogController(this, solution);
+		dialog.bindView(findViewById(R.id.cubesproblemmain));
 		
 		// TODO: check achievements
 	}
@@ -81,6 +89,11 @@ public class CubesActivity extends TrackedActivity {
 	
 	public void finishPlaying() {
 		finish();
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent ev) {
+		return viewController.onTouchEvent(ev);
 	}
 	
 }

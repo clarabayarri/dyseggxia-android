@@ -58,7 +58,6 @@ public class OmissionCubeController extends GenericCubesProblemViewController {
 	private void check() {
 		String givenWord = wordLayout.getDisplayedText();
 		if(problem.isCorrectAnswer(givenWord)) {
-			//wordLayout.removeChild(invisibleImage);
 			successWithSolution(givenWord);
 		}
 		else {

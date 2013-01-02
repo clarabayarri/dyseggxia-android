@@ -3,9 +3,15 @@ package dyseggxia.views;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
+import android.widget.TextView;
+import dyseggxia.activities.R;
 import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
 public class ProblemWordLayout extends GenericDragDropLayout {
@@ -33,7 +39,6 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 			if(h > w) {
 				this.setPadding(0, (h - wordWidth)/2, 0, (h - wordWidth)/2);
 			}
-			
 		}
 	}
 	
@@ -60,7 +65,13 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 		this.addView(child, index);
 		LayoutParams params = (LayoutParams) child.getLayoutParams();
 		params.weight = 1;
-		
+		if (originalWord.size() > 8) {
+			TextView label = (TextView) child.findViewById(R.id.cube_contents);
+			label.setTextSize(TypedValue.COMPLEX_UNIT_PT,12);
+		} else if (originalWord.size() > 6) {
+			TextView label = (TextView) child.findViewById(R.id.cube_contents);
+			label.setTextSize(TypedValue.COMPLEX_UNIT_PT,14);
+		}
 		child.setLayoutParams(params);
 		int padding = (int)(child.getWidth() * 0.3);
 		child.setPadding(0, padding, padding, 0);
@@ -68,8 +79,14 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 	}
 	
 	public void restoreOriginalWord() {
+		answered = false;
 		this.removeAllViews();
 		initLayout();
+	}
+	
+	public void addSpaceInIndex(int index) {
+		addCube(index, " ");
+		children.get(index).hideBackground();
 	}
 
 	public void setLetterInIndex(int index, String text) {
@@ -93,9 +110,8 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 
 	@Override
 	public void onClick(View v) {
-		if (isDraggable) {
+		if (isDraggable && !answered) {
 			int index = this.indexOfChild(v);
-			Log.i("CLARA", "click on index " + index);
 			delegate.onClickAnswer(index, children.get(index).getDisplayedText());
 		}
 	}
@@ -105,5 +121,85 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 			String letter = text.substring(i,i+1);
 			addCube(this.getChildCount(), letter);
 		}
+	}
+	
+	public int animateSuccess() {
+		answered = true;
+		for (int i = 0; i < children.size(); ++i) {
+			WordCube child = children.get(i);
+			child.getView().startAnimation(getCustomSuccessAnimation(i*100));
+		}
+		return 700 + 100*(children.size() - 1);
+	}
+	
+	private Animation getCustomSuccessAnimation(int delay) {
+		int childHeight = getChildAt(0).getHeight();
+		
+		TranslateAnimation animation = new TranslateAnimation(0.0f, 0.0f, 0.0f, -(0.20f*childHeight));
+		animation.setDuration(150);
+		animation.setStartOffset(delay + 0);
+		
+		TranslateAnimation animation2 = new TranslateAnimation(0.0f, 0.0f, 0.0f, (0.30f*childHeight));
+		animation2.setDuration(300);
+		animation2.setStartOffset(delay + 150);
+		
+		TranslateAnimation animation3 = new TranslateAnimation(0.0f, 0.0f, 0.0f, -(0.16f*childHeight));
+		animation3.setDuration(150);
+		animation3.setStartOffset(delay + 450);
+		
+		TranslateAnimation animation4 = new TranslateAnimation(0.0f, 0.0f, 0.0f, (0.06f*childHeight));
+		animation4.setDuration(100);
+		animation4.setStartOffset(delay + 600);
+		
+		AnimationSet set = new AnimationSet(true);
+		set.addAnimation(animation);
+		set.addAnimation(animation2);
+		set.addAnimation(animation3);
+		set.addAnimation(animation4);
+		set.setInterpolator(new AccelerateDecelerateInterpolator());
+		return set;
+	}
+	
+	public int animateFailByShakingWholeWord() {
+		answered = true;
+		for (int i = 0; i < children.size(); ++i) {
+			WordCube child = children.get(i);
+			child.getView().startAnimation(getCustomFailAnimation());
+		}
+		return 875;
+	}
+	
+	public void animateFailByShakingIndex(int index) {
+		answered = true;
+		WordCube child = children.get(index);
+		child.getView().startAnimation(getCustomFailAnimation());
+	}
+	
+	private Animation getCustomFailAnimation() {
+		int childWidth = getChildAt(0).getWidth();
+		
+		TranslateAnimation animation = new TranslateAnimation(0.0f, -(0.1f*childWidth), 0.0f, 0.0f);
+		animation.setDuration(250);
+		animation.setStartOffset(0);
+		
+		TranslateAnimation animation2 = new TranslateAnimation(0.0f, (0.2f*childWidth), 0.0f, 0.0f);
+		animation2.setDuration(250);
+		animation2.setStartOffset(250);
+		
+		TranslateAnimation animation3 = new TranslateAnimation(0.0f, -(0.2f*childWidth), 0.0f, 0.0f);
+		animation3.setDuration(250);
+		animation3.setStartOffset(500);
+		
+		TranslateAnimation animation4 = new TranslateAnimation(0.0f, (0.1f*childWidth), 0.0f, 0.0f);
+		animation4.setDuration(125);
+		animation4.setStartOffset(750);
+		
+		AnimationSet set = new AnimationSet(true);
+		set.addAnimation(animation);
+		set.addAnimation(animation2);
+		set.addAnimation(animation3);
+		set.addAnimation(animation4);
+		set.setInterpolator(new AccelerateDecelerateInterpolator());
+		return set;
 	}
 }

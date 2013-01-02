@@ -63,14 +63,20 @@ public class SubstitutionCubeController extends GenericCubesProblemViewControlle
 	@Override
 	public void viewDroppedOnIndex(int index, String text) {
 		wordLayout.setLetterInIndex(index, text);
+		answerLayout.invalidateTouch();
 		String givenAnswer = wordLayout.getDisplayedText();
 		if(problem.isCorrectAnswer(givenAnswer)) {
-			//wordLayout.setLetterInIndex(index,invisibleImage.getTextContents());
 			successWithSolution(givenAnswer);
 		}
 		else {
-			//fail(problem.getAnswers().get(invisibleImage.getIndex()));
+			failWithSolution(givenAnswer);
 		}
+	}
+	
+	@Override
+	public void restore() {
+		super.restore();
+		answerLayout.acceptTouches();
 	}
 
 }

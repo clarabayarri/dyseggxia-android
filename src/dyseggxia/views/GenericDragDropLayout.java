@@ -12,6 +12,7 @@ public abstract class GenericDragDropLayout extends LinearLayout
 	
 	protected GenericCubesProblemViewController delegate;
 	protected boolean isDraggable;
+	protected boolean answered = false;
 	
 	public GenericDragDropLayout(Context context) {
 		super(context);
@@ -27,7 +28,7 @@ public abstract class GenericDragDropLayout extends LinearLayout
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		if (isDraggable) {
+		if (isDraggable && ! answered) {
 			int position = (int) (event.getX() / getChildAt(0).getMeasuredWidth());
 			View child = getChildAt(position);
 			return delegate.onTouchChild(event, child);
@@ -58,5 +59,22 @@ public abstract class GenericDragDropLayout extends LinearLayout
 			delegate.viewDroppedOnIndex(childPosition, contents);
 		}
 		
+	}
+	
+	public void acceptTouches() {
+		answered = false;
+	}
+	
+	public void invalidateTouch() {
+		answered = true;
+	}
+	
+	public void swipeOnCoordinate(float x) {
+		int index = indexOfViewUnderCoordinate(x);
+		delegate.swipeOnIndex(index);
+	}
+	
+	public int indexOfViewUnderCoordinate(float x) {
+		return (int) ((x / (double)getChildAt(0).getWidth()) + 0.5);
 	}
 }

@@ -23,6 +23,11 @@
         style="@style/DyseggxiaPlayButton"
         android:layout_centerInParent="true"/>
     
+    <ImageButton 
+        android:id="@+id/customPingu"
+        android:contentDescription="@string/custompingu"
+        style="@style/DyseggxiaEggButton" />
+    
     <ImageView 
         android:id="@+id/fishbucket"
         android:contentDescription="@string/scorebucket"

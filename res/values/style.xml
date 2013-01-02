@@ -18,7 +18,7 @@
 	    <item name="android:textStyle">bold</item>   
 	</style>
 	<style name="DyseggxiaProblemLetterAppearance" parent="@android:style/TextAppearance">
-	    <item name="android:textSize">20pt</item>
+	    <item name="android:textSize">16pt</item>
 	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaButtonTextAppearance" parent="@android:style/TextAppearance">
@@ -38,6 +38,16 @@
 	    <item name="android:layout_width">132dp</item>
         <item name="android:layout_height">150dp</item>
         <item name="android:layout_weight">1</item>
+	</style>
+	<style name="DyseggxiaEggButton" parent="@style/DyseggxiaButton">
+	    <item name="android:src">@drawable/huevo1</item>
+        <item name="android:scaleType">centerInside</item>
+	    <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_margin">15dp</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:contentDescription">@string/custompingu</item>
 	</style>
 	<style name="DyseggxiaMainPlayButton" parent="@style/DyseggxiaButton">
 	    <item name="android:layout_width">140dp</item>
@@ -64,6 +74,14 @@
         <item name="android:paddingRight">13dp</item>
         <item name="android:background">@drawable/backbutton</item>
         <item name="android:text">@string/back</item>
+	</style>
+	<style name="DyseggxiaContinueButton" parent="@style/DyseggxiaButton">
+	    <item name="android:layout_width">135dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:paddingLeft">13dp</item>
+        <item name="android:background">@drawable/continuebutton</item>
+        <item name="android:text">@string/continuar</item>
 	</style>
 	<style name="DyseggxiaChangeLanguageButton" parent="@style/DyseggxiaButton">
 	    <item name="android:layout_width">150dp</item>

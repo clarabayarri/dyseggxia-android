@@ -25,6 +25,7 @@ public class ProblemAnswerLayout extends GenericDragDropLayout implements View.O
 	}
 	
 	public void initLayout() {
+		answered = false;
 		LayoutParams params = (LayoutParams) this.getLayoutParams();
 		params.leftMargin = 30;
 		params.rightMargin = 30;

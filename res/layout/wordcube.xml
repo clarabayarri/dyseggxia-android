@@ -5,6 +5,7 @@
     android:layout_gravity="center" >
     
 	<ImageView 
+	    android:id="@+id/wordcube_background"
 	    android:src="@drawable/cubeslettercube"
 	    android:scaleType="centerInside"
 	    android:layout_centerInParent="true"

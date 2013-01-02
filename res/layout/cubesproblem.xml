@@ -46,4 +46,13 @@
         
     </FrameLayout>
     
+    <FrameLayout 
+        android:id="@+id/completeDialogView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="60dp"
+        android:visibility="gone" >
+        
+    </FrameLayout>
+    
 </RelativeLayout>

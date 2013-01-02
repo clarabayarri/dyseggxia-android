@@ -60,12 +60,14 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 	@Override
 	public void viewDroppedOnIndex(int index, String text) {
 		wordLayout.setLetterInIndex(index,text);
+		answerLayout.invalidateTouch();
 		check();
 	}
 	
 	@Override
 	public void onClickAnswer(int index, String text) {
 		wordLayout.setLetterInSpace(text);
+		answerLayout.invalidateTouch();
 		check();
 	}
 	
@@ -77,5 +79,11 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 		else {
 			failWithSolution(givenAnswer);
 		}
+	}
+	
+	@Override
+	public void restore() {
+		super.restore();
+		answerLayout.acceptTouches();
 	}
 }
