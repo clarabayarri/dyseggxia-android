@@ -16,8 +16,8 @@ import dyseggxia.viewControllers.GenericCubesProblemViewController;
 
 public class ProblemWordLayout extends GenericDragDropLayout {
 
+	private static final int INITIAL_ANIMATION_DELAY = 300;
 	private List<String> originalWord;
-	private List<String> displayWord;
 	private List<WordCube> children;
 	
 	public ProblemWordLayout(GenericCubesProblemViewController delegate, List<String> word, 
@@ -26,7 +26,6 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 		this.setOrientation(HORIZONTAL);
 		this.setGravity(Gravity.CENTER_VERTICAL);
 		this.originalWord = word;
-		this.displayWord = new ArrayList<String>(word);
 		setDelegate(delegate);
 		setDraggable(contentsShouldBeDraggable);
 	}
@@ -35,7 +34,7 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		if (w > 0 && h > 0) {
-			int wordWidth = w/displayWord.size();
+			int wordWidth = w/originalWord.size();
 			if(h > w) {
 				this.setPadding(0, (h - wordWidth)/2, 0, (h - wordWidth)/2);
 			}
@@ -65,7 +64,7 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 	}
 	
 	private void fixPadding() {
-		int cubePadding = (int) (0.2*getChildAt(0).getMeasuredWidth());
+		int cubePadding = Math.max(20, (int) (0.2*getChildAt(0).getMeasuredWidth()));
 		for (WordCube child : children) {
 			child.setPadding(cubePadding);
 		}
@@ -85,13 +84,24 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 			label.setTextSize(TypedValue.COMPLEX_UNIT_PT,14);
 		}
 		child.setLayoutParams(params);
-		int padding = (int)(child.getWidth() * 0.3);
-		child.setPadding(0, padding, padding, 0);
 		children.add(index, letterView);
 	}
 	
 	public void restoreOriginalWord() {
-		initLayout();
+		answered = false;
+		for (int i = children.size() - 1; i >= originalWord.size(); --i) {
+			removeCubeAt(i);
+		}
+		for(int i = 0; i < originalWord.size(); ++i) {
+			String letter = originalWord.get(i);
+			if (children.size() > i) {
+				children.get(i).changeDisplayedText(letter);
+				children.get(i).showBackground();
+			} else {
+				addCube(i, letter);
+			}
+		}
+		fixPadding();
 	}
 	
 	public void addSpaceInIndex(int index) {
@@ -142,7 +152,7 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 			WordCube child = children.get(i);
 			child.getView().startAnimation(getCustomSuccessAnimation(i*100));
 		}
-		return 700 + 100*(children.size() - 1);
+		return INITIAL_ANIMATION_DELAY + 700 + 100*(children.size() - 1);
 	}
 	
 	private Animation getCustomSuccessAnimation(int delay) {
@@ -150,19 +160,19 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 		
 		TranslateAnimation animation = new TranslateAnimation(0.0f, 0.0f, 0.0f, -(0.20f*childHeight));
 		animation.setDuration(150);
-		animation.setStartOffset(delay + 0);
+		animation.setStartOffset(INITIAL_ANIMATION_DELAY + delay + 0);
 		
 		TranslateAnimation animation2 = new TranslateAnimation(0.0f, 0.0f, 0.0f, (0.30f*childHeight));
 		animation2.setDuration(300);
-		animation2.setStartOffset(delay + 150);
+		animation2.setStartOffset(INITIAL_ANIMATION_DELAY + delay + 150);
 		
 		TranslateAnimation animation3 = new TranslateAnimation(0.0f, 0.0f, 0.0f, -(0.16f*childHeight));
 		animation3.setDuration(150);
-		animation3.setStartOffset(delay + 450);
+		animation3.setStartOffset(INITIAL_ANIMATION_DELAY + delay + 450);
 		
 		TranslateAnimation animation4 = new TranslateAnimation(0.0f, 0.0f, 0.0f, (0.06f*childHeight));
 		animation4.setDuration(100);
-		animation4.setStartOffset(delay + 600);
+		animation4.setStartOffset(INITIAL_ANIMATION_DELAY + delay + 600);
 		
 		AnimationSet set = new AnimationSet(true);
 		set.addAnimation(animation);
@@ -179,7 +189,7 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 			WordCube child = children.get(i);
 			child.getView().startAnimation(getCustomFailAnimation());
 		}
-		return 875;
+		return INITIAL_ANIMATION_DELAY + 875;
 	}
 	
 	public void animateFailByShakingIndex(int index) {
@@ -193,19 +203,19 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 		
 		TranslateAnimation animation = new TranslateAnimation(0.0f, -(0.1f*childWidth), 0.0f, 0.0f);
 		animation.setDuration(250);
-		animation.setStartOffset(0);
+		animation.setStartOffset(INITIAL_ANIMATION_DELAY + 0);
 		
 		TranslateAnimation animation2 = new TranslateAnimation(0.0f, (0.2f*childWidth), 0.0f, 0.0f);
 		animation2.setDuration(250);
-		animation2.setStartOffset(250);
+		animation2.setStartOffset(INITIAL_ANIMATION_DELAY + 250);
 		
 		TranslateAnimation animation3 = new TranslateAnimation(0.0f, -(0.2f*childWidth), 0.0f, 0.0f);
 		animation3.setDuration(250);
-		animation3.setStartOffset(500);
+		animation3.setStartOffset(INITIAL_ANIMATION_DELAY + 500);
 		
 		TranslateAnimation animation4 = new TranslateAnimation(0.0f, (0.1f*childWidth), 0.0f, 0.0f);
 		animation4.setDuration(125);
-		animation4.setStartOffset(750);
+		animation4.setStartOffset(INITIAL_ANIMATION_DELAY + 750);
 		
 		AnimationSet set = new AnimationSet(true);
 		set.addAnimation(animation);

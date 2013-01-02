@@ -77,7 +77,7 @@ public class CubesActivity extends TrackedActivity {
 		int score = Math.max(0, level.getNumber() + 1 - intents);
 		prefController.increaseScore(score);
 		
-		CompleteDialogController dialog = new CompleteDialogController(this, solution);
+		CompleteDialogController dialog = new CompleteDialogController(this, solution, score);
 		dialog.bindView(findViewById(R.id.cubesproblemmain));
 		
 		// TODO: check achievements

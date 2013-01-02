@@ -2,30 +2,35 @@
 <resources>
 
     <string name="app_name">Dyseggxia</string>
-    <string name="level_select">Selecciona un nivel</string>
-    <string name="description">descripción</string>
-    <string name="activate_tracking">Activar tracking</string>
-    <string name="usernameHint">username</string>
     <string name="ok">OK</string>
-	<string name="level0">Fácil</string>
-	<string name="level1">Medio</string>
-	<string name="level2">Difícil</string>
-	<string name="back">Atrás</string>
-	<string name="security_code">código de seguridad</string>
-	<string name="direction">dirección</string>
-	<string name="derivation">Derivación</string>
-	<string name="insertion">Inserción</string>
-	<string name="omission">Omisión</string>
-	<string name="substitution">Sustitución</string>
-	<string name="sentenceseparation">Separación</string>
-	<string name="childrenmode">modo infantil</string>
-	<string name="adultmode">modo adulto</string>
+	<string name="level0">Easy</string>
+	<string name="level1">Medium</string>
+	<string name="level2">Hard</string>
+	<string name="back">Back</string>
+	<string name="continuar">Continue</string>
+	<string name="direction">direction</string>
+	<string name="derivation">Derivation</string>
+	<string name="insertion">Insertion</string>
+	<string name="omission">Omission</string>
+	<string name="substitution">Substitution</string>
+	<string name="sentenceseparation">Separation</string>
 	
-	<string name="menulogo">logotipo</string>
+	<string name="menulogo">logo</string>
 	<string name="play">Play</string>
-	<string name="language">idioma</string>
+	<string name="language">language</string>
 	<string name="spanish">English</string>
-	<string name="scorebucket">Contador de puntos</string>
+	<string name="scorebucket">Score counter</string>
+	<string name="custompingu">Custom penguin</string>
+	<string name="fish">fish</string>
+	<string name="score">score</string>
 	
-	<string name="word_cube_background">fondo de un cubo</string>
+	<string name="insertion_desc">Find the missing letter!</string>
+	<string name="omission_desc">Take out the extra letter!</string>
+	<string name="substitution_desc">Change a letter!</string>
+	<string name="derivation_desc">Choose!</string>
+	<string name="separation_desc">Cut into words!</string>
+	
+	<string name="solution">solution</string>
+	
+	<string name="word_cube_background">cube</string>
 </resources>

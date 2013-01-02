@@ -45,10 +45,10 @@ public class AssetsReader {
 				String[] data = readData[i].split("(\\s)+");
 				if(data.length >= 3) {
 					WordProblemDataTuple newData = new WordProblemDataTuple();
-					newData.word = data[0];
+					newData.word = data[0].trim();
 					newData.startIndex = Integer.valueOf(data[1].substring(0, 1));
 					newData.endIndex = Integer.valueOf(data[1].substring(data[1].length()-1, data[1].length()));
-					newData.answers = data[2].split("\\|");
+					newData.answers = data[2].trim().split("\\|");
 					newData.levelNumber = level;
 					newData.language = lang;
 					newData.number = index;
@@ -61,7 +61,7 @@ public class AssetsReader {
 		for (String type : sentenceProblemTypes) {
 			String[] data = readProblemsFromFile(type + "-" + trueLevel + "-" + lang + ".txt");
 			for(int i = 0; i < data.length; ++i) {
-				String line = data[i];
+				String line = data[i].trim();
 				WordProblemDataTuple problem = new WordProblemDataTuple();
 				problem.word = line;
 				problem.levelNumber = level;

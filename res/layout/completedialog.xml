@@ -1,28 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/howtobackground"
-    android:layout_margin="40dp"
-    android:padding="20dp" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
     
-	<TextView 
-	    android:id="@+id/completedialogSolutionLabel"
-	    android:textAppearance="@style/DyseggxiaTitleAppearance" 
-	    android:layout_centerHorizontal="true"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_marginTop="20dp"
-	    android:text="@string/solution" />
+    <RelativeLayout 
+        android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="@drawable/howtobackground"
+	    android:layout_margin="60dp"
+	    android:padding="10dp"
+    	android:id="@+id/completeDialogParent" >
+    	
+        <TextView 
+		    android:id="@+id/completedialogSolutionLabel"
+		    android:textAppearance="@style/DyseggxiaTitleAppearance" 
+		    android:layout_centerHorizontal="true"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="20dp"
+		    android:text="@string/solution" />
+		
+		<Button 
+		    android:id="@+id/completedialogBackButton"
+		    style="@style/DyseggxiaBackButton"
+		    android:layout_alignParentBottom="true"/>
+		
+		<Button 
+		    android:id="@+id/completedialogContinueButton"
+		    style="@style/DyseggxiaContinueButton"
+		    android:layout_alignParentRight="true"
+		    android:layout_alignParentBottom="true"/>
+		
+	    <ImageView 
+	        android:id="@+id/completedialogFishScoreImage"
+	        android:layout_width="40dp"
+	        android:layout_height="40dp"
+	        android:src="@drawable/plus1"
+	        android:scaleType="fitCenter"
+	        android:contentDescription="@string/score"
+	        android:layout_centerVertical="true"
+	        android:layout_alignLeft="@id/completedialogContinueButton"
+	        android:visibility="gone"/>
+		
+    </RelativeLayout>
+    
+    <ImageView 
+        android:id="@+id/completedialogFishImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/fish"
+        android:src="@drawable/fish"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        />
+    
 	
-	<Button 
-	    android:id="@+id/completedialogBackButton"
-	    style="@style/DyseggxiaBackButton"
-	    android:layout_alignParentBottom="true"/>
-	
-	<Button 
-	    android:id="@+id/completedialogContinueButton"
-	    style="@style/DyseggxiaContinueButton"
-	    android:layout_alignParentRight="true"
-	    android:layout_alignParentBottom="true"/>
 </RelativeLayout>

@@ -41,4 +41,8 @@ public class WordCube extends GenericDraggableCube {
 	public void hideBackground() {
 		view.findViewById(R.id.wordcube_background).setVisibility(View.INVISIBLE);
 	}
+
+	public void showBackground() {
+		view.findViewById(R.id.wordcube_background).setVisibility(View.VISIBLE);
+	}
 }

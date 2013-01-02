@@ -2,25 +2,18 @@
 <resources>
 
     <string name="app_name">Dyseggxia</string>
-    <string name="level_select">Selecciona un nivel</string>
-    <string name="description">descripción</string>
-    <string name="activate_tracking">Activar tracking</string>
-    <string name="usernameHint">username</string>
     <string name="ok">OK</string>
 	<string name="level0">Fácil</string>
 	<string name="level1">Medio</string>
 	<string name="level2">Difícil</string>
 	<string name="back">Atrás</string>
 	<string name="continuar">Continuar</string>
-	<string name="security_code">código de seguridad</string>
 	<string name="direction">dirección</string>
 	<string name="derivation">Derivación</string>
 	<string name="insertion">Inserción</string>
 	<string name="omission">Omisión</string>
 	<string name="substitution">Sustitución</string>
 	<string name="sentenceseparation">Separación</string>
-	<string name="childrenmode">modo infantil</string>
-	<string name="adultmode">modo adulto</string>
 	
 	<string name="menulogo">logotipo</string>
 	<string name="play">Jugar</string>
@@ -28,6 +21,8 @@
 	<string name="spanish">Español</string>
 	<string name="scorebucket">Contador de puntos</string>
 	<string name="custompingu">Pingüino personalizado</string>
+	<string name="fish">pez</string>
+	<string name="score">puntuación</string>
 	
 	<string name="insertion_desc">Falta una letra!</string>
 	<string name="omission_desc">Sobra una letra!</string>
@@ -37,5 +32,5 @@
 	
 	<string name="solution">solución</string>
 	
-	<string name="word_cube_background">fondo de un cubo</string>
+	<string name="word_cube_background">cubo</string>
 </resources>

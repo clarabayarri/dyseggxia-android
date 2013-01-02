@@ -4,7 +4,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import dyseggxia.views.AnswerCube;
 import dyseggxia.views.WordCube;
 
@@ -108,9 +107,10 @@ public class DragHelper {
 	
 	private void clean() {
 		originalDraggedView = null;
-		LayoutParams params = (LayoutParams) movingView.getLayoutParams();
-		params.setMargins(0, 0, 0, 0);
-		movingView.setLayoutParams(params);
+		//LayoutParams params = (LayoutParams) movingView.getLayoutParams();
+		//params.setMargins(0, 0, 0, 0);
+		//movingView.setLayoutParams(params);
+		movingView.setPadding(0, 0, 0, 0);
 		movingView.removeAllViews();
 		movingView.setVisibility(View.GONE);
 		top = 0;
@@ -136,11 +136,15 @@ public class DragHelper {
 	
 	private void updateMovingView(MotionEvent event) {
 		float[] position = getPosition(event);
-		LayoutParams params = (LayoutParams) movingView.getLayoutParams();
-		params.setMargins((int) (position[0] - initialTouchDelta[0]), 
+		//LayoutParams params = (LayoutParams) movingView.getLayoutParams();
+		//params.setMargins((int) (position[0] - initialTouchDelta[0]), 
+		//		(int) (position[1] - initialTouchDelta[1]), 
+		//		(int) (totalWidthMargin - position[0] + initialTouchDelta[0]), 
+		//		(int) (totalHeightMargin - position[1] + initialTouchDelta[1]));
+		//movingView.setLayoutParams(params);
+		movingView.setPadding((int) (position[0] - initialTouchDelta[0]), 
 				(int) (position[1] - initialTouchDelta[1]), 
 				(int) (totalWidthMargin - position[0] + initialTouchDelta[0]), 
 				(int) (totalHeightMargin - position[1] + initialTouchDelta[1]));
-		movingView.setLayoutParams(params);
 	}
 }
