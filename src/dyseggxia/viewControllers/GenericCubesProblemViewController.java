@@ -10,6 +10,8 @@ import dyseggxia.views.ProblemWordLayout;
 
 public abstract class GenericCubesProblemViewController {
 
+	private static final int delayExtra = 100;
+	
 	protected CubesActivity context;
 	
 	protected LinearLayout view;
@@ -44,7 +46,7 @@ public abstract class GenericCubesProblemViewController {
 		handler.postDelayed(new Runnable() {
 			public void run() {
 				context.problemAccomplished(correctSolution, intents, wrongSolutions);
-			}}, delay);
+			}}, delay + delayExtra);
 	}
 	
 	public void failWithSolution(String solution) {
@@ -54,7 +56,7 @@ public abstract class GenericCubesProblemViewController {
 		handler.postDelayed(new Runnable() {
 			public void run() {
 				restore();
-			}}, delay);
+			}}, delay + delayExtra);
 	}
 	
 	public void restore() {

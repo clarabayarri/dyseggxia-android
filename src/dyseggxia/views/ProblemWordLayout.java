@@ -40,6 +40,7 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 				this.setPadding(0, (h - wordWidth)/2, 0, (h - wordWidth)/2);
 			}
 		}
+		fixPadding();
 	}
 	
 	public String getDisplayedText() {
@@ -51,11 +52,22 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 	}
 	
 	public void initLayout() {
+		answered = false;
+		this.removeAllViews();
 		children = new ArrayList<WordCube>();
 		
 		for(int i = 0; i < originalWord.size(); ++i) {
 			String letter = originalWord.get(i);
 			addCube(i, letter);
+		}
+		
+		fixPadding();
+	}
+	
+	private void fixPadding() {
+		int cubePadding = (int) (0.2*getChildAt(0).getMeasuredWidth());
+		for (WordCube child : children) {
+			child.setPadding(cubePadding);
 		}
 	}
 	
@@ -65,10 +77,10 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 		this.addView(child, index);
 		LayoutParams params = (LayoutParams) child.getLayoutParams();
 		params.weight = 1;
-		if (originalWord.size() > 8) {
+		if (originalWord.size() > 9) {
 			TextView label = (TextView) child.findViewById(R.id.cube_contents);
 			label.setTextSize(TypedValue.COMPLEX_UNIT_PT,12);
-		} else if (originalWord.size() > 6) {
+		} else if (originalWord.size() > 7) {
 			TextView label = (TextView) child.findViewById(R.id.cube_contents);
 			label.setTextSize(TypedValue.COMPLEX_UNIT_PT,14);
 		}
@@ -79,14 +91,13 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 	}
 	
 	public void restoreOriginalWord() {
-		answered = false;
-		this.removeAllViews();
 		initLayout();
 	}
 	
 	public void addSpaceInIndex(int index) {
 		addCube(index, " ");
 		children.get(index).hideBackground();
+		fixPadding();
 	}
 
 	public void setLetterInIndex(int index, String text) {
@@ -104,8 +115,9 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 	}
 	
 	public void removeCubeAt(int index) {
-		this.removeViewAt(index);
 		children.remove(index);
+		removeViewAt(index);
+		fixPadding();
 	}
 
 	@Override
@@ -121,6 +133,7 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 			String letter = text.substring(i,i+1);
 			addCube(this.getChildCount(), letter);
 		}
+		fixPadding();
 	}
 	
 	public int animateSuccess() {

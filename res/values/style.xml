@@ -10,7 +10,7 @@
 		<item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaTitleAppearance" parent="@android:style/TextAppearance">
-	    <item name="android:textSize">14pt</item>
+	    <item name="android:textSize">16pt</item>
 	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaSubtitleAppearance" parent="@android:style/TextAppearance">
@@ -19,6 +19,10 @@
 	</style>
 	<style name="DyseggxiaProblemLetterAppearance" parent="@android:style/TextAppearance">
 	    <item name="android:textSize">16pt</item>
+	    <item name="android:textStyle">bold</item>
+	</style>
+	<style name="DyseggxiaVerticalAnswerLetterAppearance" parent="@android:style/TextAppearance">
+	    <item name="android:textSize">14pt</item>
 	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaButtonTextAppearance" parent="@android:style/TextAppearance">
@@ -100,10 +104,5 @@
         <item name="android:paddingTop">23dp</item>
         <item name="android:background">@drawable/level0button</item>
         <item name="android:text">@string/level0</item>
-	</style>
-	<style name="DyseggxiaDialog" parent="android:Theme.Dialog">
-	    <item name="android:windowNoTitle">true</item>
-	    <item name="android:textColor">@color/dark_grey</item>
-	    <item name="android:textStyle">bold</item>
 	</style>
 </resources>

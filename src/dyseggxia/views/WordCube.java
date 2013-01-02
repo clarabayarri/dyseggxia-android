@@ -29,6 +29,10 @@ public class WordCube extends GenericDraggableCube {
 		return view;
 	}
 	
+	public void setPadding(int value) {
+		label.setPadding(0, value, value, 0);
+	}
+	
 	public void changeDisplayedText(String newText) {
 	    displayLetter = newText;
 	    label.setText(displayLetter);

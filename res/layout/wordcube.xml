@@ -16,10 +16,8 @@
 	    android:id="@+id/cube_contents"
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
-	    android:paddingLeft="10dp"
-	    android:paddingBottom="11dp"
-	    android:paddingTop="25dp"
-	    android:paddingRight="25dp"
+	    android:paddingTop="20dp"
+	    android:paddingRight="20dp"
 	    android:textAppearance="@style/DyseggxiaProblemLetterAppearance"
 	    android:gravity="center" />
     

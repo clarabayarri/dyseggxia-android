@@ -24,8 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InfoActivity" android:theme="@style/DyseggxiaDialog" android:screenOrientation="landscape" />
-        <activity android:name=".LevelSelectActivity" android:screenOrientation="landscape" />
         <activity android:name=".PlayActivity" android:screenOrientation="landscape" />
         <activity android:name=".CubesActivity" android:screenOrientation="landscape" />
     </application>
