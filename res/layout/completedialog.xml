@@ -56,5 +56,16 @@
         android:visibility="gone"
         />
     
-	
+	<ImageView 
+        android:id="@+id/completedialogPenguinImage"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/fish"
+        android:src="@drawable/fish"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        />
+    
 </RelativeLayout>

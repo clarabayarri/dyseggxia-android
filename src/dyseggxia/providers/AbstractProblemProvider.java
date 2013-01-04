@@ -5,7 +5,6 @@ import dyseggxia.domainModel.Problem;
 
 public abstract class AbstractProblemProvider {
 
-	protected DatabaseHelper helper;
 	protected AnswerProviderI answerProvider;
 	
 	protected abstract Problem mapProblem(Cursor cursor);

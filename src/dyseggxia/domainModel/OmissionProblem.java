@@ -8,13 +8,14 @@ public class OmissionProblem extends WordProblem {
 
 	public static final String typeName = "omission";
 	
-	public OmissionProblem(int level, String language, int number, String word, int wordIndex, int endIndex) {
-		super(level, language, number, word, wordIndex, endIndex);
+	public OmissionProblem(int id, int level, String language, int number, String word, 
+			int wordIndex, int endIndex) {
+		super(id, level, language, number, word, wordIndex, endIndex);
 	}
 	
-	public OmissionProblem(int level, String language, int number, String word, 
+	public OmissionProblem(int id, int level, String language, int number, String word, 
 			int wordIndex, int endIndex, String insertedLetter) {
-		this(level, language, number, word, wordIndex, endIndex);
+		this(id, level, language, number, word, wordIndex, endIndex);
 		this.answers = new ArrayList<String>();
 		this.answers.add(insertedLetter);
 	}

@@ -8,13 +8,13 @@ public class SubstitutionProblem extends WordProblem {
 
 	public static final String typeName = "substitution";
 	
-	public SubstitutionProblem(int level, String language, int number, String word, int wordIndex, int endIndex) {
-		super(level, language, number, word, wordIndex, endIndex);
+	public SubstitutionProblem(int id, int level, String language, int number, String word, int wordIndex, int endIndex) {
+		super(id, level, language, number, word, wordIndex, endIndex);
 	}
 	
-	public SubstitutionProblem(int level, String language, int number, String word, 
+	public SubstitutionProblem(int id, int level, String language, int number, String word, 
 			int wordIndex, int endIndex, List<String> wrongAnswers) {
-		this(level, language, number, word, wordIndex, endIndex);
+		this(id, level, language, number, word, wordIndex, endIndex);
 		this.answers = new ArrayList<String>(wrongAnswers);
 	}
 

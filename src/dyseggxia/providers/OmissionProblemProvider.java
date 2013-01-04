@@ -10,13 +10,13 @@ import dyseggxia.domainModel.Problem;
 
 public class OmissionProblemProvider extends AbstractProblemProvider{
 	
-	public OmissionProblemProvider(DatabaseHelper helper, AnswerProviderI answerProvider) {
-		this.helper = helper;
+	public OmissionProblemProvider(AnswerProviderI answerProvider) {
 		this.answerProvider = answerProvider;
 	}
 	
 	@Override
 	protected Problem mapProblem(Cursor cursor) {
+		int id = cursor.getInt(ProblemTable.COLUMN_ID_INDEX);
 		int problemNumber = cursor.getInt(ProblemTable.COLUMN_NUMBER_INDEX);
 		String problemWord = cursor.getString(ProblemTable.COLUMN_WORD_INDEX);
 		int omissionIndex = cursor.getInt(ProblemTable.COLUMN_INSERTION_INDEX_INDEX);
@@ -25,7 +25,7 @@ public class OmissionProblemProvider extends AbstractProblemProvider{
 		String language = cursor.getString(ProblemTable.COLUMN_LEVEL_LANGUAGE_INDEX);
 		cursor.close();
 		
-		OmissionProblem problem = new OmissionProblem(levelNumber, language, problemNumber,
+		OmissionProblem problem = new OmissionProblem(id, levelNumber, language, problemNumber,
 				problemWord, omissionIndex, endIndex);
 		findInsertedLetter(problem);
 		

@@ -20,7 +20,7 @@ public class CompletedProblemDataTable extends DatabaseTable {
 			COLUMN_PROBLEM_ID + " integer not null, " + 
 			COLUMN_FAILS + " integer not null default 0, " +
 			COLUMN_DURATION + " double, " + 
-			COLUMN_DATE + " timestamp, " + 
+			COLUMN_DATE + " integer, " + 
 			COLUMN_WRONG_SOLUTIONS + " text, " + 
 			"foreign key (" + COLUMN_PROBLEM_ID + ") " +
 			"references " + ProblemTable.TABLE_NAME + " (" + ProblemTable.COLUMN_ID + "));";

@@ -22,7 +22,7 @@
 	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaVerticalAnswerLetterAppearance" parent="@android:style/TextAppearance">
-	    <item name="android:textSize">14pt</item>
+	    <item name="android:textSize">12pt</item>
 	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaButtonTextAppearance" parent="@android:style/TextAppearance">

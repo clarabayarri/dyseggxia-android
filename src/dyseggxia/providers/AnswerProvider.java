@@ -30,6 +30,7 @@ public class AnswerProvider implements AnswerProviderI {
 			cursor.moveToNext();
 		}
 		cursor.close();
+		database.close();
 		return answers;
 	}
 

@@ -6,19 +6,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import dyseggxia.domainControllers.AchievementController;
 import dyseggxia.domainControllers.PreferencesController;
-import dyseggxia.utilities.PreferencesAdapter;
+import dyseggxia.factories.ControllerFactory;
 
 public class PlayActivity extends Activity implements OnClickListener {
 	
 	private PreferencesController prefController;
+	private AchievementController achievementController;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.play);
-		prefController = new PreferencesController(new PreferencesAdapter(this));
+		ControllerFactory factory = ControllerFactory.getInstance(this);
+		prefController = factory.getPreferencesController();
+		achievementController = factory.getAchievementController();
 	}
 	
 	@Override
@@ -29,7 +34,7 @@ public class PlayActivity extends Activity implements OnClickListener {
 
 	private void loadInfo() {
 		loadLevel();
-		// TODO: load saved penguin
+		loadPenguin();
 		loadScore();
 	}
 	
@@ -45,6 +50,29 @@ public class PlayActivity extends Activity implements OnClickListener {
 		} else {
 			levelButton.setText(R.string.level2);
 			levelButton.setBackgroundResource(R.drawable.level2button);
+		}
+	}
+	
+	private void loadPenguin() {
+		ImageButton penguinView = (ImageButton) findViewById(R.id.playPenguinButton);
+		if (achievementController.isAchievementUnlockedWithCode(
+				AchievementController.AchievementIdentifierUnlockPenguin6)) {
+			penguinView.setImageResource(R.drawable.huevo67);
+		} else if (achievementController.isAchievementUnlockedWithCode(
+				AchievementController.AchievementIdentifierUnlockPenguin5)) {
+			penguinView.setImageResource(R.drawable.huevo50);
+		} else if (achievementController.isAchievementUnlockedWithCode(
+				AchievementController.AchievementIdentifierUnlockPenguin4)) {
+			penguinView.setImageResource(R.drawable.huevo33b);
+		} else if (achievementController.isAchievementUnlockedWithCode(
+				AchievementController.AchievementIdentifierUnlockPenguin3)) {
+			penguinView.setImageResource(R.drawable.huevo22);
+		} else if (achievementController.isAchievementUnlockedWithCode(
+				AchievementController.AchievementIdentifierUnlockPenguin2)) {
+			penguinView.setImageResource(R.drawable.huevo15);
+		} else if (achievementController.isAchievementUnlockedWithCode(
+				AchievementController.AchievementIdentifierUnlockPenguin1)) {
+			penguinView.setImageResource(R.drawable.huevo10);
 		}
 	}
 	
@@ -65,7 +93,7 @@ public class PlayActivity extends Activity implements OnClickListener {
 			prefController.increaseCurrentLevel();
 			loadInfo();
 			break;
-		case R.id.customPingu:
+		case R.id.playPenguinButton:
 			startCustomPingu();
 			break;
 		}

@@ -10,6 +10,7 @@ import dyseggxia.factories.ProviderFactory;
 public class ProblemProvider extends AbstractProblemProvider implements ProblemProviderI {
 	
 	private ProviderFactory providerFactory;
+	private DatabaseHelper helper;
 	
 	public ProblemProvider(Context context, DatabaseHelper helper) {
 		providerFactory = ProviderFactory.getInstance(context);
@@ -27,7 +28,9 @@ public class ProblemProvider extends AbstractProblemProvider implements ProblemP
 			cursor.close();
 			throw new Exception("no problem found");
 		}
-		return mapProblem(cursor);
+		Problem problem = mapProblem(cursor);
+		database.close();
+		return problem;
 	}
 
 	@Override

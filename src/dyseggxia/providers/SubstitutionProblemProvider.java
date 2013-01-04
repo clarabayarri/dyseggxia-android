@@ -9,13 +9,13 @@ import dyseggxia.domainModel.SubstitutionProblem;
 
 public class SubstitutionProblemProvider extends AbstractProblemProvider {
 	
-	public SubstitutionProblemProvider(DatabaseHelper helper, AnswerProviderI answerProvider) {
-		this.helper = helper;
+	public SubstitutionProblemProvider(AnswerProviderI answerProvider) {
 		this.answerProvider = answerProvider;
 	}
 	
 	@Override
 	protected Problem mapProblem(Cursor cursor) {
+		int id = cursor.getInt(ProblemTable.COLUMN_ID_INDEX);
 		int problemNumber = cursor.getInt(ProblemTable.COLUMN_NUMBER_INDEX);
 		String problemWord = cursor.getString(ProblemTable.COLUMN_WORD_INDEX);
 		int insertionIndex = cursor.getInt(ProblemTable.COLUMN_INSERTION_INDEX_INDEX);
@@ -24,7 +24,7 @@ public class SubstitutionProblemProvider extends AbstractProblemProvider {
 		String language = cursor.getString(ProblemTable.COLUMN_LEVEL_LANGUAGE_INDEX);
 		cursor.close();
 
-		SubstitutionProblem problem = new SubstitutionProblem(levelNumber, language, problemNumber,
+		SubstitutionProblem problem = new SubstitutionProblem(id, levelNumber, language, problemNumber,
 				problemWord, insertionIndex, endIndex);
 		findAnswers(problem);
 

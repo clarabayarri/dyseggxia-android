@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import com.google.android.apps.analytics.easytracking.TrackedActivity;
 
+import dyseggxia.domainControllers.AchievementController;
+import dyseggxia.domainControllers.CompletedProblemController;
 import dyseggxia.domainControllers.LevelController;
 import dyseggxia.domainControllers.PreferencesController;
 import dyseggxia.domainControllers.ProblemController;
@@ -22,6 +24,8 @@ public class CubesActivity extends TrackedActivity {
 	private GenericCubesProblemViewController viewController;
 	private ProblemController problemController;
 	private PreferencesController prefController;
+	private CompletedProblemController completedProblemController;
+	private AchievementController achievementController;
 	private Level level;
 	private Problem problem;
 	
@@ -29,10 +33,12 @@ public class CubesActivity extends TrackedActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.cubesproblem);
-		ControllerFactory factory = new ControllerFactory(this);
+		ControllerFactory factory = ControllerFactory.getInstance(this);
 		LevelController levelController = factory.getLevelController();
 		problemController = factory.getProblemController();
 		prefController = factory.getPreferencesController();
+		completedProblemController = factory.getCompletedProblemController();
+		achievementController = factory.getAchievementController();
 		
 		level = levelController.getLevel(prefController.getCurrentLevel(), 
 				prefController.getCurrentLanguage());
@@ -72,7 +78,7 @@ public class CubesActivity extends TrackedActivity {
 	}
 	
 	public void problemAccomplished(String solution, int intents, String wrongSolutions) {
-		// TODO: save completed problem
+		completedProblemController.saveCompletedProblem(problem, wrongSolutions, intents);
 		
 		int score = Math.max(0, level.getNumber() + 1 - intents);
 		prefController.increaseScore(score);
@@ -80,7 +86,7 @@ public class CubesActivity extends TrackedActivity {
 		CompleteDialogController dialog = new CompleteDialogController(this, solution, score);
 		dialog.bindView(findViewById(R.id.cubesproblemmain));
 		
-		// TODO: check achievements
+		achievementController.checkForAchievementImprovement();
 	}
 	
 	public void continuePlaying() {

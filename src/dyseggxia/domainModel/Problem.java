@@ -4,15 +4,21 @@ import java.util.List;
 
 public abstract class Problem {
 	
+	private int id;
 	private int level;
 	private String language;
 	private int number;
 	protected List<String> displayedText;
 	
-	public Problem(int level, String language, int number) {
+	public Problem(int id, int level, String language, int number) {
+		this.id = id;
 		this.level = level;
 		this.language = language;
 		this.number = number;
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 	public int getLevel() {

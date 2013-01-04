@@ -27,5 +27,6 @@ assets/
 # robolectric files
 tmp/
 
+res/.DS_STORE
 .metadata
 .settings

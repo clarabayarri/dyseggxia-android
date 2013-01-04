@@ -20,7 +20,7 @@ public class ProblemTable extends DatabaseTable {
 	public static final String COLUMN_LEVEL_NUMBER = "level_number";
 	public static final String COLUMN_LEVEL_LANGUAGE = "level_language";
 	public static final String[] ALL_COLUMNS = {COLUMN_NUMBER, COLUMN_TYPE, COLUMN_WORD, 
-		COLUMN_INSERTION_INDEX, COLUMN_END_INDEX, COLUMN_LEVEL_NUMBER, COLUMN_LEVEL_LANGUAGE};
+		COLUMN_INSERTION_INDEX, COLUMN_END_INDEX, COLUMN_LEVEL_NUMBER, COLUMN_LEVEL_LANGUAGE, COLUMN_ID};
 	public static final int COLUMN_NUMBER_INDEX = 0;
 	public static final int COLUMN_TYPE_INDEX = 1;
 	public static final int COLUMN_WORD_INDEX = 2;
@@ -28,6 +28,7 @@ public class ProblemTable extends DatabaseTable {
 	public static final int COLUMN_END_INDEX_INDEX = 4;
 	public static final int COLUMN_LEVEL_NUMBER_INDEX = 5;
 	public static final int COLUMN_LEVEL_LANGUAGE_INDEX = 6;
+	public static final int COLUMN_ID_INDEX = 7;
 	
 	private static String CREATE_TABLE = "create table " +
 			TABLE_NAME + "(" + COLUMN_ID + " integer primary key autoincrement, " +

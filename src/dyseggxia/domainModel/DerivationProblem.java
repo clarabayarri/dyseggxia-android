@@ -8,12 +8,14 @@ public class DerivationProblem extends WordProblem {
 
 	public static final String typeName = "derivation";
 	
-	public DerivationProblem(int level, String language, int number, String word, int wordIndex, int endIndex) {
-		super(level, language, number, word, wordIndex, endIndex);
+	public DerivationProblem(int id, int level, String language, int number, String word, 
+			int wordIndex, int endIndex) {
+		super(id, level, language, number, word, wordIndex, endIndex);
 	}
 	
-	public DerivationProblem(int level, String language, int number, String word, int wordIndex, int endIndex, List<String> wrongAnswers) {
-		this(level, language, number, word, wordIndex, endIndex);
+	public DerivationProblem(int id, int level, String language, int number, String word, 
+			int wordIndex, int endIndex, List<String> wrongAnswers) {
+		this(id, level, language, number, word, wordIndex, endIndex);
 		this.answers = new ArrayList<String>(wrongAnswers);
 	}
 	
