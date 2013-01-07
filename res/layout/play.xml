@@ -3,18 +3,16 @@
     android:id="@+id/playLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/simplebackground" >
+    android:background="@drawable/simplebackground"
+    android:padding="15dp" >
     
     <Button
         android:id="@+id/playBackButton"
-        style="@style/DyseggxiaBackButton"
-        android:layout_margin="15dp" />
+        style="@style/DyseggxiaBackButton" />
     
     <Button
         android:id="@+id/playChangeLevelButton"
         style="@style/DyseggxiaChangeLevelButton"
-        android:layout_margin="12dp"
-        android:layout_marginRight="15dp"
         android:layout_alignParentRight="true" />
     
     <Button 
@@ -31,20 +29,10 @@
     <ImageView 
         android:id="@+id/fishbucket"
         android:contentDescription="@string/scorebucket"
-        android:src="@drawable/fishbucket"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"/>
+        style="@style/PlayFishBucket" />
     
     <TextView 
         android:id="@+id/playScoreLabel"
-        android:layout_alignRight="@id/fishbucket"
-        android:layout_alignBottom="@id/fishbucket"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:textAppearance="@style/DyseggxiaButtonTextAppearance" />
+        style="@style/PlayScoreLabel" />
 
 </RelativeLayout>

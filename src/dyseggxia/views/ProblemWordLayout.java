@@ -3,7 +3,6 @@ package dyseggxia.views;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -78,10 +77,10 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 		params.weight = 1;
 		if (originalWord.size() > 9) {
 			TextView label = (TextView) child.findViewById(R.id.cube_contents);
-			label.setTextSize(TypedValue.COMPLEX_UNIT_PT,12);
+			label.setTextSize(delegate.getContext().getResources().getDimension(R.dimen.DyseggxiaProblemLetterSmallestAppearanceTextSize));
 		} else if (originalWord.size() > 7) {
 			TextView label = (TextView) child.findViewById(R.id.cube_contents);
-			label.setTextSize(TypedValue.COMPLEX_UNIT_PT,14);
+			label.setTextSize(delegate.getContext().getResources().getDimension(R.dimen.DyseggxiaProblemLetterSmallerAppearanceTextSize));
 		}
 		child.setLayoutParams(params);
 		children.add(index, letterView);

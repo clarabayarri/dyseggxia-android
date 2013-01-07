@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="DyseggxiaTextAppearanceTextSize">16pt</dimen>
+    <dimen name="DyseggxiaTitleAppearanceTextSize">24pt</dimen>
+    <dimen name="DyseggxiaSubtitleAppearanceTextSize">16pt</dimen>
+    <dimen name="DyseggxiaProblemLetterAppearanceTextSize">24pt</dimen>
+    <dimen name="DyseggxiaProblemLetterSmallerAppearanceTextSize">22pt</dimen>
+    <dimen name="DyseggxiaProblemLetterSmallestAppearanceTextSize">20pt</dimen>
+    <dimen name="DyseggxiaVerticalAnswerLetterAppearanceTextSize">18pt</dimen>
+    <dimen name="DyseggxiaButtonTextAppearanceTextSize">14pt</dimen>
+    
+    <dimen name="DyseggxiaLevelButtonWidth">264dp</dimen>
+    <dimen name="DyseggxiaLevelButtonHeight">300dp</dimen>
+    <dimen name="DyseggxiaEggButtonWidth">286dp</dimen>
+    <dimen name="DyseggxiaEggButtonHeight">330dp</dimen>
+    <dimen name="DyseggxiaMainPlayButtonWidth">254dp</dimen>
+    <dimen name="DyseggxiaMainPlayButtonHeight">89dp</dimen>
+    <dimen name="DyseggxiaMainPlayButtonPadding">20dp</dimen>
+    <dimen name="DyseggxiaPlayButtonWidth">254dp</dimen>
+    <dimen name="DyseggxiaPlayButtonHeight">89dp</dimen>
+    <dimen name="DyseggxiaBackButtonWidth">168dp</dimen>
+    <dimen name="DyseggxiaBackButtonHeight">66dp</dimen>
+    <dimen name="DyseggxiaBackButtonBigWidth">225dp</dimen>
+    <dimen name="DyseggxiaBackButtonBigHeight">88dp</dimen>
+    <dimen name="DyseggxiaContinueButtonWidth">225dp</dimen>
+    <dimen name="DyseggxiaContinueButtonHeight">86dp</dimen>
+    <dimen name="DyseggxiaChangeLanguageButtonWidth">200dp</dimen>
+    <dimen name="DyseggxiaChangeLanguageButtonHeight">93dp</dimen>
+    <dimen name="DyseggxiaChangeLevelButtonWidth">184dp</dimen>
+    <dimen name="DyseggxiaChangeLevelButtonHeight">89dp</dimen>
+    
+    <dimen name="MainLogoWidth">748dp</dimen>
+    <dimen name="MainLogoHeight">166dp</dimen>
+    <dimen name="MainLogoMarginTop">130dp</dimen>
+    <dimen name="MainPinguWidth">190dp</dimen>
+    <dimen name="MainPinguHeight">190dp</dimen>
+    <dimen name="MainPinguMargin">15dp</dimen>
+    <dimen name="PlayFishBucketWidth">97dp</dimen>
+    <dimen name="PlayFishBucketHeight">134dp</dimen>
+    <dimen name="CompleteDialogFishImageWidth">166dp</dimen>
+    <dimen name="CompleteDialogFishImageHeight">103dp</dimen>
+    <dimen name="CompleteDialogFishScoreWidth">41dp</dimen>
+    <dimen name="CompleteDialogFishScoreHeight">39dp</dimen>
+    <dimen name="CompleteDialogPenguinWidth">400dp</dimen>
+    <dimen name="CompleteDialogPenguinHeight">330dp</dimen>
+</resources>

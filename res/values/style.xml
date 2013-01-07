@@ -6,32 +6,35 @@
     </style>
     
     <style name="DyseggxiaTextAppearance" parent="@android:style/TextAppearance">
-		<item name="android:textSize">10pt</item>
+		<item name="android:textSize">@dimen/DyseggxiaTextAppearanceTextSize</item>
 		<item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaTitleAppearance" parent="@android:style/TextAppearance">
-	    <item name="android:textSize">16pt</item>
+	    <item name="android:textSize">@dimen/DyseggxiaTitleAppearanceTextSize</item>
 	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaSubtitleAppearance" parent="@android:style/TextAppearance">
-	    <item name="android:textSize">9pt</item>
+	    <item name="android:textSize">@dimen/DyseggxiaSubtitleAppearanceTextSize</item>
 	    <item name="android:textStyle">bold</item>   
 	</style>
 	<style name="DyseggxiaProblemLetterAppearance" parent="@android:style/TextAppearance">
-	    <item name="android:textSize">16pt</item>
+	    <item name="android:textSize">@dimen/DyseggxiaProblemLetterAppearanceTextSize</item>
 	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaVerticalAnswerLetterAppearance" parent="@android:style/TextAppearance">
-	    <item name="android:textSize">12pt</item>
+	    <item name="android:textSize">@dimen/DyseggxiaVerticalAnswerLetterAppearanceTextSize</item>
 	    <item name="android:textStyle">bold</item>
 	</style>
+	
+	<!-- Buttons -->
 	<style name="DyseggxiaButtonTextAppearance" parent="@android:style/TextAppearance">
-	    <item name="android:textSize">10pt</item>
+	    <item name="android:textSize">@dimen/DyseggxiaButtonTextAppearanceTextSize</item>
 	    <item name="android:textStyle">bold</item>
 	</style>
 	<style name="DyseggxiaButton" parent="@android:style/Widget.Button">
 	    <item name="android:onClick">onClick</item>
         <item name="android:layout_margin">10dp</item>
+        <item name="android:scaleType">fitCenter</item>
 	    <item name="android:textAppearance">@style/DyseggxiaButtonTextAppearance</item>
 	</style>
 	<style name="DyseggxiaLevelButton" parent="@style/DyseggxiaButton">
@@ -39,57 +42,62 @@
 	    <item name="android:adjustViewBounds">true</item>
 	    <item name="android:gravity">bottom|center</item>
 	    <item name="android:paddingBottom">25dp</item>
-	    <item name="android:layout_width">132dp</item>
-        <item name="android:layout_height">150dp</item>
+	    <item name="android:layout_width">@dimen/DyseggxiaLevelButtonWidth</item>
+        <item name="android:layout_height">@dimen/DyseggxiaLevelButtonHeight</item>
         <item name="android:layout_weight">1</item>
 	</style>
 	<style name="DyseggxiaEggButton" parent="@style/DyseggxiaButton">
 	    <item name="android:src">@drawable/huevo1</item>
-        <item name="android:scaleType">centerInside</item>
-	    <item name="android:layout_width">200dp</item>
-        <item name="android:layout_height">200dp</item>
-        <item name="android:layout_margin">15dp</item>
+        <item name="android:scaleType">fitCenter</item>
+	    <item name="android:layout_width">@dimen/DyseggxiaEggButtonWidth</item>
+        <item name="android:layout_height">@dimen/DyseggxiaEggButtonHeight</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:contentDescription">@string/custompingu</item>
 	</style>
 	<style name="DyseggxiaMainPlayButton" parent="@style/DyseggxiaButton">
-	    <item name="android:layout_width">140dp</item>
-        <item name="android:layout_height">59dp</item>
+	    <item name="android:layout_width">@dimen/DyseggxiaMainPlayButtonWidth</item>
+        <item name="android:layout_height">@dimen/DyseggxiaMainPlayButtonHeight</item>
         <item name="android:gravity">right|center</item>
-        <item name="android:padding">13dp</item>
-        <item name="android:paddingLeft">40dp</item>
-        <item name="android:paddingRight">20dp</item>
+        <item name="android:padding">@dimen/DyseggxiaMainPlayButtonPadding</item>
         <item name="android:background">@drawable/mainplaybutton</item>
         <item name="android:text">@string/play</item>
 	</style>
 	<style name="DyseggxiaPlayButton" parent="@style/DyseggxiaButton">
-	    <item name="android:layout_width">120dp</item>
-        <item name="android:layout_height">59dp</item>
+	    <item name="android:layout_width">@dimen/DyseggxiaPlayButtonWidth</item>
+        <item name="android:layout_height">@dimen/DyseggxiaPlayButtonHeight</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">13dp</item>
         <item name="android:background">@drawable/blankplaybutton</item>
         <item name="android:text">@string/play</item>
 	</style>
 	<style name="DyseggxiaBackButton" parent="@style/DyseggxiaButton">
-	    <item name="android:layout_width">115dp</item>
-        <item name="android:layout_height">50dp</item>
+	    <item name="android:layout_width">@dimen/DyseggxiaBackButtonWidth</item>
+        <item name="android:layout_height">@dimen/DyseggxiaBackButtonHeight</item>
         <item name="android:gravity">right|center</item>
         <item name="android:paddingRight">13dp</item>
         <item name="android:background">@drawable/backbutton</item>
         <item name="android:text">@string/back</item>
 	</style>
+	<style name="DyseggxiaBackButtonBig" parent="@style/DyseggxiaButton">
+	    <item name="android:layout_width">@dimen/DyseggxiaBackButtonBigWidth</item>
+        <item name="android:layout_height">@dimen/DyseggxiaBackButtonBigHeight</item>
+        <item name="android:gravity">right|center</item>
+        <item name="android:paddingRight">13dp</item>
+        <item name="android:background">@drawable/backbuttonbig</item>
+        <item name="android:text">@string/back</item>
+	</style>
 	<style name="DyseggxiaContinueButton" parent="@style/DyseggxiaButton">
-	    <item name="android:layout_width">135dp</item>
-        <item name="android:layout_height">50dp</item>
+	    <item name="android:layout_width">@dimen/DyseggxiaContinueButtonWidth</item>
+        <item name="android:layout_height">@dimen/DyseggxiaContinueButtonHeight</item>
         <item name="android:gravity">left|center</item>
         <item name="android:paddingLeft">13dp</item>
         <item name="android:background">@drawable/continuebutton</item>
         <item name="android:text">@string/continuar</item>
 	</style>
 	<style name="DyseggxiaChangeLanguageButton" parent="@style/DyseggxiaButton">
-	    <item name="android:layout_width">150dp</item>
-        <item name="android:layout_height">70dp</item>
+	    <item name="android:layout_width">@dimen/DyseggxiaChangeLanguageButtonWidth</item>
+        <item name="android:layout_height">@dimen/DyseggxiaChangeLanguageButtonHeight</item>
         <item name="android:gravity">right</item>
         <item name="android:paddingRight">5dp</item>
         <item name="android:paddingTop">1dp</item>
@@ -97,12 +105,77 @@
         <item name="android:text">@string/spanish</item>
 	</style>
 	<style name="DyseggxiaChangeLevelButton" parent="@style/DyseggxiaButton">
-	    <item name="android:layout_width">140dp</item>
-        <item name="android:layout_height">65dp</item>
+	    <item name="android:layout_width">@dimen/DyseggxiaChangeLevelButtonWidth</item>
+        <item name="android:layout_height">@dimen/DyseggxiaChangeLevelButtonHeight</item>
         <item name="android:gravity">right|center</item>
         <item name="android:paddingRight">15dp</item>
         <item name="android:paddingTop">23dp</item>
         <item name="android:background">@drawable/level0button</item>
         <item name="android:text">@string/level0</item>
+	</style>
+	
+	<!-- Images -->
+	<style name="DyseggxiaImageView">
+	    <item name="android:scaleType">fitCenter</item>
+	</style>
+	
+	<!-- Main menu images -->
+	<style name="MainLogo" parent="DyseggxiaImageView">
+	    <item name="android:src">@drawable/menulogo</item>
+	    <item name="android:layout_width">@dimen/MainLogoWidth</item>
+		<item name="android:layout_height">@dimen/MainLogoHeight</item>
+		<item name="android:layout_centerHorizontal">true</item>
+		<item name="android:layout_marginTop">@dimen/MainLogoMarginTop</item>
+	</style>
+	<style name="MainPingu" parent="DyseggxiaImageView">
+	    <item name="android:src">@drawable/menupingu</item>
+	    <item name="android:layout_width">@dimen/MainPinguWidth</item>
+		<item name="android:layout_height">@dimen/MainPinguHeight</item>
+		<item name="android:layout_alignParentRight">true</item>
+		<item name="android:layout_alignParentBottom">true</item>
+		<item name="android:layout_margin">@dimen/MainPinguMargin</item>
+	</style>
+	
+	<!-- Play menu images -->
+	<style name="PlayFishBucket" parent="DyseggxiaImageView">
+	    <item name="android:src">@drawable/fishbucket</item>
+	    <item name="android:layout_width">@dimen/PlayFishBucketWidth</item>
+		<item name="android:layout_height">@dimen/PlayFishBucketHeight</item>
+		<item name="android:layout_alignParentRight">true</item>
+		<item name="android:layout_alignParentBottom">true</item>
+	</style>
+	<style name="PlayScoreLabel">
+	    <item name="android:layout_width">@dimen/PlayFishBucketWidth</item>
+	    <item name="android:layout_height">40dp</item>
+	    <item name="android:textAppearance">@style/DyseggxiaButtonTextAppearance</item>
+	    <item name="android:gravity">center</item>
+	    <item name="android:layout_alignBottom">@id/fishbucket</item>
+	    <item name="android:layout_alignRight">@id/fishbucket</item>
+	</style>
+	
+	<!-- Complete dialog images -->
+	<style name="CompleteDialogFishImage" parent="DyseggxiaImageView">
+	    <item name="android:src">@drawable/fish</item>
+	    <item name="android:layout_width">@dimen/CompleteDialogFishImageWidth</item>
+		<item name="android:layout_height">@dimen/CompleteDialogFishImageHeight</item>
+		<item name="android:layout_alignParentRight">true</item>
+		<item name="android:layout_alignParentBottom">true</item>
+		<item name="android:visibility">gone</item>
+	</style>
+	<style name="CompleteDialogFishScore" parent="DyseggxiaImageView">
+	    <item name="android:src">@drawable/plus1</item>
+	    <item name="android:layout_width">@dimen/CompleteDialogFishScoreWidth</item>
+		<item name="android:layout_height">@dimen/CompleteDialogFishScoreHeight</item>
+		<item name="android:layout_centerVertical">true</item>
+		<item name="android:layout_alignLeft">@id/completedialogContinueButton</item>
+		<item name="android:visibility">gone</item>
+	</style>
+	<style name="CompleteDialogPenguin" parent="DyseggxiaImageView">
+	    <item name="android:src">@drawable/huevo1</item>
+	    <item name="android:layout_width">@dimen/CompleteDialogPenguinWidth</item>
+		<item name="android:layout_height">@dimen/CompleteDialogPenguinHeight</item>
+		<item name="android:layout_centerHorizontal">true</item>
+		<item name="android:layout_centerVertical">true</item>
+		<item name="android:visibility">gone</item>
 	</style>
 </resources>

@@ -43,11 +43,14 @@ public class CompleteDialogController {
 	private ImageView scoreImage;
 	private ImageView penguinImage;
 	
-	public CompleteDialogController(CubesActivity context, String text, int score) {
+	public CompleteDialogController(CubesActivity context) {
 		this.context = context;
+		this.achievementController = ControllerFactory.getInstance(context).getAchievementController();
+	}
+	
+	public void setTextAndScore(String text, int score) {
 		this.text = text;
 		this.score = score;
-		this.achievementController = ControllerFactory.getInstance(context).getAchievementController();
 	}
 	
 	public void bindView(View parentView) {
@@ -162,8 +165,9 @@ public class CompleteDialogController {
 		penguinImage.postDelayed(new Runnable() {
 		    public void run() {
 		        penguinImage.setVisibility(View.GONE);
+		        penguinImage.setImageResource(R.drawable.huevo1);
 		      }
-		}, PENGUIN_ENTER_TIME*2 + achievement.animationDuration() + 2*FISH_START_OFFSET);
+		}, PENGUIN_ENTER_TIME*3 + achievement.animationDuration() + 2*FISH_START_OFFSET);
 		
 		penguinImage.startAnimation(set);
 	}

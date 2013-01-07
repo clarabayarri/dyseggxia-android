@@ -9,12 +9,8 @@
 
     <ImageView 
         android:id="@+id/menulogo"
-        android:src="@drawable/menulogo"
-        android:contentDescription="@string/menulogo"
-        android:layout_centerHorizontal="true"
-        android:layout_width="450dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="90dp"/>
+        style="@style/MainLogo"
+        android:contentDescription="@string/menulogo" />
     
     <Button 
         android:id="@+id/menuplay"
@@ -32,10 +28,6 @@
     <ImageView 
         android:src="@drawable/menupingu"
         android:contentDescription="@string/menulogo"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"/>
+        style="@style/MainPingu" />
 
 </RelativeLayout>

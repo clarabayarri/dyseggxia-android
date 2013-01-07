@@ -22,7 +22,7 @@
 		
 		<Button 
 		    android:id="@+id/completedialogBackButton"
-		    style="@style/DyseggxiaBackButton"
+		    style="@style/DyseggxiaBackButtonBig"
 		    android:layout_alignParentBottom="true"/>
 		
 		<Button 
@@ -33,39 +33,21 @@
 		
 	    <ImageView 
 	        android:id="@+id/completedialogFishScoreImage"
-	        android:layout_width="40dp"
-	        android:layout_height="40dp"
-	        android:src="@drawable/plus1"
-	        android:scaleType="fitCenter"
-	        android:contentDescription="@string/score"
-	        android:layout_centerVertical="true"
-	        android:layout_alignLeft="@id/completedialogContinueButton"
-	        android:visibility="gone"/>
+	        style="@style/CompleteDialogFishScore"
+	        android:contentDescription="@string/score" />
 		
     </RelativeLayout>
     
     <ImageView 
         android:id="@+id/completedialogFishImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:scaleType="fitCenter"
         android:contentDescription="@string/fish"
-        android:src="@drawable/fish"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:visibility="gone"
+        style="@style/CompleteDialogFishImage"
         />
     
 	<ImageView 
         android:id="@+id/completedialogPenguinImage"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:scaleType="fitCenter"
+        style="@style/CompleteDialogPenguin"
         android:contentDescription="@string/fish"
-        android:src="@drawable/fish"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="gone"
         />
     
 </RelativeLayout>

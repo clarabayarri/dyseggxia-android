@@ -28,6 +28,7 @@ public class CubesActivity extends TrackedActivity {
 	private AchievementController achievementController;
 	private Level level;
 	private Problem problem;
+	private CompleteDialogController dialog;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class CubesActivity extends TrackedActivity {
 		prefController = factory.getPreferencesController();
 		completedProblemController = factory.getCompletedProblemController();
 		achievementController = factory.getAchievementController();
-		
+		dialog = new CompleteDialogController(this);
 		level = levelController.getLevel(prefController.getCurrentLevel(), 
 				prefController.getCurrentLanguage());
 	}
@@ -60,6 +61,7 @@ public class CubesActivity extends TrackedActivity {
 		viewController = ViewControllerFactory.getCorrectCubeController(this, problem);
 		viewController.bindView(findViewById(R.id.cubesproblemmain));
 		viewController.initLayout();
+		findViewById(R.id.cubesProblemBackButton).setVisibility(View.VISIBLE);
 		TextView instructionLabel = (TextView) findViewById(R.id.cubesProblemTypeLabel);
 		instructionLabel.setText(viewController.getInstructionsId());
 	}
@@ -83,13 +85,15 @@ public class CubesActivity extends TrackedActivity {
 		int score = Math.max(0, level.getNumber() + 1 - intents);
 		prefController.increaseScore(score);
 		
-		CompleteDialogController dialog = new CompleteDialogController(this, solution, score);
+		findViewById(R.id.cubesProblemBackButton).setVisibility(View.INVISIBLE);
+		dialog.setTextAndScore(solution, score);
 		dialog.bindView(findViewById(R.id.cubesproblemmain));
 		
 		achievementController.checkForAchievementImprovement();
 	}
 	
 	public void continuePlaying() {
+		//dialog = null;
 		loadProblem();
 	}
 	

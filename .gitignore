@@ -28,5 +28,6 @@ assets/
 tmp/
 
 res/.DS_STORE
+.DS_STORE
 .metadata
 .settings
