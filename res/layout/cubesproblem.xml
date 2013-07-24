@@ -22,6 +22,12 @@
         android:layout_margin="10dp"
         android:padding="10dp"
         android:text="@string/insertion" />
+    
+    <Button 
+        android:id="@+id/cubesHowToButton"
+        style="@style/DyseggxiaHowToButton"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/cubesProblemCentralView"

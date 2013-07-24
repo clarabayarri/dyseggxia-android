@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	    android:background="@drawable/howtobackground"
+	    android:layout_margin="60dp"
+	    android:padding="20dp"
+    	android:id="@+id/derivationhowto" >
+    
+    <ImageView 
+        android:id="@+id/derivationleftcube"
+        android:contentDescription="@string/cube"
+        style="@style/HowToCube1"
+        android:layout_centerVertical="true" />
+    
+    <ImageView 
+        android:id="@+id/derivationhowtomiddlecube"
+        android:contentDescription="@string/cube"
+        style="@style/HowToCube3"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/derivationleftcube" />
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/derivationhowtomiddlecube"
+        android:background="@drawable/cubesanswersverticalbox"
+        android:contentDescription="@string/answersbox"
+        android:padding="10dp" >
+        
+        <ImageView 
+            android:contentDescription="@string/cube"
+            style="@style/HowToDerivationCube"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true" />
+        
+        <ImageView 
+            android:contentDescription="@string/cube"
+            style="@style/HowToDerivationCube"
+            android:layout_centerVertical="true" 
+            android:layout_centerHorizontal="true" />
+        
+        <ImageView 
+            android:contentDescription="@string/cube"
+            style="@style/HowToDerivationCube"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    
+    <ImageView 
+        android:id="@+id/derivationhowtohand"
+        android:contentDescription="@string/pinguhand"
+        style="@style/HowToHand"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

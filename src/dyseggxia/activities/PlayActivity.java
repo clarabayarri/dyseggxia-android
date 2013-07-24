@@ -73,6 +73,8 @@ public class PlayActivity extends Activity implements OnClickListener {
 		} else if (achievementController.isAchievementUnlockedWithCode(
 				AchievementController.AchievementIdentifierUnlockPenguin1)) {
 			penguinView.setImageResource(R.drawable.huevo10);
+		} else {
+			penguinView.setImageResource(R.drawable.huevo1);
 		}
 	}
 	

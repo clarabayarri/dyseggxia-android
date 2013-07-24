@@ -23,6 +23,9 @@
 	<string name="custompingu">Custom penguin</string>
 	<string name="fish">fish</string>
 	<string name="score">score</string>
+	<string name="cube">cube</string>
+	<string name="answersbox">answers box</string>
+	<string name="pinguhand">penguin hand</string>
 	
 	<string name="insertion_desc">Find the missing letter!</string>
 	<string name="omission_desc">Take out the extra letter!</string>
@@ -33,4 +36,7 @@
 	<string name="solution">solution</string>
 	
 	<string name="word_cube_background">cube</string>
+	
+	<string name="home_parents">Parents</string>
+	<string name="home_users">Users</string>
 </resources>

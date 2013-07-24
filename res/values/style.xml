@@ -47,7 +47,7 @@
         <item name="android:layout_weight">1</item>
 	</style>
 	<style name="DyseggxiaEggButton" parent="@style/DyseggxiaButton">
-	    <item name="android:src">@drawable/huevo1</item>
+	    <!-- <item name="android:src">@drawable/huevo1</item> -->
         <item name="android:scaleType">fitCenter</item>
 	    <item name="android:layout_width">@dimen/DyseggxiaEggButtonWidth</item>
         <item name="android:layout_height">@dimen/DyseggxiaEggButtonHeight</item>
@@ -60,7 +60,7 @@
         <item name="android:layout_height">@dimen/DyseggxiaMainPlayButtonHeight</item>
         <item name="android:gravity">right|center</item>
         <item name="android:padding">@dimen/DyseggxiaMainPlayButtonPadding</item>
-        <item name="android:background">@drawable/mainplaybutton</item>
+        <item name="android:background">@drawable/home_play_button</item>
         <item name="android:text">@string/play</item>
 	</style>
 	<style name="DyseggxiaPlayButton" parent="@style/DyseggxiaButton">
@@ -79,12 +79,17 @@
         <item name="android:background">@drawable/backbutton</item>
         <item name="android:text">@string/back</item>
 	</style>
+	<style name="DyseggxiaHowToButton" parent="@style/DyseggxiaButton">
+	    <item name="android:layout_width">@dimen/DyseggxiaHowToButtonWidth</item>
+        <item name="android:layout_height">@dimen/DyseggxiaHowToButtonHeight</item>
+        <item name="android:background">@drawable/howtoicon</item>
+	</style>
 	<style name="DyseggxiaBackButtonBig" parent="@style/DyseggxiaButton">
 	    <item name="android:layout_width">@dimen/DyseggxiaBackButtonBigWidth</item>
         <item name="android:layout_height">@dimen/DyseggxiaBackButtonBigHeight</item>
         <item name="android:gravity">right|center</item>
         <item name="android:paddingRight">13dp</item>
-        <item name="android:background">@drawable/backbuttonbig</item>
+        <item name="android:background">@drawable/backbutton</item>
         <item name="android:text">@string/back</item>
 	</style>
 	<style name="DyseggxiaContinueButton" parent="@style/DyseggxiaButton">
@@ -101,7 +106,7 @@
         <item name="android:gravity">right</item>
         <item name="android:paddingRight">5dp</item>
         <item name="android:paddingTop">1dp</item>
-        <item name="android:background">@drawable/languagebutton</item>
+        <item name="android:background">@drawable/home_language_button</item>
         <item name="android:text">@string/spanish</item>
 	</style>
 	<style name="DyseggxiaChangeLevelButton" parent="@style/DyseggxiaButton">
@@ -113,6 +118,22 @@
         <item name="android:background">@drawable/level0button</item>
         <item name="android:text">@string/level0</item>
 	</style>
+	<style name="DyseggxiaParentsButton" parent="@style/DyseggxiaButton">
+	    <item name="android:layout_width">@dimen/DyseggxiaStandardButtonWidth</item>
+        <item name="android:layout_height">@dimen/DyseggxiaStandardButtonHeight</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/purple_button_background</item>
+        <item name="android:text">@string/home_parents</item>
+        <item name="android:layout_margin">5dp</item>
+	</style>
+	<style name="DyseggxiaUsersButton" parent="@style/DyseggxiaButton">
+	    <item name="android:layout_width">@dimen/DyseggxiaStandardButtonWidth</item>
+        <item name="android:layout_height">@dimen/DyseggxiaStandardButtonHeight</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/pink_button_background</item>
+        <item name="android:text">@string/home_users</item>
+        <item name="android:layout_margin">5dp</item>
+	</style>
 	
 	<!-- Images -->
 	<style name="DyseggxiaImageView">
@@ -121,14 +142,14 @@
 	
 	<!-- Main menu images -->
 	<style name="MainLogo" parent="DyseggxiaImageView">
-	    <item name="android:src">@drawable/menulogo</item>
+	    <item name="android:src">@drawable/logo</item>
 	    <item name="android:layout_width">@dimen/MainLogoWidth</item>
 		<item name="android:layout_height">@dimen/MainLogoHeight</item>
 		<item name="android:layout_centerHorizontal">true</item>
 		<item name="android:layout_marginTop">@dimen/MainLogoMarginTop</item>
 	</style>
 	<style name="MainPingu" parent="DyseggxiaImageView">
-	    <item name="android:src">@drawable/menupingu</item>
+	    <item name="android:src">@drawable/home_user_pingu</item>
 	    <item name="android:layout_width">@dimen/MainPinguWidth</item>
 		<item name="android:layout_height">@dimen/MainPinguHeight</item>
 		<item name="android:layout_alignParentRight">true</item>
@@ -177,5 +198,49 @@
 		<item name="android:layout_centerHorizontal">true</item>
 		<item name="android:layout_centerVertical">true</item>
 		<item name="android:visibility">gone</item>
+	</style>
+	
+	<style name="HowToCube" parent="DyseggxiaImageView">
+	    <item name="android:layout_width">@dimen/HowToCubeWidth</item>
+	    <item name="android:layout_height">@dimen/HowToCubeHeight</item>
+	    <item name="android:layout_margin">5dp</item>
+	</style>
+	<style name="HowToBlankCube" parent="HowToCube">
+	    <item name="android:src">@drawable/howtoletrablanco</item>
+	</style>
+	<style name="HowToCube1" parent="HowToCube">
+	    <item name="android:src">@drawable/howtoletra1</item>
+	</style>
+	<style name="HowToCube2" parent="HowToCube">
+	    <item name="android:src">@drawable/howtoletra2</item>
+	</style>
+	<style name="HowToCube3" parent="HowToCube">
+	    <item name="android:src">@drawable/howtoletra3</item>
+	</style>
+	<style name="HowToCube4" parent="HowToCube">
+	    <item name="android:src">@drawable/howtoletra4</item>
+	</style>
+	<style name="HowToCube5" parent="HowToCube">
+	    <item name="android:src">@drawable/howtoletra5</item>
+	</style>
+	<style name="HowToDerivationCube" parent="DyseggxiaImageView">
+	    <item name="android:layout_width">@dimen/HowToDerivationCubeWidth</item>
+	    <item name="android:layout_height">@dimen/HowToDerivationCubeHeight</item>
+	    <item name="android:src">@drawable/howtoletrasderivacion</item>
+	    <item name="android:layout_margin">5dp</item>
+	</style>
+	<style name="HowToHand" parent="DyseggxiaImageView">
+	    <item name="android:layout_width">@dimen/HowToHandWidth</item>
+	    <item name="android:layout_height">@dimen/HowToHandHeight</item>
+	    <item name="android:src">@drawable/howtomano</item>
+	</style>
+	<style name="HowToAnswersBox" parent="DyseggxiaImageView">
+	    <item name="android:layout_width">@dimen/HowToAnswersWidth</item>
+	    <item name="android:layout_height">@dimen/HowToAnswersHeight</item>
+	    <item name="android:background">@drawable/cubesanswersbox</item>
+	    <item name="android:padding">10dp</item>
+	    <item name="android:layout_marginLeft">40dp</item>
+	    <item name="android:layout_marginRight">40dp</item>
+	    <item name="android:layout_marginTop">10dp</item>
 	</style>
 </resources>

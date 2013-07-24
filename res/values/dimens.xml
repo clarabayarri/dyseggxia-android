@@ -18,8 +18,12 @@
     <dimen name="DyseggxiaMainPlayButtonPadding">13dp</dimen>
     <dimen name="DyseggxiaPlayButtonWidth">178dp</dimen>
     <dimen name="DyseggxiaPlayButtonHeight">62dp</dimen>
+    <dimen name="DyseggxiaStandardButtonWidth">95dp</dimen>
+    <dimen name="DyseggxiaStandardButtonHeight">30dp</dimen>
     <dimen name="DyseggxiaBackButtonWidth">118dp</dimen>
     <dimen name="DyseggxiaBackButtonHeight">47dp</dimen>
+    <dimen name="DyseggxiaHowToButtonWidth">47dp</dimen>
+    <dimen name="DyseggxiaHowToButtonHeight">47dp</dimen>
     <dimen name="DyseggxiaBackButtonBigWidth">158dp</dimen>
     <dimen name="DyseggxiaBackButtonBigHeight">62dp</dimen>
     <dimen name="DyseggxiaContinueButtonWidth">158dp</dimen>
@@ -31,7 +35,7 @@
     
     <dimen name="MainLogoWidth">450dp</dimen>
     <dimen name="MainLogoHeight">130dp</dimen>
-    <dimen name="MainLogoMarginTop">90dp</dimen>
+    <dimen name="MainLogoMarginTop">40dp</dimen>
     <dimen name="MainPinguWidth">100dp</dimen>
     <dimen name="MainPinguHeight">100dp</dimen>
     <dimen name="MainPinguMargin">10dp</dimen>
@@ -43,4 +47,13 @@
     <dimen name="CompleteDialogFishScoreHeight">29dp</dimen>
     <dimen name="CompleteDialogPenguinWidth">202dp</dimen>
     <dimen name="CompleteDialogPenguinHeight">116dp</dimen>
+    
+    <dimen name="HowToCubeWidth">90dp</dimen>
+    <dimen name="HowToCubeHeight">90dp</dimen>
+    <dimen name="HowToDerivationCubeWidth">110dp</dimen>
+    <dimen name="HowToDerivationCubeHeight">40dp</dimen>
+    <dimen name="HowToHandWidth">862dp</dimen>
+    <dimen name="HowToHandHeight">501dp</dimen>
+    <dimen name="HowToAnswersWidth">700dp</dimen>
+    <dimen name="HowToAnswersHeight">250dp</dimen>
 </resources>

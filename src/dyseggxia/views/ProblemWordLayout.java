@@ -75,10 +75,10 @@ public class ProblemWordLayout extends GenericDragDropLayout {
 		this.addView(child, index);
 		LayoutParams params = (LayoutParams) child.getLayoutParams();
 		params.weight = 1;
-		if (originalWord.size() > 9) {
+		if (originalWord.size() > 8) {
 			TextView label = (TextView) child.findViewById(R.id.cube_contents);
 			label.setTextSize(delegate.getContext().getResources().getDimension(R.dimen.DyseggxiaProblemLetterSmallestAppearanceTextSize));
-		} else if (originalWord.size() > 7) {
+		} else if (originalWord.size() > 6) {
 			TextView label = (TextView) child.findViewById(R.id.cube_contents);
 			label.setTextSize(delegate.getContext().getResources().getDimension(R.dimen.DyseggxiaProblemLetterSmallerAppearanceTextSize));
 		}

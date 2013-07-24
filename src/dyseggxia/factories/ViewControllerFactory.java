@@ -13,6 +13,8 @@ import dyseggxia.viewControllers.InsertionCubeController;
 import dyseggxia.viewControllers.OmissionCubeController;
 import dyseggxia.viewControllers.SentenceSeparationCubeController;
 import dyseggxia.viewControllers.SubstitutionCubeController;
+import dyseggxia.viewControllers.howto.HowToViewControllerI;
+import dyseggxia.viewControllers.howto.InsertionHowToViewController;
 
 public class ViewControllerFactory {
 
@@ -31,6 +33,25 @@ public class ViewControllerFactory {
 		}
 		if(problem.getTypeName().equals(SentenceSeparationProblem.typeName)) {
 			return new SentenceSeparationCubeController(context, (SentenceSeparationProblem) problem);
+		}
+		return null;
+	}
+	
+	public static HowToViewControllerI getCorrectHowToViewController(CubesActivity context, Problem problem) {
+		if(problem.getTypeName().equals(InsertionProblem.typeName)) {
+			return new InsertionHowToViewController(context);
+		}
+		if(problem.getTypeName().equals(OmissionProblem.typeName)) {
+			return new InsertionHowToViewController(context);
+		}
+		if(problem.getTypeName().equals(SubstitutionProblem.typeName)) {
+			return new InsertionHowToViewController(context);
+		}
+		if(problem.getTypeName().equals(DerivationProblem.typeName)) {
+			return new InsertionHowToViewController(context);
+		}
+		if(problem.getTypeName().equals(SentenceSeparationProblem.typeName)) {
+			return new InsertionHowToViewController(context);
 		}
 		return null;
 	}

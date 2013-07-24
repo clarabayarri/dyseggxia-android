@@ -23,6 +23,9 @@
 	<string name="custompingu">Pingüino personalizado</string>
 	<string name="fish">pez</string>
 	<string name="score">puntuación</string>
+	<string name="cube">cubo</string>
+	<string name="answersbox">cajón de respuestas</string>
+	<string name="pinguhand">mano de pingüino</string>
 	
 	<string name="insertion_desc">Falta una letra!</string>
 	<string name="omission_desc">Sobra una letra!</string>
@@ -33,4 +36,7 @@
 	<string name="solution">solución</string>
 	
 	<string name="word_cube_background">cubo</string>
+	
+	<string name="home_parents">Padres</string>
+	<string name="home_users">Usuarios</string>
 </resources>

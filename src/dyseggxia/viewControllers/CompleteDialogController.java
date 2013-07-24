@@ -14,11 +14,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
 import dyseggxia.domainControllers.AchievementController;
 import dyseggxia.domainModel.GenericAchievement;
-import dyseggxia.factories.ControllerFactory;
 
 public class CompleteDialogController {
 	
@@ -32,7 +30,6 @@ public class CompleteDialogController {
 	private static final float[] yoriginvalues = {-1.2f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	private static final float[] ytargetvalues = {0.0f, 0.4f, 0.8f, 1.0f, -0.2f, -0.6f, -1.0f, -2.5f};
 	
-	private CubesActivity context;
 	private AchievementController achievementController;
 	private String text;
 	private int score;
@@ -43,9 +40,8 @@ public class CompleteDialogController {
 	private ImageView scoreImage;
 	private ImageView penguinImage;
 	
-	public CompleteDialogController(CubesActivity context) {
-		this.context = context;
-		this.achievementController = ControllerFactory.getInstance(context).getAchievementController();
+	public CompleteDialogController(AchievementController achievementController) {
+		this.achievementController = achievementController;
 	}
 	
 	public void setTextAndScore(String text, int score) {
@@ -56,7 +52,7 @@ public class CompleteDialogController {
 	public void bindView(View parentView) {
 		mainView = (FrameLayout) parentView.findViewById(R.id.completeDialogView);
 		
-		view = (RelativeLayout) ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+		view = (RelativeLayout) ((LayoutInflater) parentView.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
 				.inflate(R.layout.completedialog, null);
 		mainView.addView(view);
 		mainView.setVisibility(View.VISIBLE);
@@ -170,6 +166,15 @@ public class CompleteDialogController {
 		}, PENGUIN_ENTER_TIME*3 + achievement.animationDuration() + 2*FISH_START_OFFSET);
 		
 		penguinImage.startAnimation(set);
+	}
+	
+	public void clean() {
+		mainView.removeView(view);
+		mainView = null;
+		view = null;
+		penguinImage = null;
+		fishImage = null;
+		scoreImage = null;
 	}
 
 }

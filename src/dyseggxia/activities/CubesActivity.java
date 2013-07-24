@@ -1,12 +1,13 @@
 package dyseggxia.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.google.android.apps.analytics.easytracking.TrackedActivity;
-
 import dyseggxia.domainControllers.AchievementController;
 import dyseggxia.domainControllers.CompletedProblemController;
 import dyseggxia.domainControllers.LevelController;
@@ -18,8 +19,9 @@ import dyseggxia.factories.ControllerFactory;
 import dyseggxia.factories.ViewControllerFactory;
 import dyseggxia.viewControllers.CompleteDialogController;
 import dyseggxia.viewControllers.GenericCubesProblemViewController;
+import dyseggxia.viewControllers.howto.HowToViewControllerI;
 
-public class CubesActivity extends TrackedActivity {
+public class CubesActivity extends Activity {
 
 	private GenericCubesProblemViewController viewController;
 	private ProblemController problemController;
@@ -28,7 +30,8 @@ public class CubesActivity extends TrackedActivity {
 	private AchievementController achievementController;
 	private Level level;
 	private Problem problem;
-	private CompleteDialogController dialog;
+	private HowToViewControllerI howToController;
+	private Handler handler;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -40,9 +43,9 @@ public class CubesActivity extends TrackedActivity {
 		prefController = factory.getPreferencesController();
 		completedProblemController = factory.getCompletedProblemController();
 		achievementController = factory.getAchievementController();
-		dialog = new CompleteDialogController(this);
 		level = levelController.getLevel(prefController.getCurrentLevel(), 
 				prefController.getCurrentLanguage());
+		handler = new Handler();
 	}
 	
 	@Override
@@ -76,7 +79,23 @@ public class CubesActivity extends TrackedActivity {
 			findViewById(R.id.completeDialogView).setVisibility(View.GONE);
 			continuePlaying();
 			break;
+		case R.id.cubesHowToButton:
+			showHowTo();
+			break;
 		}
+	}
+	
+	private void showHowTo() {
+		if (howToController == null) {
+			howToController = ViewControllerFactory.getCorrectHowToViewController(this, problem);
+		}
+		howToController.bindView((RelativeLayout) findViewById(R.id.cubesproblemmain));
+		howToController.animate();
+		handler.postDelayed(new Runnable() {
+
+			public void run() {
+				howToController.hide();
+			}}, howToController.getDuration());
 	}
 	
 	public void problemAccomplished(String solution, int intents, String wrongSolutions) {
@@ -86,6 +105,7 @@ public class CubesActivity extends TrackedActivity {
 		prefController.increaseScore(score);
 		
 		findViewById(R.id.cubesProblemBackButton).setVisibility(View.INVISIBLE);
+		CompleteDialogController dialog = new CompleteDialogController(achievementController);
 		dialog.setTextAndScore(solution, score);
 		dialog.bindView(findViewById(R.id.cubesproblemmain));
 		
@@ -93,7 +113,8 @@ public class CubesActivity extends TrackedActivity {
 	}
 	
 	public void continuePlaying() {
-		//dialog = null;
+		FrameLayout mainView = (FrameLayout) findViewById(R.id.completeDialogView);
+		mainView.removeAllViews();
 		loadProblem();
 	}
 	

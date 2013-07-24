@@ -7,7 +7,7 @@
     android:onClick="onClick"
     android:orientation="vertical" >
 
-    <ImageView 
+    <ImageView
         android:id="@+id/menulogo"
         style="@style/MainLogo"
         android:contentDescription="@string/menulogo" />
@@ -20,14 +20,38 @@
         android:layout_centerHorizontal="true" />
     
     <Button 
+        android:id="@+id/home_users_button"
+        android:contentDescription="@string/play"
+        style="@style/DyseggxiaUsersButton"
+        android:layout_below="@id/menuplay"
+        android:layout_centerHorizontal="true" />
+    
+    <Button 
+        android:id="@+id/home_parents_button"
+        android:contentDescription="@string/play"
+        style="@style/DyseggxiaParentsButton"
+        android:layout_below="@id/home_users_button"
+        android:layout_centerHorizontal="true" />
+    
+    <Button
         android:id="@+id/menulanguage"
-        android:contentDescription="@string/language"
         style="@style/DyseggxiaChangeLanguageButton"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="5dp"
+        android:contentDescription="@string/language"
+        android:paddingBottom="5dp" />
     
     <ImageView 
-        android:src="@drawable/menupingu"
+        android:id="@+id/home_user_pingu"
         android:contentDescription="@string/menulogo"
         style="@style/MainPingu" />
+    
+    <TextView 
+        android:id="@+id/home_user_name_label"
+        android:layout_alignTop="@id/home_user_pingu"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_alignRight="@id/home_user_pingu"/>
 
 </RelativeLayout>
