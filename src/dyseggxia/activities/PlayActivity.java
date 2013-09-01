@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import dyseggxia.domainControllers.AchievementController;
 import dyseggxia.domainControllers.PreferencesController;
@@ -54,7 +54,7 @@ public class PlayActivity extends Activity implements OnClickListener {
 	}
 	
 	private void loadPenguin() {
-		ImageButton penguinView = (ImageButton) findViewById(R.id.playPenguinButton);
+		ImageView penguinView = (ImageView) findViewById(R.id.playPenguinButton);
 		if (achievementController.isAchievementUnlockedWithCode(
 				AchievementController.AchievementIdentifierUnlockPenguin6)) {
 			penguinView.setImageResource(R.drawable.huevo67);

@@ -8,23 +8,24 @@
     
     <Button
         android:id="@+id/playBackButton"
-        style="@style/DyseggxiaBackButton" />
+        style="@style/DyseggxiaPlayBackButton" />
     
     <Button
         android:id="@+id/playChangeLevelButton"
         style="@style/DyseggxiaChangeLevelButton"
-        android:layout_alignParentRight="true" />
+        android:layout_centerInParent="true" />
     
     <Button 
         android:id="@+id/playStartButton"
         android:contentDescription="@string/play"
         style="@style/DyseggxiaPlayButton"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        android:layout_above="@id/playChangeLevelButton"/>
     
-    <ImageButton 
+    <ImageView 
         android:id="@+id/playPenguinButton"
         android:contentDescription="@string/custompingu"
-        style="@style/DyseggxiaEggButton" />
+        style="@style/DyseggxiaPlayPinguView" />
     
     <ImageView 
         android:id="@+id/fishbucket"

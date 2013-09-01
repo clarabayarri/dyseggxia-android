@@ -39,4 +39,6 @@
 	
 	<string name="home_parents">Padres</string>
 	<string name="home_users">Usuarios</string>
+	<string name="home_user_placeholder">nombre</string>
+	<string name="home_info">Información</string>
 </resources>

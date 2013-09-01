@@ -7,51 +7,55 @@
     android:onClick="onClick"
     android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/menulogo"
-        style="@style/MainLogo"
-        android:contentDescription="@string/menulogo" />
-    
     <Button 
         android:id="@+id/menuplay"
         android:contentDescription="@string/play"
         style="@style/DyseggxiaMainPlayButton"
-        android:layout_below="@id/menulogo"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
     
-    <Button 
-        android:id="@+id/home_users_button"
-        android:contentDescription="@string/play"
-        style="@style/DyseggxiaUsersButton"
-        android:layout_below="@id/menuplay"
-        android:layout_centerHorizontal="true" />
+    <ImageView
+        android:id="@+id/menulogo"
+        style="@style/MainLogo"
+        android:contentDescription="@string/menulogo"
+        android:layout_above="@id/menuplay" />
     
     <Button 
         android:id="@+id/home_parents_button"
         android:contentDescription="@string/play"
         style="@style/DyseggxiaParentsButton"
-        android:layout_below="@id/home_users_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
+    
+    <Button 
+        android:id="@+id/home_users_button"
+        android:contentDescription="@string/play"
+        style="@style/DyseggxiaUsersButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/home_parents_button" />
+    
+    <Button 
+        android:id="@+id/home_info_button"
+        android:contentDescription="@string/play"
+        style="@style/DyseggxiaInfoButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/home_parents_button" />
     
     <Button
         android:id="@+id/menulanguage"
         style="@style/DyseggxiaChangeLanguageButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_margin="5dp"
-        android:contentDescription="@string/language"
-        android:paddingBottom="5dp" />
+        android:layout_margin="20dp"
+        android:contentDescription="@string/language" />
     
     <ImageView 
         android:id="@+id/home_user_pingu"
         android:contentDescription="@string/menulogo"
-        style="@style/MainPingu" />
+        style="@style/HomeUserPingu" />
     
     <TextView 
         android:id="@+id/home_user_name_label"
-        android:layout_alignTop="@id/home_user_pingu"
-        android:layout_width="50dp"
-        android:layout_height="20dp"
-        android:layout_alignRight="@id/home_user_pingu"/>
+        style="@style/HomeUserPinguLabel"/>
 
 </RelativeLayout>
