@@ -3,7 +3,7 @@
     android:id="@+id/playLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/simplebackground"
+    android:background="@drawable/fondopolar"
     android:padding="15dp" >
     
     <Button
@@ -19,8 +19,15 @@
         android:id="@+id/playStartButton"
         android:contentDescription="@string/play"
         style="@style/DyseggxiaPlayButton"
-        android:layout_centerInParent="true"
+        android:layout_alignLeft="@id/playChangeLevelButton"
         android:layout_above="@id/playChangeLevelButton"/>
+    
+    <Button 
+        android:id="@+id/playShopButton"
+        android:contentDescription="@string/shop"
+        style="@style/DyseggxiaShopButton"
+        android:layout_alignLeft="@id/playChangeLevelButton"
+        android:layout_below="@id/playChangeLevelButton"/>
     
     <ImageView 
         android:id="@+id/playPenguinButton"

@@ -44,8 +44,6 @@
     <Button
         android:id="@+id/menulanguage"
         style="@style/DyseggxiaChangeLanguageButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
         android:layout_margin="20dp"
         android:contentDescription="@string/language" />
     
@@ -54,7 +52,7 @@
         android:contentDescription="@string/menulogo"
         style="@style/HomeUserPingu" />
     
-    <TextView 
+    <dyseggxia.utilities.AutoResizeTextView 
         android:id="@+id/home_user_name_label"
         style="@style/HomeUserPinguLabel"/>
 

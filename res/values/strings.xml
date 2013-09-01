@@ -3,9 +3,11 @@
 
     <string name="app_name">Dyseggxia</string>
     <string name="ok">OK</string>
-	<string name="level0">Fácil</string>
-	<string name="level1">Medio</string>
-	<string name="level2">Difícil</string>
+	<string name="level0">Inicial</string>
+	<string name="level1">Fácil</string>
+	<string name="level2">Medio</string>
+	<string name="level3">Difícil</string>
+	<string name="level4">Experto</string>
 	<string name="back">Atrás</string>
 	<string name="continuar">Continuar</string>
 	<string name="direction">dirección</string>
@@ -17,6 +19,7 @@
 	
 	<string name="menulogo">logotipo</string>
 	<string name="play">Jugar</string>
+	<string name="shop">Tienda</string>
 	<string name="language">idioma</string>
 	<string name="spanish">Español</string>
 	<string name="scorebucket">Contador de puntos</string>
@@ -39,6 +42,6 @@
 	
 	<string name="home_parents">Padres</string>
 	<string name="home_users">Usuarios</string>
-	<string name="home_user_placeholder">nombre</string>
+	<string name="home_user_placeholder">nombreeeee</string>
 	<string name="home_info">Información</string>
 </resources>

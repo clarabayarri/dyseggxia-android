@@ -43,13 +43,19 @@ public class PlayActivity extends Activity implements OnClickListener {
 		Button levelButton = (Button) findViewById(R.id.playChangeLevelButton);
 		if (level == 0) {
 			levelButton.setText(R.string.level0);
-			levelButton.setBackgroundResource(R.drawable.level0button);
+			levelButton.setBackgroundResource(R.drawable.level_0_button);
 		} else if (level == 1) {
 			levelButton.setText(R.string.level1);
-			levelButton.setBackgroundResource(R.drawable.level1button);
-		} else {
+			levelButton.setBackgroundResource(R.drawable.level_1_button);
+		} else if (level == 2) {
 			levelButton.setText(R.string.level2);
-			levelButton.setBackgroundResource(R.drawable.level2button);
+			levelButton.setBackgroundResource(R.drawable.level_2_button);
+		} else if (level == 2) {
+			levelButton.setText(R.string.level3);
+			levelButton.setBackgroundResource(R.drawable.level_3_button);
+		} else {
+			levelButton.setText(R.string.level4);
+			levelButton.setBackgroundResource(R.drawable.level_4_button);
 		}
 	}
 	

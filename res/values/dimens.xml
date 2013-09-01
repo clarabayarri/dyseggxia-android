@@ -7,36 +7,21 @@
     <dimen name="DyseggxiaProblemLetterSmallerAppearanceTextSize">14pt</dimen>
     <dimen name="DyseggxiaProblemLetterSmallestAppearanceTextSize">12pt</dimen>
     <dimen name="DyseggxiaVerticalAnswerLetterAppearanceTextSize">12pt</dimen>
+    <dimen name="DyseggxiaButtonTextAppearanceTextSizeLarge">11pt</dimen>
     <dimen name="DyseggxiaButtonTextAppearanceTextSize">9pt</dimen>
     <dimen name="DyseggxiaButtonTextAppearanceTextSizeSmall">6pt</dimen>
     
-    <dimen name="DyseggxiaLevelButtonWidth">99dp</dimen>
-    <dimen name="DyseggxiaLevelButtonHeight">112dp</dimen>
+    <dimen name="DyseggxiaStandardButtonWidth">95dp</dimen>
+    <dimen name="DyseggxiaStandardButtonHeight">30dp</dimen>
+    
+    <!-- Home -->
     <dimen name="DyseggxiaMainPlayButtonWidth">164dp</dimen>
     <dimen name="DyseggxiaMainPlayButtonHeight">44dp</dimen>
     <dimen name="DyseggxiaMainPlayButtonPadding">25dp</dimen>
-    <dimen name="DyseggxiaPlayButtonWidth">178dp</dimen>
-    <dimen name="DyseggxiaPlayButtonHeight">62dp</dimen>
     <dimen name="DyseggxiaHomePurpleButtonWidth">95dp</dimen>
     <dimen name="DyseggxiaHomePurpleButtonHeight">30dp</dimen>
-    <dimen name="DyseggxiaStandardButtonWidth">95dp</dimen>
-    <dimen name="DyseggxiaStandardButtonHeight">30dp</dimen>
-    <dimen name="DyseggxiaPlayBackButtonWidth">68dp</dimen>
-    <dimen name="DyseggxiaPlayBackButtonHeight">71dp</dimen>
-    <dimen name="DyseggxiaPlayBackButtonPaddingTop">5dp</dimen>
-    <dimen name="DyseggxiaBackButtonWidth">118dp</dimen>
-    <dimen name="DyseggxiaBackButtonHeight">47dp</dimen>
-    <dimen name="DyseggxiaHowToButtonWidth">47dp</dimen>
-    <dimen name="DyseggxiaHowToButtonHeight">47dp</dimen>
-    <dimen name="DyseggxiaBackButtonBigWidth">158dp</dimen>
-    <dimen name="DyseggxiaBackButtonBigHeight">62dp</dimen>
-    <dimen name="DyseggxiaContinueButtonWidth">158dp</dimen>
-    <dimen name="DyseggxiaContinueButtonHeight">61dp</dimen>
     <dimen name="DyseggxiaChangeLanguageButtonWidth">97dp</dimen>
     <dimen name="DyseggxiaChangeLanguageButtonHeight">77dp</dimen>
-    <dimen name="DyseggxiaChangeLevelButtonWidth">129dp</dimen>
-    <dimen name="DyseggxiaChangeLevelButtonHeight">62dp</dimen>
-    
     <dimen name="MainLogoWidth">450dp</dimen>
     <dimen name="MainLogoHeight">130dp</dimen>
     <dimen name="MainLogoMarginBottom">5dp</dimen>
@@ -45,11 +30,38 @@
     <dimen name="HomeUserPinguMargin">20dp</dimen>
     <dimen name="HomeUserPinguLabelWidth">58dp</dimen>
     <dimen name="HomeUserPinguLabelHeight">20dp</dimen>
+    
+    <!-- Play -->
+    <dimen name="DyseggxiaPlayButtonWidth">166dp</dimen>
+    <dimen name="DyseggxiaPlayButtonHeight">80dp</dimen>
+    <dimen name="DyseggxiaPlayButtonPaddingBottom">21dp</dimen>
+    <dimen name="DyseggxiaPlayButtonPaddingRight">15dp</dimen>
+    <dimen name="DyseggxiaPlayButtonMarginLeft">35dp</dimen>
+    <dimen name="DyseggxiaPlayBackButtonWidth">68dp</dimen>
+    <dimen name="DyseggxiaPlayBackButtonHeight">71dp</dimen>
+    <dimen name="DyseggxiaPlayBackButtonPaddingTop">5dp</dimen>
+    <dimen name="DyseggxiaChangeLevelButtonWidth">132dp</dimen>
+    <dimen name="DyseggxiaChangeLevelButtonHeight">62dp</dimen>
+    <dimen name="DyseggxiaChangeLevelButtonPaddingRight">51dp</dimen>
+    <dimen name="DyseggxiaShopButtonWidth">131dp</dimen>
+    <dimen name="DyseggxiaShopButtonHeight">53dp</dimen>
     <dimen name="DyseggxiaPlayPinguWidth">150dp</dimen>
     <dimen name="DyseggxiaPlayPinguHeight">150dp</dimen>
     <dimen name="PlayFishBucketWidth">90dp</dimen>
     <dimen name="PlayFishBucketHeight">107dp</dimen>
     <dimen name="PlayFishBucketLabelHeight">41dp</dimen>
+    
+    <!-- Cubes Problem -->
+    <dimen name="DyseggxiaBackButtonWidth">118dp</dimen>
+    <dimen name="DyseggxiaBackButtonHeight">47dp</dimen>
+    <dimen name="DyseggxiaHowToButtonWidth">47dp</dimen>
+    <dimen name="DyseggxiaHowToButtonHeight">47dp</dimen>
+    
+    <!-- Complete dialog -->
+    <dimen name="DyseggxiaBackButtonBigWidth">158dp</dimen>
+    <dimen name="DyseggxiaBackButtonBigHeight">62dp</dimen>
+    <dimen name="DyseggxiaContinueButtonWidth">158dp</dimen>
+    <dimen name="DyseggxiaContinueButtonHeight">61dp</dimen>
     <dimen name="CompleteDialogFishImageWidth">116dp</dimen>
     <dimen name="CompleteDialogFishImageHeight">72dp</dimen>
     <dimen name="CompleteDialogFishScoreWidth">29dp</dimen>
@@ -57,6 +69,7 @@
     <dimen name="CompleteDialogPenguinWidth">202dp</dimen>
     <dimen name="CompleteDialogPenguinHeight">116dp</dimen>
     
+    <!-- How To -->
     <dimen name="HowToCubeWidth">90dp</dimen>
     <dimen name="HowToCubeHeight">90dp</dimen>
     <dimen name="HowToDerivationCubeWidth">110dp</dimen>
