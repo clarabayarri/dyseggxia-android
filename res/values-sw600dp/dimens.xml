@@ -3,9 +3,9 @@
     <dimen name="DyseggxiaTextAppearanceTextSize">16pt</dimen>
     <dimen name="DyseggxiaTitleAppearanceTextSize">24pt</dimen>
     <dimen name="DyseggxiaSubtitleAppearanceTextSize">16pt</dimen>
-    <dimen name="DyseggxiaProblemLetterAppearanceTextSize">24pt</dimen>
-    <dimen name="DyseggxiaProblemLetterSmallerAppearanceTextSize">22pt</dimen>
-    <dimen name="DyseggxiaProblemLetterSmallestAppearanceTextSize">20pt</dimen>
+    <dimen name="DyseggxiaProblemLetterAppearanceTextSize">18pt</dimen>
+    <dimen name="DyseggxiaProblemLetterSmallerAppearanceTextSize">18pt</dimen>
+    <dimen name="DyseggxiaProblemLetterSmallestAppearanceTextSize">18pt</dimen>
     <dimen name="DyseggxiaVerticalAnswerLetterAppearanceTextSize">18pt</dimen>
     <dimen name="DyseggxiaButtonTextAppearanceTextSize">14pt</dimen>
     

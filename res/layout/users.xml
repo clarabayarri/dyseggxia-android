@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <ImageView 
+	    android:id="@+id/usersSimpleBackground"
+	    android:contentDescription="@string/users_background"
+	    style="@style/SimpleBackground" />
+	<ImageView 
+	    android:id="@+id/usersBackground"
+	    android:contentDescription="@string/users_background"
+	    style="@style/UsersBackground" />
+	
+	<Button 
+	    android:id="@+id/usersCreateButton"
+	    android:contentDescription="@string/users_create"
+	    style="@style/UsersCreate" />
+	
+	<Button 
+        android:id="@+id/usersEditButton"
+        android:contentDescription="@string/users_edit"
+        style="@style/UsersEditButton" />
+	
+	<Button 
+        android:id="@+id/usersDoneButton"
+        android:contentDescription="@string/users_done"
+        style="@style/UsersDoneButton" />
+    
+</RelativeLayout>

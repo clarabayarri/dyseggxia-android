@@ -39,6 +39,10 @@ public class MainActivity extends Activity {
     		prefController.increaseCurrentLanguage();
     		loadInfo();
     		break;
+    	case R.id.home_users_button:
+    		Intent users = new Intent(this, UsersActivity.class);
+    		startActivity(users);
+    		break;
     	}
     }
     

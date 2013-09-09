@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".PlayActivity" android:screenOrientation="landscape" />
         <activity android:name=".CubesActivity" android:screenOrientation="landscape" />
+        <activity android:name=".UsersActivity" android:screenOrientation="landscape" />
+        <activity android:name=".CreateUserActivity" android:screenOrientation="landscape" />
     </application>
 
 </manifest>

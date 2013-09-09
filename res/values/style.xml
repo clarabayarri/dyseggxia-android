@@ -39,6 +39,7 @@
 	<style name="DyseggxiaButton" parent="@android:style/Widget.Button">
 	    <item name="android:onClick">onClick</item>
         <item name="android:layout_margin">10dp</item>
+        <item name="android:gravity">center</item>
         <item name="android:scaleType">fitCenter</item>
 	    <item name="android:textAppearance">@style/DyseggxiaButtonTextAppearance</item>
 	</style>
@@ -109,26 +110,39 @@
 	</style>
 	
 	<!-- Play -->
+	<style name="PlayPole">
+	    <item name="android:layout_width">@dimen/PlayPoleWidth</item>
+        <item name="android:layout_height">@dimen/PlayPoleHeight</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">@dimen/PlayPoleMarginRight</item>
+        <item name="android:layout_marginTop">@dimen/PlayPoleMarginTop</item>
+        <item name="android:background">@drawable/wood_background_pole</item>
+	</style>
 	<style name="DyseggxiaPlayButton" parent="@style/DyseggxiaButton">
-	    <item name="android:layout_width">@dimen/DyseggxiaPlayButtonWidth</item>
+	    <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/DyseggxiaPlayButtonHeight</item>
-        <item name="android:layout_margin">0dp</item>
-        <item name="android:layout_marginLeft">@dimen/DyseggxiaPlayButtonMarginLeft</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginTop">@dimen/DyseggxiaPlayButtonMarginTop</item>
         <item name="android:paddingBottom">@dimen/DyseggxiaPlayButtonPaddingBottom</item>
         <item name="android:paddingRight">@dimen/DyseggxiaPlayButtonPaddingRight</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/wood_play_button</item>
+        <item name="android:background">@drawable/wood_play_button_snow</item>
         <item name="android:textSize">@dimen/DyseggxiaButtonTextAppearanceTextSizeLarge</item>
         <item name="android:text">@string/play</item>
 	</style>
 	<style name="DyseggxiaShopButton" parent="@style/DyseggxiaButton">
-	    <item name="android:layout_width">@dimen/DyseggxiaShopButtonWidth</item>
+	    <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/DyseggxiaShopButtonHeight</item>
-        <item name="android:layout_margin">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginTop">0dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/wood_shop_button</item>
+        <item name="android:background">@drawable/wood_shop_button_snow</item>
         <item name="android:textSize">@dimen/DyseggxiaButtonTextAppearanceTextSize</item>
-        <item name="android:text">@string/shop</item>
+        <!-- <item name="android:text">@string/shop</item> -->
 	</style>
 	<style name="DyseggxiaPlayBackButton" parent="@style/DyseggxiaButton">
 	    <item name="android:layout_width">@dimen/DyseggxiaPlayBackButtonWidth</item>
@@ -139,9 +153,13 @@
         <item name="android:text">@string/back</item>
 	</style>
 	<style name="DyseggxiaChangeLevelButton" parent="@style/DyseggxiaButton">
-	    <item name="android:layout_width">@dimen/DyseggxiaChangeLevelButtonWidth</item>
+	    <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/DyseggxiaChangeLevelButtonHeight</item>
-        <item name="android:layout_margin">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginTop">@dimen/DyseggxiaChangeLevelButtonMarginTop</item>
+        <item name="android:layout_below">@id/playStartButton</item>
         <item name="android:gravity">center</item>
         <item name="android:paddingRight">@dimen/DyseggxiaChangeLevelButtonPaddingRight</item>
         <item name="android:background">@drawable/level_0_button</item>
@@ -274,4 +292,87 @@
 	    <item name="android:layout_marginRight">40dp</item>
 	    <item name="android:layout_marginTop">10dp</item>
 	</style>
+	
+	<!-- Menus -->
+	<style name="MenuYellowBackground" parent="DyseggxiaImageView">
+	    <item name="android:layout_width">match_parent</item>
+	    <item name="android:layout_height">match_parent</item>
+	    <item name="android:background">@drawable/menu_yellow_background</item>
+	    <item name="android:layout_marginTop">@dimen/MenuYellowBackgroundMarginTopBottom</item>
+	    <item name="android:layout_marginLeft">@dimen/MenuYellowBackgroundMarginLeftRight</item>
+	    <item name="android:layout_marginRight">@dimen/MenuYellowBackgroundMarginLeftRight</item>
+	    <item name="android:layout_marginBottom">@dimen/MenuYellowBackgroundMarginTopBottom</item>
+	</style>
+	<style name="GreenButton" parent="@style/DyseggxiaButton">
+	    <item name="android:layout_width">@dimen/GreenButtonWidth</item>
+        <item name="android:layout_height">@dimen/GreenButtonHeight</item>
+        <item name="android:background">@drawable/green_button_background</item>
+	</style>
+	<style name="RedSmallButton" parent="@style/DyseggxiaButton">
+	    <item name="android:layout_width">@dimen/RedSmallButtonWidth</item>
+        <item name="android:layout_height">@dimen/RedSmallButtonHeight</item>
+        <item name="android:background">@drawable/red_button_small_background</item>
+	</style>
+	
+	<!-- Users -->
+	<style name="SimpleBackground" parent="DyseggxiaImageView">
+	    <item name="android:layout_width">match_parent</item>
+	    <item name="android:layout_height">match_parent</item>
+	    <item name="android:background">@drawable/simplebackground</item>
+	</style>
+	<style name="UsersBackground" parent="DyseggxiaImageView">
+	    <item name="android:layout_width">match_parent</item>
+	    <item name="android:layout_height">match_parent</item>
+	    <item name="android:background">@drawable/users_background</item>
+	    <item name="android:layout_marginTop">@dimen/UsersBackgroundMarginTopBottom</item>
+	    <item name="android:layout_marginLeft">@dimen/UsersBackgroundMarginLeftRight</item>
+	    <item name="android:layout_marginRight">@dimen/UsersBackgroundMarginLeftRight</item>
+	    <item name="android:layout_marginBottom">@dimen/UsersBackgroundMarginTopBottom</item>
+	</style>
+	<style name="UsersCreate" parent="@style/DyseggxiaButton">
+	    <item name="android:layout_width">@dimen/UsersCreateButtonWidth</item>
+        <item name="android:layout_height">@dimen/UsersCreateButtonHeight</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_alignBottom">@id/usersBackground</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/user_add_button</item>
+	</style>
+	<style name="UsersButton" parent="@style/DyseggxiaButton">
+	    <item name="android:layout_width">@dimen/UsersButtonWidth</item>
+        <item name="android:layout_height">@dimen/UsersButtonHeight</item>
+        <item name="android:layout_margin">@dimen/UsersButtonMargin</item>
+        <item name="android:layout_alignBottom">@id/usersBackground</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/user_button_background</item>
+	</style>
+	<style name="UsersEditButton" parent="@style/UsersButton">
+	    <item name="android:text">@string/users_edit</item>
+	    <item name="android:layout_alignLeft">@id/usersBackground</item>
+	</style>
+	<style name="UsersDoneButton" parent="@style/UsersButton">
+	    <item name="android:text">@string/users_done</item>
+	    <item name="android:layout_alignRight">@id/usersBackground</item>
+	</style>
+	
+	<!-- Create User -->
+	<style name="UsersCreateNameField">
+	    <item name="android:layout_width">@dimen/CreateUserNameFieldWidth</item>
+	    <item name="android:layout_height">@dimen/CreateUserNameFieldHeight</item>
+	    <item name="android:hint">@string/users_create_name_hint</item>
+	    <item name="android:layout_centerInParent">true</item>
+	</style>
+	<style name="CreateUserGreenButton" parent="@style/GreenButton">
+        <item name="android:layout_margin">@dimen/CreateUserGreenButtonMargin</item>
+        <item name="android:layout_alignRight">@id/usersCreateBackground</item>
+        <item name="android:layout_alignBottom">@id/usersCreateBackground</item>
+        <item name="android:text">@string/users_create_save</item>
+	</style>
+	<style name="CreateUserRedSmallButton" parent="@style/RedSmallButton">
+        <item name="android:layout_margin">@dimen/CreateUserRedSmallButtonMargin</item>
+        <item name="android:layout_alignLeft">@id/usersCreateBackground</item>
+        <item name="android:layout_alignBottom">@id/usersCreateBackground</item>
+        <item name="android:text">@string/users_create_cancel</item>
+	</style>
+	
 </resources>

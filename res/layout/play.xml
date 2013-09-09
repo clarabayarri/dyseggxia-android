@@ -10,24 +10,28 @@
         android:id="@+id/playBackButton"
         style="@style/DyseggxiaPlayBackButton" />
     
-    <Button
-        android:id="@+id/playChangeLevelButton"
-        style="@style/DyseggxiaChangeLevelButton"
-        android:layout_centerInParent="true" />
+    <RelativeLayout 
+        android:id="@+id/playMenuPole"
+        style="@style/PlayPole">
     
-    <Button 
-        android:id="@+id/playStartButton"
-        android:contentDescription="@string/play"
-        style="@style/DyseggxiaPlayButton"
-        android:layout_alignLeft="@id/playChangeLevelButton"
-        android:layout_above="@id/playChangeLevelButton"/>
+	    <Button 
+	        android:id="@+id/playStartButton"
+	        android:contentDescription="@string/play"
+	        style="@style/DyseggxiaPlayButton"/>
+        
+        <Button
+        	android:id="@+id/playChangeLevelButton"
+        	style="@style/DyseggxiaChangeLevelButton" />
+	    
+	    <Button 
+	        android:id="@+id/playShopButton"
+	        android:contentDescription="@string/shop"
+	        style="@style/DyseggxiaShopButton"
+	        android:layout_alignLeft="@id/playChangeLevelButton"
+	        android:layout_below="@id/playChangeLevelButton"/>
+        
+    </RelativeLayout>
     
-    <Button 
-        android:id="@+id/playShopButton"
-        android:contentDescription="@string/shop"
-        style="@style/DyseggxiaShopButton"
-        android:layout_alignLeft="@id/playChangeLevelButton"
-        android:layout_below="@id/playChangeLevelButton"/>
     
     <ImageView 
         android:id="@+id/playPenguinButton"

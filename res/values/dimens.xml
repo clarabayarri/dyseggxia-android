@@ -3,7 +3,7 @@
     <dimen name="DyseggxiaTextAppearanceTextSize">10pt</dimen>
     <dimen name="DyseggxiaTitleAppearanceTextSize">16pt</dimen>
     <dimen name="DyseggxiaSubtitleAppearanceTextSize">9pt</dimen>
-    <dimen name="DyseggxiaProblemLetterAppearanceTextSize">16pt</dimen>
+    <dimen name="DyseggxiaProblemLetterAppearanceTextSize">14pt</dimen>
     <dimen name="DyseggxiaProblemLetterSmallerAppearanceTextSize">14pt</dimen>
     <dimen name="DyseggxiaProblemLetterSmallestAppearanceTextSize">12pt</dimen>
     <dimen name="DyseggxiaVerticalAnswerLetterAppearanceTextSize">12pt</dimen>
@@ -31,22 +31,34 @@
     <dimen name="HomeUserPinguLabelWidth">58dp</dimen>
     <dimen name="HomeUserPinguLabelHeight">20dp</dimen>
     
+    
     <!-- Play -->
-    <dimen name="DyseggxiaPlayButtonWidth">166dp</dimen>
-    <dimen name="DyseggxiaPlayButtonHeight">80dp</dimen>
-    <dimen name="DyseggxiaPlayButtonPaddingBottom">21dp</dimen>
+    <dimen name="PlayPoleWidth">169dp</dimen>
+    <dimen name="PlayPoleHeight">350dp</dimen>
+    <dimen name="PlayPoleMarginRight">120dp</dimen>
+    <dimen name="PlayPoleMarginTop">10dp</dimen>
+    
+    <!-- <dimen name="DyseggxiaPlayButtonWidth">169dp</dimen> -->
+    <dimen name="DyseggxiaPlayButtonHeight">99dp</dimen>
+    <dimen name="DyseggxiaPlayButtonPaddingBottom">0dp</dimen>
     <dimen name="DyseggxiaPlayButtonPaddingRight">15dp</dimen>
-    <dimen name="DyseggxiaPlayButtonMarginLeft">35dp</dimen>
+    <dimen name="DyseggxiaPlayButtonMarginTop">0dp</dimen>
+    
     <dimen name="DyseggxiaPlayBackButtonWidth">68dp</dimen>
     <dimen name="DyseggxiaPlayBackButtonHeight">71dp</dimen>
     <dimen name="DyseggxiaPlayBackButtonPaddingTop">5dp</dimen>
-    <dimen name="DyseggxiaChangeLevelButtonWidth">132dp</dimen>
+    
+    <!-- <dimen name="DyseggxiaChangeLevelButtonWidth">169dp</dimen> -->
     <dimen name="DyseggxiaChangeLevelButtonHeight">62dp</dimen>
-    <dimen name="DyseggxiaChangeLevelButtonPaddingRight">51dp</dimen>
+    <dimen name="DyseggxiaChangeLevelButtonMarginTop">50dp</dimen>
+    <dimen name="DyseggxiaChangeLevelButtonPaddingRight">55dp</dimen>
+    
     <dimen name="DyseggxiaShopButtonWidth">131dp</dimen>
     <dimen name="DyseggxiaShopButtonHeight">53dp</dimen>
+    
     <dimen name="DyseggxiaPlayPinguWidth">150dp</dimen>
     <dimen name="DyseggxiaPlayPinguHeight">150dp</dimen>
+    
     <dimen name="PlayFishBucketWidth">90dp</dimen>
     <dimen name="PlayFishBucketHeight">107dp</dimen>
     <dimen name="PlayFishBucketLabelHeight">41dp</dimen>
@@ -78,4 +90,30 @@
     <dimen name="HowToHandHeight">501dp</dimen>
     <dimen name="HowToAnswersWidth">700dp</dimen>
     <dimen name="HowToAnswersHeight">250dp</dimen>
+    
+    <!-- Menus -->
+    <dimen name="MenuYellowBackgroundMarginTopBottom">20dp</dimen>
+    <dimen name="MenuYellowBackgroundMarginLeftRight">25dp</dimen>
+    <dimen name="GreenButtonWidth">68dp</dimen>
+    <dimen name="GreenButtonHeight">27dp</dimen>
+    <dimen name="RedSmallButtonWidth">48dp</dimen>
+    <dimen name="RedSmallButtonHeight">19dp</dimen>
+    
+    <!-- Users -->
+    <dimen name="UsersBackgroundMarginTopBottom">20dp</dimen>
+    <dimen name="UsersBackgroundMarginLeftRight">25dp</dimen>
+    <dimen name="UsersCreateButtonWidth">58dp</dimen>
+    <dimen name="UsersCreateButtonHeight">35dp</dimen>
+    <dimen name="UsersButtonWidth">93dp</dimen>
+    <dimen name="UsersButtonHeight">21dp</dimen>
+    <dimen name="UsersButtonMargin">6dp</dimen>
+    
+    <!-- Create User -->
+    <dimen name="CreateUserNameFieldWidth">200dp</dimen>
+    <dimen name="CreateUserNameFieldHeight">40dp</dimen>
+    <dimen name="CreateUserGreenButtonMargin">20dp</dimen>
+    <dimen name="CreateUserRedSmallButtonMargin">25dp</dimen>
+    
+    
+    
 </resources>

@@ -44,4 +44,13 @@
 	<string name="home_users">Usuarios</string>
 	<string name="home_user_placeholder">nombreeeee</string>
 	<string name="home_info">Información</string>
+	
+	<string name="users_background">Fondo</string>
+	<string name="users_create">Crear usuario</string>
+	<string name="users_edit">Editar</string>
+	<string name="users_done">Hecho</string>
+	
+	<string name="users_create_name_hint">Nombre</string>
+	<string name="users_create_cancel">Cancelar</string>
+	<string name="users_create_save">Guardar</string>
 </resources>
