@@ -38,7 +38,7 @@ public class LevelTable extends DatabaseTable {
 	
 	@Override
 	public void populateTable(Context context, SQLiteDatabase database) {
-		for (int i = 0; i < 3; ++i) {
+		for (int i = 0; i < 5; ++i) {
 			for (String lang : LOCALES) {
 				insertLevel(database, i, lang);
 			}

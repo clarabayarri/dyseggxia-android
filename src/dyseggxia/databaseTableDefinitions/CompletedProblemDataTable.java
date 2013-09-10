@@ -7,16 +7,23 @@ public class CompletedProblemDataTable extends DatabaseTable {
 
 	public static String TABLE_NAME = "user_problems_data";
 	
+	public static final String COLUMN_USER_ID = "user_ID";
+	public static final String COLUMN_LANGUAGE_ID = "language_ID";
+	public static final String COLUMN_LEVEL_ID = "level_ID";
 	public static final String COLUMN_PROBLEM_ID = "problem_ID";
 	public static final String COLUMN_FAILS = "attempts";
 	public static final String COLUMN_DURATION = "duration";
 	public static final String COLUMN_DATE = "date";
-	public static final String COLUMN_WRONG_SOLUTIONS = "wring_solutions";
-	public static final String[] ALL_COLUMNS = {COLUMN_PROBLEM_ID, COLUMN_FAILS, 
+	public static final String COLUMN_WRONG_SOLUTIONS = "wrong_solutions";
+	public static final String[] ALL_COLUMNS = {COLUMN_USER_ID, COLUMN_LANGUAGE_ID, 
+		COLUMN_LEVEL_ID, COLUMN_PROBLEM_ID, COLUMN_FAILS, 
 		COLUMN_DURATION, COLUMN_DATE, COLUMN_WRONG_SOLUTIONS};
 	
 	private static String CREATE_TABLE = "create table " +
 			TABLE_NAME + "(" + COLUMN_ID + " integer primary key autoincrement, " +
+			COLUMN_USER_ID + " integer not null, " + 
+			COLUMN_LANGUAGE_ID + " integer not null, " + 
+			COLUMN_LEVEL_ID + " integer not null, " + 
 			COLUMN_PROBLEM_ID + " integer not null, " + 
 			COLUMN_FAILS + " integer not null default 0, " +
 			COLUMN_DURATION + " double, " + 

@@ -19,7 +19,7 @@ public class UserDataTracker {
 			}
 			else dadesAEnviar.put("correct", "N");
 			dadesAEnviar.put("answer", answer);
-			dadesAEnviar.put("type", problem.getTypeName());
+			dadesAEnviar.put("type", problem.getType());
 			dadesAEnviar.put("time", time);
 			dadesAEnviar.put("userID", userID);
 			dadesAEnviar.put("securityCode", securityCode);

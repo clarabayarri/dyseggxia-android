@@ -5,16 +5,16 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
-import dyseggxia.domainModel.DerivationProblem;
+import dyseggxia.domainModel.Problem;
 import dyseggxia.views.ProblemAnswerVerticalLayout;
 import dyseggxia.views.ProblemWordLayout;
 
 public class DerivationCubeController extends GenericCubesProblemViewController {
 
-	private DerivationProblem problem;
+	private Problem problem;
 	private ProblemAnswerVerticalLayout answerLayout;
 	
-	public DerivationCubeController(CubesActivity context, DerivationProblem problem) {
+	public DerivationCubeController(CubesActivity context, Problem problem) {
 		this.context = context;
 		this.problem = problem;
 	}
@@ -49,7 +49,7 @@ public class DerivationCubeController extends GenericCubesProblemViewController 
 	}
 	
 	private void addAnswersLayout() {
-		answerLayout = new ProblemAnswerVerticalLayout(this, problem.getDisplayAnswers(), true);
+		answerLayout = new ProblemAnswerVerticalLayout(this, problem.getAnswers(), true);
 		this.view.addView(answerLayout);
 		LayoutParams params = (LayoutParams) answerLayout.getLayoutParams();
 		params.weight = 1.5f;

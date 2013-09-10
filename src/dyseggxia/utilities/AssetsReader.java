@@ -5,73 +5,74 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 
 public class AssetsReader {
 	
 	private Context context;
-	private List<WordProblemDataTuple> wordProblems;
-	private static final String[] wordProblemTypes = {"insertion", "omission", "substitution", "derivation"};
-	private static final String[] sentenceProblemTypes = {"separation"};
-	private static final String[] languages = {"es", "en"};
-	private static final int numLevels = 3;
+	private List<WordProblemDataTuple> problems;
+	private static final String FILE_NAME = "problems-v3.csv";
 	
 	public AssetsReader(Context context) {
 		this.context = context;
 	}
 	
-	public List<WordProblemDataTuple> getWordProblems() {
-		if (wordProblems == null) read();
-		return wordProblems;
+	public List<WordProblemDataTuple> getProblems() {
+		if (problems == null) read();
+		return problems;
 	}
 	
 	private void read() {
-		wordProblems = new ArrayList<WordProblemDataTuple>();
-		for (int level = 0; level < numLevels; ++level) {
-			for (String language : languages) {
-				wordProblems.addAll(readWordProblems(level, language));
-			}
-		}
+		problems = readProblems();
 	}
 	
-	private List<WordProblemDataTuple> readWordProblems(int level, String lang) {
-		int trueLevel = level+1;
+	@SuppressLint("DefaultLocale")
+	private List<WordProblemDataTuple> readProblems() {
 		List<WordProblemDataTuple> result = new ArrayList<WordProblemDataTuple>();
-		int index = 0;
-		for (String type : wordProblemTypes) {
-			String[] readData = readProblemsFromFile(type + "-" + trueLevel + "-" + lang + ".txt");
-			for(int i = 0; i < readData.length; ++i) {
-				String[] data = readData[i].split("(\\s)+");
-				if(data.length >= 3) {
-					WordProblemDataTuple newData = new WordProblemDataTuple();
-					newData.word = data[0].trim();
-					newData.startIndex = Integer.valueOf(data[1].substring(0, 1));
-					newData.endIndex = Integer.valueOf(data[1].substring(data[1].length()-1, data[1].length()));
-					newData.answers = data[2].trim().split("\\|");
-					newData.levelNumber = level;
-					newData.language = lang;
-					newData.number = index;
-					newData.type = type;
-					result.add(newData);
-					++index;
+		String[] readData = readProblemsFromFile(FILE_NAME);
+		for(int i = 1; i < readData.length; ++i) {
+			String[] fields = readData[i].split(",");
+			if (fields.length >= 11) {
+				WordProblemDataTuple newData = new WordProblemDataTuple();
+				newData.number = Integer.valueOf(fields[0]);
+				newData.language = fields[1].trim().toLowerCase();
+				newData.levelNumber = Integer.valueOf(fields[2]);
+				newData.type = fields[3].trim();
+				//letters
+				newData.letters = new ArrayList<String>();
+				String base = fields[4].trim();
+				while (base.length() > 0) {
+					if (base.startsWith("[")) {
+						base = base.substring(1);
+						String[] parts = base.split("]");
+						String[] parts2 = parts[0].split("\\|");
+						for (String let : parts2) {
+							newData.letters.add(let);
+						}
+						base = base.substring(parts[0].length()+1);
+					} else {
+						String let = base.substring(0, 1);
+						newData.letters.add(let);
+						base = base.substring(1);
+					}
 				}
-			}
-		}
-		for (String type : sentenceProblemTypes) {
-			String[] data = readProblemsFromFile(type + "-" + trueLevel + "-" + lang + ".txt");
-			for(int i = 0; i < data.length; ++i) {
-				String line = data[i].trim();
-				WordProblemDataTuple problem = new WordProblemDataTuple();
-				problem.word = line;
-				problem.levelNumber = level;
-				problem.language = lang;
-				problem.number = index;
-				problem.type = type;
-				problem.startIndex = 0;
-				problem.endIndex = 0;
-				result.add(problem);
-				++index;
+				for (int j = 0; j < newData.letters.size(); ++j) {
+					if (newData.letters.get(j).equals("_")) {
+						newData.letters.set(j, " ");
+					}
+				}
+				newData.word = fields[5].trim();
+				newData.answers = new ArrayList<String>();
+				for (int j = 6; j < 12; ++j) {
+					String answer = fields[j].trim();
+					if (answer.length() > 0) {
+						newData.answers.add(answer);
+					}
+				}
+				
+				result.add(newData);
 			}
 		}
 		return result;
@@ -92,7 +93,7 @@ public class AssetsReader {
             is.close();
 
             // Convert the buffer into a string.
-            String text = new String(buffer);
+            String text = new String(buffer, "UTF-8");
             return text.split("\\n");
 
         } catch (IOException e) {

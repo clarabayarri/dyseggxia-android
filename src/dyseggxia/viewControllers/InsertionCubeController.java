@@ -4,16 +4,16 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
-import dyseggxia.domainModel.InsertionProblem;
+import dyseggxia.domainModel.Problem;
 import dyseggxia.views.ProblemAnswerLayout;
 import dyseggxia.views.ProblemWordLayout;
 
 public class InsertionCubeController extends GenericCubesProblemViewController {
 
-	private InsertionProblem problem;
+	private Problem problem;
 	private ProblemAnswerLayout answerLayout;
 	
-	public InsertionCubeController(CubesActivity context, InsertionProblem problem) {
+	public InsertionCubeController(CubesActivity context, Problem problem) {
 		this.context = context;
 		this.problem = problem;
 	}
@@ -48,7 +48,7 @@ public class InsertionCubeController extends GenericCubesProblemViewController {
 	}
 	
 	private void addAnswersLayout() {
-		answerLayout = new ProblemAnswerLayout(this, problem.getDisplayAnswers(), true);
+		answerLayout = new ProblemAnswerLayout(this, problem.getAnswers(), true);
 		this.view.addView(answerLayout);
 		LayoutParams params = (LayoutParams) answerLayout.getLayoutParams();
 		params.weight = 1.5f;

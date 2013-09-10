@@ -1,20 +1,16 @@
 package dyseggxia.factories;
 
 import android.content.Context;
-import dyseggxia.providers.AbstractProblemProvider;
 import dyseggxia.providers.AnswerProvider;
 import dyseggxia.providers.AnswerProviderI;
 import dyseggxia.providers.CompletedProblemProvider;
 import dyseggxia.providers.DatabaseHelper;
-import dyseggxia.providers.DerivationProblemProvider;
-import dyseggxia.providers.InsertionProblemProvider;
+import dyseggxia.providers.LetterProvider;
+import dyseggxia.providers.LetterProviderI;
 import dyseggxia.providers.LevelProvider;
 import dyseggxia.providers.LevelProviderI;
-import dyseggxia.providers.OmissionProblemProvider;
 import dyseggxia.providers.ProblemProvider;
 import dyseggxia.providers.ProblemProviderI;
-import dyseggxia.providers.SentenceSeparationProblemProvider;
-import dyseggxia.providers.SubstitutionProblemProvider;
 
 public class ProviderFactory {
 
@@ -23,16 +19,11 @@ public class ProviderFactory {
 	private static ProviderFactory singletonInstance;
 	
 	private DatabaseHelper helper;
+	private LetterProviderI letterProvider;
 	private AnswerProviderI answerProvider;
 	private ProblemProviderI problemProvider;
 	private CompletedProblemProvider completedProblemProvider;
 	private LevelProviderI levelProvider;
-	
-	private InsertionProblemProvider insertionProblemProvider;
-	private OmissionProblemProvider omissionProblemProvider;
-	private SubstitutionProblemProvider substitutionProblemProvider;
-	private DerivationProblemProvider derivationProblemProvider;
-	private SentenceSeparationProblemProvider sentenceSeparationProblemProvider;
 	
 	private ProviderFactory(Context context) {
 		this.context = context;
@@ -43,41 +34,6 @@ public class ProviderFactory {
 			singletonInstance = new ProviderFactory(context);
 		}
 		return singletonInstance;
-	}
-	
-	private InsertionProblemProvider getInsertionProblemProvider() {
-		if(insertionProblemProvider == null) {
-			insertionProblemProvider = new InsertionProblemProvider(getAnswerProvider());
-		}
-		return insertionProblemProvider;
-	}
-	
-	private OmissionProblemProvider getOmissionProblemProvider() {
-		if(omissionProblemProvider == null) {
-			omissionProblemProvider = new OmissionProblemProvider(getAnswerProvider());
-		}
-		return omissionProblemProvider;
-	}
-	
-	private SubstitutionProblemProvider getSubstitutionProblemProvider() {
-		if(substitutionProblemProvider == null) {
-			substitutionProblemProvider = new SubstitutionProblemProvider(getAnswerProvider());
-		}
-		return substitutionProblemProvider;
-	}
-	
-	private DerivationProblemProvider getDerivationProblemProvider() {
-		if(derivationProblemProvider == null) {
-			derivationProblemProvider = new DerivationProblemProvider(getAnswerProvider());
-		}
-		return derivationProblemProvider;
-	}
-	
-	private SentenceSeparationProblemProvider getSentenceSeparationProblemProvider() {
-		if(sentenceSeparationProblemProvider == null) {
-			sentenceSeparationProblemProvider = new SentenceSeparationProblemProvider();
-		}
-		return sentenceSeparationProblemProvider;
 	}
 	
 	public LevelProviderI getLevelProvider() {
@@ -101,23 +57,11 @@ public class ProviderFactory {
 		return completedProblemProvider;
 	}
 	
-	public AbstractProblemProvider getProblemProvider(String type) {
-		if(type.equals("insertion")) {
-			return getInsertionProblemProvider();
+	public LetterProviderI getLetterProvider() {
+		if(letterProvider == null) {
+			letterProvider = new LetterProvider(getDatabaseHelper());
 		}
-		if(type.equals("omission")) {
-			return getOmissionProblemProvider();
-		}
-		if(type.equals("substitution")) {
-			return getSubstitutionProblemProvider();
-		}
-		if(type.equals("derivation")) {
-			return getDerivationProblemProvider();
-		}
-		if(type.equals("separation")) {
-			return getSentenceSeparationProblemProvider();
-		}
-		return null;
+		return letterProvider;
 	}
 	
 	public AnswerProviderI getAnswerProvider() {

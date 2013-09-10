@@ -1,5 +1,7 @@
 package dyseggxia.utilities;
 
+import java.util.List;
+
 public class WordProblemDataTuple {
 
 	public int levelNumber;
@@ -7,8 +9,7 @@ public class WordProblemDataTuple {
 	public String type;
 	public int number;
 	public String word;
-	public int startIndex;
-	public int endIndex;
-	public String[] answers;
+	public List<String> letters;
+	public List<String> answers;
 	
 }

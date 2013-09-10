@@ -1,12 +1,7 @@
 package dyseggxia.factories;
 
 import dyseggxia.activities.CubesActivity;
-import dyseggxia.domainModel.DerivationProblem;
-import dyseggxia.domainModel.InsertionProblem;
-import dyseggxia.domainModel.OmissionProblem;
 import dyseggxia.domainModel.Problem;
-import dyseggxia.domainModel.SentenceSeparationProblem;
-import dyseggxia.domainModel.SubstitutionProblem;
 import dyseggxia.viewControllers.DerivationCubeController;
 import dyseggxia.viewControllers.GenericCubesProblemViewController;
 import dyseggxia.viewControllers.InsertionCubeController;
@@ -19,38 +14,39 @@ import dyseggxia.viewControllers.howto.InsertionHowToViewController;
 public class ViewControllerFactory {
 
 	public static GenericCubesProblemViewController getCorrectCubeController(CubesActivity context, Problem problem) {
-		if(problem.getTypeName().equals(InsertionProblem.typeName)) {
-			return new InsertionCubeController(context, (InsertionProblem) problem);
+		System.out.println(problem.getNumber());
+		if(problem.getType().equals(Problem.INSERTION1)) {
+			return new InsertionCubeController(context, problem);
 		}
-		if(problem.getTypeName().equals(OmissionProblem.typeName)) {
-			return new OmissionCubeController(context, (OmissionProblem) problem);
+		if(problem.getType().equals(Problem.OMISSION)) {
+			return new OmissionCubeController(context, problem);
 		}
-		if(problem.getTypeName().equals(SubstitutionProblem.typeName)) {
-			return new SubstitutionCubeController(context, (SubstitutionProblem) problem);
+		if(problem.getType().equals(Problem.SUBSTITUTION)) {
+			return new SubstitutionCubeController(context, problem);
 		}
-		if(problem.getTypeName().equals(DerivationProblem.typeName)) {
-			return new DerivationCubeController(context, (DerivationProblem) problem);
+		if(problem.getType().equals(Problem.DERIVATION)) {
+			return new DerivationCubeController(context, problem);
 		}
-		if(problem.getTypeName().equals(SentenceSeparationProblem.typeName)) {
-			return new SentenceSeparationCubeController(context, (SentenceSeparationProblem) problem);
+		if(problem.getType().equals(Problem.SEPARATION)) {
+			return new SentenceSeparationCubeController(context, problem);
 		}
 		return null;
 	}
 	
 	public static HowToViewControllerI getCorrectHowToViewController(CubesActivity context, Problem problem) {
-		if(problem.getTypeName().equals(InsertionProblem.typeName)) {
+		if(problem.getType().equals(Problem.INSERTION1)) {
 			return new InsertionHowToViewController(context);
 		}
-		if(problem.getTypeName().equals(OmissionProblem.typeName)) {
+		if(problem.getType().equals(Problem.OMISSION)) {
 			return new InsertionHowToViewController(context);
 		}
-		if(problem.getTypeName().equals(SubstitutionProblem.typeName)) {
+		if(problem.getType().equals(Problem.SUBSTITUTION)) {
 			return new InsertionHowToViewController(context);
 		}
-		if(problem.getTypeName().equals(DerivationProblem.typeName)) {
+		if(problem.getType().equals(Problem.DERIVATION)) {
 			return new InsertionHowToViewController(context);
 		}
-		if(problem.getTypeName().equals(SentenceSeparationProblem.typeName)) {
+		if(problem.getType().equals(Problem.SEPARATION)) {
 			return new InsertionHowToViewController(context);
 		}
 		return null;

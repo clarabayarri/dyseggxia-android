@@ -1,20 +1,20 @@
 package dyseggxia.viewControllers;
 
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
-import dyseggxia.domainModel.SubstitutionProblem;
+import dyseggxia.domainModel.Problem;
 import dyseggxia.views.ProblemAnswerLayout;
 import dyseggxia.views.ProblemWordLayout;
 
 public class SubstitutionCubeController extends GenericCubesProblemViewController {
 
-	private SubstitutionProblem problem;
+	private Problem problem;
 	private ProblemAnswerLayout answerLayout;
 	
-	public SubstitutionCubeController(CubesActivity context, SubstitutionProblem problem) {
+	public SubstitutionCubeController(CubesActivity context, Problem problem) {
 		this.context = context;
 		this.problem = problem;
 	}
@@ -51,7 +51,7 @@ public class SubstitutionCubeController extends GenericCubesProblemViewControlle
 	}
 	
 	private void addAnswersLayout() {
-		answerLayout = new ProblemAnswerLayout(this, problem.getDisplayAnswers(), true);
+		answerLayout = new ProblemAnswerLayout(this, problem.getAnswers(), true);
 		this.view.addView(answerLayout);
 		LayoutParams params = (LayoutParams) answerLayout.getLayoutParams();
 		params.weight = 1.5f;

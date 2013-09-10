@@ -1,5 +1,7 @@
 package dyseggxia.providers;
 
+import java.util.List;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,7 +9,7 @@ import dyseggxia.databaseTableDefinitions.ProblemTable;
 import dyseggxia.domainModel.Problem;
 import dyseggxia.factories.ProviderFactory;
 
-public class ProblemProvider extends AbstractProblemProvider implements ProblemProviderI {
+public class ProblemProvider implements ProblemProviderI {
 	
 	private ProviderFactory providerFactory;
 	private DatabaseHelper helper;
@@ -33,10 +35,31 @@ public class ProblemProvider extends AbstractProblemProvider implements ProblemP
 		return problem;
 	}
 
-	@Override
-	protected Problem mapProblem(Cursor cursor) {
+	private Problem mapProblem(Cursor cursor) {
 		String type = cursor.getString(ProblemTable.COLUMN_TYPE_INDEX);
-		return providerFactory.getProblemProvider(type).mapProblem(cursor);
+		int id = cursor.getInt(ProblemTable.COLUMN_ID_INDEX);
+		int problemNumber = cursor.getInt(ProblemTable.COLUMN_NUMBER_INDEX);
+		String problemWord = cursor.getString(ProblemTable.COLUMN_WORD_INDEX);
+		int levelNumber = cursor.getInt(ProblemTable.COLUMN_LEVEL_NUMBER_INDEX);
+		String language = cursor.getString(ProblemTable.COLUMN_LEVEL_LANGUAGE_INDEX);
+		cursor.close();
+
+		Problem problem = new Problem(id, levelNumber, language, problemNumber, type,
+				problemWord);
+		findLetters(problem);
+		findAnswers(problem);
+
+		return problem;
+	}
+	
+	private void findLetters(Problem problem) {
+		List<String> answers = providerFactory.getLetterProvider().getLettersForProblem(problem);
+		problem.setDisplayedText(answers);
+	}
+	
+	private void findAnswers(Problem problem) {
+		List<String> answers = providerFactory.getAnswerProvider().getAnswersForProblem(problem);
+		problem.setAnswers(answers);
 	}
 
 }

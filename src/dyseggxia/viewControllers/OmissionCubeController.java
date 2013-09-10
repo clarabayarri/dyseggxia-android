@@ -4,14 +4,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
-import dyseggxia.domainModel.OmissionProblem;
+import dyseggxia.domainModel.Problem;
 import dyseggxia.views.ProblemWordLayout;
 
 public class OmissionCubeController extends GenericCubesProblemViewController {
 
-	private OmissionProblem problem;
+	private Problem problem;
 	
-	public OmissionCubeController(CubesActivity context, OmissionProblem problem) {
+	public OmissionCubeController(CubesActivity context, Problem problem) {
 		this.context = context;
 		this.problem = problem;
 	}

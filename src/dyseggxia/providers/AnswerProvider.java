@@ -25,9 +25,11 @@ public class AnswerProvider implements AnswerProviderI {
 				AnswerTable.COLUMN_PROBLEM_NUMBER + "=" + problem.getNumber(), null, null, null, null);
 		cursor.moveToFirst();
 		while(!cursor.isAfterLast()) {
-			String answer = cursor.getString(AnswerTable.COLUMN_ANSWER_INDEX);
-			answers.add(answer);
-			cursor.moveToNext();
+			try {
+				String answer = new String(cursor.getString(AnswerTable.COLUMN_ANSWER_INDEX).getBytes(), "UTF-8");
+				answers.add(answer);
+				cursor.moveToNext();
+			} catch (Exception e) {}
 		}
 		cursor.close();
 		database.close();

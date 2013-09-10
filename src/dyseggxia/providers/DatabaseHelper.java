@@ -7,6 +7,7 @@ import android.util.Log;
 import dyseggxia.databaseTableDefinitions.AnswerTable;
 import dyseggxia.databaseTableDefinitions.CompletedProblemDataTable;
 import dyseggxia.databaseTableDefinitions.DatabaseTable;
+import dyseggxia.databaseTableDefinitions.LetterTable;
 import dyseggxia.databaseTableDefinitions.LevelTable;
 import dyseggxia.databaseTableDefinitions.ProblemTable;
 import dyseggxia.databaseTableDefinitions.TrackingData;
@@ -25,14 +26,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		this.context = context;
 		AssetsReader reader = new AssetsReader(context);
 		tables = new DatabaseTable[] {new LevelTable(), 
-				new ProblemTable(reader), new AnswerTable(reader), new CompletedProblemDataTable(),
-				new TrackingData()};
+				new ProblemTable(reader), new LetterTable(), new AnswerTable(), 
+				new CompletedProblemDataTable(), new TrackingData()};
 	}
 	
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		for(DatabaseTable table : tables) {
 			database.execSQL(table.getCreateTableSentence());
+		}
+		for(DatabaseTable table : tables) {
 			table.populateTable(context, database);
 		}
 		

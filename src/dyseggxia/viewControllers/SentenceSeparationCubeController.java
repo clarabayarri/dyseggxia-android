@@ -6,18 +6,18 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import dyseggxia.activities.CubesActivity;
 import dyseggxia.activities.R;
-import dyseggxia.domainModel.SentenceSeparationProblem;
+import dyseggxia.domainModel.Problem;
 import dyseggxia.utilities.SwipeDetector;
 import dyseggxia.views.ProblemWordLayout;
 
 public class SentenceSeparationCubeController extends GenericCubesProblemViewController {
 
-	private SentenceSeparationProblem problem;
+	private Problem problem;
 	private int numSolutionsProposed;
 	private GestureDetector gestureDetector;
 	//private float originalTouchX;
 	
-	public SentenceSeparationCubeController(CubesActivity context, SentenceSeparationProblem problem) {
+	public SentenceSeparationCubeController(CubesActivity context, Problem problem) {
 		this.context = context;
 		this.problem = problem;
 	}
