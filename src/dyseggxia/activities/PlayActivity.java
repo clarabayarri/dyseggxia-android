@@ -50,7 +50,7 @@ public class PlayActivity extends Activity implements OnClickListener {
 		} else if (level == 2) {
 			levelButton.setText(R.string.level2);
 			levelButton.setBackgroundResource(R.drawable.level_2_button);
-		} else if (level == 2) {
+		} else if (level == 3) {
 			levelButton.setText(R.string.level3);
 			levelButton.setBackgroundResource(R.drawable.level_3_button);
 		} else {

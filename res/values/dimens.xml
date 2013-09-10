@@ -38,23 +38,21 @@
     <dimen name="PlayPoleMarginRight">120dp</dimen>
     <dimen name="PlayPoleMarginTop">10dp</dimen>
     
-    <!-- <dimen name="DyseggxiaPlayButtonWidth">169dp</dimen> -->
     <dimen name="DyseggxiaPlayButtonHeight">99dp</dimen>
     <dimen name="DyseggxiaPlayButtonPaddingBottom">0dp</dimen>
     <dimen name="DyseggxiaPlayButtonPaddingRight">15dp</dimen>
-    <dimen name="DyseggxiaPlayButtonMarginTop">0dp</dimen>
+    <dimen name="DyseggxiaPlayButtonMarginTop">10dp</dimen>
+    
+    <dimen name="DyseggxiaChangeLevelButtonHeight">62dp</dimen>
+    <dimen name="DyseggxiaChangeLevelButtonMarginTop">95dp</dimen>
+    <dimen name="DyseggxiaChangeLevelButtonPaddingRight">68dp</dimen>
+    
+    <dimen name="DyseggxiaShopButtonHeight">70dp</dimen>
+    <dimen name="DyseggxiaShopButtonMarginTop">160dp</dimen>
     
     <dimen name="DyseggxiaPlayBackButtonWidth">68dp</dimen>
     <dimen name="DyseggxiaPlayBackButtonHeight">71dp</dimen>
     <dimen name="DyseggxiaPlayBackButtonPaddingTop">5dp</dimen>
-    
-    <!-- <dimen name="DyseggxiaChangeLevelButtonWidth">169dp</dimen> -->
-    <dimen name="DyseggxiaChangeLevelButtonHeight">62dp</dimen>
-    <dimen name="DyseggxiaChangeLevelButtonMarginTop">50dp</dimen>
-    <dimen name="DyseggxiaChangeLevelButtonPaddingRight">55dp</dimen>
-    
-    <dimen name="DyseggxiaShopButtonWidth">131dp</dimen>
-    <dimen name="DyseggxiaShopButtonHeight">53dp</dimen>
     
     <dimen name="DyseggxiaPlayPinguWidth">150dp</dimen>
     <dimen name="DyseggxiaPlayPinguHeight">150dp</dimen>

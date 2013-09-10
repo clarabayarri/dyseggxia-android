@@ -9,7 +9,7 @@ public class PreferencesAdapter {
 	private static final String LANGUAGE_LABEL = "language";
 	private static final String[] LANGUAGES = {"es", "en"};
 	private static final String LEVEL_LABEL = "level";
-	private static final int NUM_LEVELS = 3;
+	private static final int NUM_LEVELS = 5;
 	
 	private SharedPreferences trackingPreferences;
 	private SharedPreferences userPreferences;

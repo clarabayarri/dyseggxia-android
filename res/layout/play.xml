@@ -3,7 +3,7 @@
     android:id="@+id/playLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondopolar"
+    android:background="@drawable/fondo_polar_android"
     android:padding="15dp" >
     
     <Button
@@ -13,22 +13,20 @@
     <RelativeLayout 
         android:id="@+id/playMenuPole"
         style="@style/PlayPole">
-    
-	    <Button 
-	        android:id="@+id/playStartButton"
-	        android:contentDescription="@string/play"
-	        style="@style/DyseggxiaPlayButton"/>
-        
+
         <Button
-        	android:id="@+id/playChangeLevelButton"
-        	style="@style/DyseggxiaChangeLevelButton" />
+            android:id="@+id/playChangeLevelButton"
+            style="@style/DyseggxiaChangeLevelButton" />
+    
+	    <Button
+	        android:id="@+id/playStartButton"
+	        style="@style/DyseggxiaPlayButton"
+	        android:contentDescription="@string/play" />
 	    
 	    <Button 
 	        android:id="@+id/playShopButton"
 	        android:contentDescription="@string/shop"
-	        style="@style/DyseggxiaShopButton"
-	        android:layout_alignLeft="@id/playChangeLevelButton"
-	        android:layout_below="@id/playChangeLevelButton"/>
+	        style="@style/DyseggxiaShopButton"/>
         
     </RelativeLayout>
     
