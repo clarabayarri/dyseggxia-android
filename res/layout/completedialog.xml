@@ -4,32 +4,20 @@
     android:layout_height="fill_parent" >
     
     <RelativeLayout 
-        android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:background="@drawable/howtobackground"
-	    android:layout_margin="60dp"
-	    android:padding="10dp"
-    	android:id="@+id/completeDialogParent" >
+    	android:id="@+id/completeDialogParent"
+        style="@style/CompleteDialogBackground" >
     	
         <TextView 
 		    android:id="@+id/completedialogSolutionLabel"
-		    android:textAppearance="@style/DyseggxiaTitleAppearance" 
-		    android:layout_centerHorizontal="true"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_marginTop="20dp"
-		    android:text="@string/solution" />
+		    style="@style/CompleteDialogSolutionLabel" />
 		
 		<Button 
 		    android:id="@+id/completedialogBackButton"
-		    style="@style/DyseggxiaBackButtonBig"
-		    android:layout_alignParentBottom="true"/>
+		    style="@style/DyseggxiaBackButtonBig" />
 		
 		<Button 
 		    android:id="@+id/completedialogContinueButton"
-		    style="@style/DyseggxiaContinueButton"
-		    android:layout_alignParentRight="true"
-		    android:layout_alignParentBottom="true"/>
+		    style="@style/DyseggxiaContinueButton" />
 		
 	    <ImageView 
 	        android:id="@+id/completedialogFishScoreImage"

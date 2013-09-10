@@ -68,14 +68,27 @@
     <dimen name="DyseggxiaHowToButtonHeight">47dp</dimen>
     
     <!-- Complete dialog -->
-    <dimen name="DyseggxiaBackButtonBigWidth">158dp</dimen>
-    <dimen name="DyseggxiaBackButtonBigHeight">62dp</dimen>
-    <dimen name="DyseggxiaContinueButtonWidth">158dp</dimen>
-    <dimen name="DyseggxiaContinueButtonHeight">61dp</dimen>
+    <dimen name="DyseggxiaContinueMenuBackgroundWidth">360dp</dimen>
+    <dimen name="DyseggxiaContinueMenuBackgroundHeight">243dp</dimen>
+    <dimen name="DyseggxiaContinueMenuPadding">10dp</dimen>
+    
+    <dimen name="DyseggxiaContinueDialogSolutionLabelMarginTop">40dp</dimen>
+    
+    <dimen name="DyseggxiaBackButtonBigWidth">114dp</dimen>
+    <dimen name="DyseggxiaBackButtonBigHeight">47dp</dimen>
+    <dimen name="DyseggxiaBackButtonBigPaddingLeft">47dp</dimen>
+    <dimen name="DyseggxiaBackButtonBigPaddingBottom">5dp</dimen>
+    
+    <dimen name="DyseggxiaContinueButtonWidth">118dp</dimen>
+    <dimen name="DyseggxiaContinueButtonHeight">47dp</dimen>
+    <dimen name="DyseggxiaContinueButtonPaddingRight">47dp</dimen>
+    
     <dimen name="CompleteDialogFishImageWidth">116dp</dimen>
     <dimen name="CompleteDialogFishImageHeight">72dp</dimen>
+    
     <dimen name="CompleteDialogFishScoreWidth">29dp</dimen>
     <dimen name="CompleteDialogFishScoreHeight">29dp</dimen>
+    
     <dimen name="CompleteDialogPenguinWidth">202dp</dimen>
     <dimen name="CompleteDialogPenguinHeight">116dp</dimen>
     

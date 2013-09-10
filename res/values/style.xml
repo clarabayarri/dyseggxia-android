@@ -215,21 +215,42 @@
 	</style>
 	
 	<!-- Complete dialog -->
+	<style name="CompleteDialogBackground">
+	    <item name="android:background">@drawable/small_menu_background</item>
+	    <item name="android:layout_width">@dimen/DyseggxiaContinueMenuBackgroundWidth</item>
+		<item name="android:layout_height">@dimen/DyseggxiaContinueMenuBackgroundHeight</item>
+		<item name="android:layout_centerInParent">true</item>
+		<item name="android:padding">@dimen/DyseggxiaContinueMenuPadding</item>
+	</style>
+	<style name="CompleteDialogSolutionLabel">
+	    <item name="android:textAppearance">@style/DyseggxiaTitleAppearance</item> 
+		<item name="android:layout_centerHorizontal">true</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginTop">@dimen/DyseggxiaContinueDialogSolutionLabelMarginTop</item>
+		<item name="android:text">@string/solution</item>
+	</style>
 	<style name="DyseggxiaBackButtonBig" parent="@style/DyseggxiaButton">
 	    <item name="android:layout_width">@dimen/DyseggxiaBackButtonBigWidth</item>
         <item name="android:layout_height">@dimen/DyseggxiaBackButtonBigHeight</item>
-        <item name="android:gravity">right|center</item>
-        <item name="android:paddingRight">13dp</item>
-        <item name="android:background">@drawable/backbutton</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/DyseggxiaBackButtonBigPaddingLeft</item>
+        <item name="android:paddingBottom">@dimen/DyseggxiaBackButtonBigPaddingBottom</item>
+        <item name="android:background">@drawable/back_button_round</item>
         <item name="android:text">@string/back</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
 	</style>
 	<style name="DyseggxiaContinueButton" parent="@style/DyseggxiaButton">
 	    <item name="android:layout_width">@dimen/DyseggxiaContinueButtonWidth</item>
         <item name="android:layout_height">@dimen/DyseggxiaContinueButtonHeight</item>
-        <item name="android:gravity">left|center</item>
-        <item name="android:paddingLeft">13dp</item>
-        <item name="android:background">@drawable/continuebutton</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingRight">@dimen/DyseggxiaContinueButtonPaddingRight</item>
+        <item name="android:paddingBottom">@dimen/DyseggxiaBackButtonBigPaddingBottom</item>
+        <item name="android:background">@drawable/continue_button_background</item>
         <item name="android:text">@string/continuar</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentRight">true</item>
 	</style>
 	<style name="CompleteDialogFishImage" parent="DyseggxiaImageView">
 	    <item name="android:src">@drawable/fish</item>
